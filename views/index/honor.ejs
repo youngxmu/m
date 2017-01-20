@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include common/meta.ejs %>
+    <title><%= title%></title>
+    <link rel="stylesheet" type="text/css" href="css/index/honor.css"/>
+  </head>
+  <body>
+    <%- include common/header.ejs %>
+    <input id="title" type="hidden" value="<%= title%>">
+    <input id="type" type="hidden" value="<%= type%>">
+    <div class="container" style="padding:0 ;">
+      <ol class="breadcrumb" style="border-radius:0;">
+        <li>
+          <a href="index">首页</a>
+        </li>
+        <li>
+          <a href="<%= link%>"><%= title%></a>
+        </li>
+        <% if(typeof subtitle != 'undefined'){%>
+        <li class="active">
+          <%= subtitle%>
+        </li>
+        <% } %>
+      </ol>
+      <div class="list-panel" >
+        <ul id="list_panel"></ul>
+      </div>
+      <div class="pic-panel" >
+        <ul id="pic_panel"></ul>
+      </div>
+    </div>
+    <%- include common/footer.ejs %>
+
+    <script type="text/template" id="list_tpl">
+    {@each list as item}
+    <li>
+      <a href="${item.pic}" target="_blank">${item.title}</a>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="pic_tpl">
+    {@each list as item}
+    <li>
+      <a href="${item.pic}" target="_blank">
+        <img src="${item.pic}" class="img-thumbnail">
+      </a>
+    </li>
+    {@/each}
+    </script>
+    <script type="text/javascript" src="js/index/honor.js"></script>
+    <script>
+      $('#nav_about').addClass('active');  
+      $(document).ready(function() {
+        moka.index.honor.init({});
+      });
+    </script>
+  </body>
+</html>

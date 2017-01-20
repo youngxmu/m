@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include common/meta.ejs %>
+    <title>通知公告</title>
+    <link rel='stylesheet' href='css/index/list.css' >
+  </head>
+  <body>
+    <%- include common/header.ejs %>
+    <div class="container">
+      <ol class="breadcrumb" style="border-radius:0;">
+        <li>
+          <a href="index">首页</a>
+        </li>
+        <li>
+          <a href="index/mlist">通知公告</a>
+        </li>
+        <% if(typeof subtitle != 'undefined'){%>
+        <li class="active">
+          <%= subtitle%>
+        </li>
+        <% } %>
+      </ol>
+      <div class="main">
+        <div class="res-list">
+          <span class="res-title">标题</span>
+          <span>作者</span>
+          <span>时间</span>
+          <span></span>
+        </div>
+        <div id="top_list" style="border-bottom: 1px dashed #cccccc;"></div>
+        <div id="resource_list"></div>
+        <div id="pagebar"></div>
+      </div>
+    </div>
+    <%- include common/footer.ejs %>
+
+    <script type="text/template" id="top-resource-tpl">
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-title">
+        <a href="resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>{@if resource.author}${resource.author}{@else}admin{@/if}</span>
+      <span>${resource.create_time}</span>
+      <span><em class="label label-danger">置顶</em></span>
+    </div>
+    {@/each}
+    </script>
+    <script type="text/template" id="resource-tpl">
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-title">
+        <a href="index/msg/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>{@if resource.author}${resource.author}{@else}admin{@/if}</span>
+      <span>${resource.create_time}</span>
+      <span></span>
+    </div>
+    {@/each}
+    </script>
+    <script type="text/javascript" src="js/index/msg-list.js"></script>
+    <script>
+      // if($('#title').val() == '学术成果' ){
+      //   $('#nav_science').addClass('active');  
+      // }else{
+      //   $('#nav_res').addClass('active');  
+      // }
+      $(document).ready(function() {
+          moka.index.msg.init();
+      });
+    </script>
+  </body>
+</html>

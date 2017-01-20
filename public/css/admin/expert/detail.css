@@ -1,0 +1,14 @@
+.container{padding-top: 30px;}
+	
+
+.expert-info{}
+.expert-info-left{width: 220px;margin-right: 20px;}
+.expert-info-right{width: 700px;}
+
+
+.expert-info-left .expert-avatar{width: 200px;height: 280px;}
+
+
+.expert-info-right .expert-desc{width: 700px;height: 360px;overflow: auto;font-size: 16px;line-height: 2;}
+.expert-info-right .expert-contactinfo{width: 700px;}
+.expert-info-right .expert-contactinfo p{font-size: 14px;line-height: 2;}

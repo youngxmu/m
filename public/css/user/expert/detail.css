@@ -1,0 +1,116 @@
+.container{
+	width: 1000px;
+	padding: 0 0 0 0;
+	position: relative;
+}
+.nav{position: absolute;top: 0;left: 50px;z-index: 2;width: auto;}
+.nav li  a{
+  color: #ffffff
+}
+.nav li  a:hover{
+  color: #333
+}
+/*.nav{margin-bottom: 15px;width: 100%;}
+.nav li  a{
+	color: #ffffff;
+	font-size: 13px;
+
+}
+.nav li  a:hover{
+	color: #333
+}*/
+
+.expert-info{padding: 0 15px;font-size: 14px;}
+.expert-info-left{width: 220px;margin-right: 20px;display: inline-block;vertical-align: top;}
+.expert-info-right{width: 700px;display: inline-block;}
+.expert-info-left .expert-avatar{width: 200px;height: 280px;vertical-align: top}
+.expert-info-left .expert-avatar img{height: 100%;width: 100%;object-fit:cover;}
+
+.expert-info-right .expert-name{font-size: 20px;font-weight: 700;;margin: 0 0 20px 0;}
+.expert-info-right .expert-desc{width: 700px;overflow: auto;font-size: 16px;line-height: 2;
+	/*height: 360px;*/
+}
+.expert-info-right .expert-contactinfo{width: 700px;}
+.expert-info-right .expert-contactinfo p{font-size: 14px;line-height: 2;}
+
+.expert-work{min-height: 500px}
+
+
+.xs{
+	display: none;
+	padding: 0 15px;
+	width: 1000px;
+	font-size: 15px;
+}
+
+.jx{
+	display: none;
+	padding: 0 15px;
+	width: 1000px;
+	font-size: 15px;
+}
+
+
+.type-panel{}
+.type-panel li{border-bottom: 1px solid #999;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.type-panel li.active{
+	background-color: #11487e;
+}
+
+.type-panel li:hover {
+	background-color: #11487e;
+	opacity: 0.7;
+}
+
+
+.type-panel li:last-child{border:0;}
+.type-panel li .type-ico{
+  background-position: center;
+  background-size: 40px auto;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 50px;
+  width: 100%;
+}
+
+.type-panel li .res-txt{background-image: url("../../../img/ico/ico-txt.png");}
+.type-panel li .res-pic{background-image: url("../../../img/ico/ico-pic.png");}
+.type-panel li .res-video{background-image: url("../../../img/ico/ico-video.png");}
+.type-panel li .res-ppt{background-image: url("../../../img/ico/ico-ppt.png");}
+.type-panel li p{
+	padding: 0;
+	margin: 0;
+    line-height: 20px;
+    text-align: center;
+    color: #f6f6f6;
+}
+    
+.main{width: 920px;display: inline-block;vertical-align: top;
+	padding: 10px 20px;
+	font-size:14px;color:#333;
+	border-left: 1px solid #cccccc;
+	min-height: 500px;
+	margin-left: -1px;
+}
+
+
+.res-list{border-bottom: 1px dashed #cccccc;line-height: 40px;color: #f6f6f6;}
+.res-list:last-child{border-bottom: 0;}
+.res-list span{width: 150px;display: inline-block;vertical-align: top;}
+.res-list-title span{width: 150px;display: inline-block;vertical-align: top;text-align: center;}
+.res-list-title span:nth-child(1){width:50px;}
+.res-list-title span:nth-child(2){width:750px;}
+.res-list-title span:nth-child(3){width:150px;}
+
+.res-list span a {color: #f6f6f6;}
+.res-list span:nth-child(1){width:50px;}
+.res-list span:nth-child(2){width:750px;}
+.res-list span:nth-child(3){width:150px;}
+.res-list .ico {
+	width: 28px;	height: 28px;
+	vertical-align: middle;
+}

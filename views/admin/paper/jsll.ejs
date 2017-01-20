@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ../common/meta.ejs %>
+    <title>学习考试管理</title>
+    <link rel='stylesheet' href='css/admin/question/import.css' >
+    <link rel='stylesheet' href='css/admin/article/list.css' >
+  </head>
+  <body>
+    <%- include ../common/header.ejs %>
+  	<div class="container">
+      <div class="fpanel">
+        <ul class="nav nav-tabs sub-nav">
+          <li data-type="1" class="active">
+            <a href="admin/paper/jsll">军事理论</a>
+          </li>
+          <li data-type="2" >
+            <a href="admin/question/list">题库管理</a>
+          </li>
+          <li data-type="3">
+            <a href="admin/paper/list">考试管理</a>
+          </li>
+          <div class="tool-bar">
+            <span class="btn-hide btn btn-danger" >隐藏选中</span>
+            <span class="btn-show btn btn-primary" >全部显示</span>
+          </div>
+        </ul>
+        <div id="tree_panel" >
+          <div class="sidebar">
+            <div style="overflow:auto;min-height:500px;" >
+              <ul id="topic_tree" class="ztree"></ul>
+              <ul id="series_tree" class="ztree" style="display:none;"></ul>
+            </div>
+          </div>
+          <div class="main">
+              <div class="info-content" >
+                <div class="editor-title">
+                  <label>名称</label><input  id="txt_title" value="">
+                </div>
+                <textarea class="editor-area" id="content" placeholder="输入文章正文" autofocus></textarea>
+              </div>
+              <div class="btn-wrapper" style="font-size:14px;margin-top: 15px;text-align:right;">
+                  <span id="btn_commit" class="btn btn-primary">提交</span>
+                </div>
+            </div>
+        </div>
+        <ul id="rMenu" style="position:absolute;">  
+            <a href="#" class="list-group-item" onclick="expand();">展开下一级</a>  
+        </ul>  
+      </div>
+	  </div>
+
+    <script type="text/javascript" src="js/admin/paper/jsll.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#navfouce .paper').addClass('current');
+        moka.admin.paper.jsll.init();
+      });
+    </script>
+  </body>
+</html>

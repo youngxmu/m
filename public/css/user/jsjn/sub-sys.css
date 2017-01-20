@@ -1,0 +1,66 @@
+.sub-sys{
+	width: 1024px;
+	height: 768px;
+	/*height: 688px;*/
+	background-image: url(../../../jsjn/00180[1024x768x24BPP].jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	/*background-position: center -80px;*/
+	position: relative;
+	display: none;
+}
+
+.sub-footer{
+	/*display: none;*/
+	position: absolute;
+	bottom: 60px;
+	right: 50px;
+}
+.sub-back{
+	width: 151px;
+	height: 42px;
+	background-image: url(../../../jsjn/png/00037[151x42x8BPP].png);
+	background-size: 151px 42px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: inline-block;cursor: pointer;
+}
+.sub-back:hover{
+	background-image: url(../../../jsjn/png/00038[151x42x8BPP].png);
+}
+
+.sub-exit{
+	width: 151px;
+	height: 42px;
+	background-image: url(../../../jsjn/png/00041[151x42x8BPP].png);
+	background-size: 151px 42px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: inline-block;cursor: pointer;
+}
+.sub-exit:hover{
+	background-image: url(../../../jsjn/png/00042[151x42x8BPP].png);
+}
+
+.main-list .ss-main-menu-list li{
+	width: 150px;
+	margin-left: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+
+}
+.main-list .ss-main-menu-list li .def{
+	display: inline-block;
+}
+.main-list .ss-main-menu-list li .hover{
+	display: none;
+}
+.main-list .ss-main-menu-list li:hover .def{
+	display: none;
+}
+.main-list .ss-main-menu-list li:hover .hover{
+	display: inline-block;
+}
+

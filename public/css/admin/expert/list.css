@@ -1,0 +1,50 @@
+/** 主页面 */
+.tool-bar{
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+
+.expert-list-title{line-height: 40px; height: 40px;font-weight: bold;}
+.expert-list-title div{display: inline-block;text-align: left;font-size: 14px;
+  white-space: nowrap;text-overflow:ellipsis;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 5px;
+}
+.expert-list-title div:nth-child(1){width: 50px;text-align: center;}
+.expert-list-title div:nth-child(2){width: 80px;}
+.expert-list-title div:nth-child(3){width: 120px;}
+.expert-list-title div:nth-child(4){width: 110px;}
+.expert-list-title div:nth-child(5){width: 110px;}
+.expert-list-title div:nth-child(6){width: 300px;}
+.expert-list-title div:nth-child(7){width: 120px;text-align: center;}
+.expert-list{line-height: 40px; height: 40px;border-bottom: 1px dashed #cccccc;}
+.expert-list:last-child{border:none;}
+.expert-list div{display: inline-block;text-align: left;font-size: 14px;
+  white-space: nowrap;text-overflow:ellipsis;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 5px;
+}
+.expert-list div:nth-child(1){width: 50px;text-align: center;}
+.expert-list div:nth-child(2){width: 80px;}
+.expert-list div:nth-child(3){width: 120px;}
+.expert-list div:nth-child(4){width: 110px;}
+.expert-list div:nth-child(5){width: 110px;}
+.expert-list div:nth-child(6){width: 300px;}
+.expert-list div:nth-child(7){width: 120px;text-align: center;}
+
+.expert-list .oper span{cursor: pointer;margin-left: 5px;color: blue;}
+
+.expert-edit{width: 800px;}
+.expert-edit dl,.expert-edit dt,.expert-edit dd{margin: 0;padding: 0;}
+.expert-edit dl{line-height: 40px;}
+.expert-edit dt,.expert-edit dd{display: inline-block;}
+.expert-edit dt {width: 80px;}
+.expert-edit dd {width: 700px;}
+.expert-edit dd input{width: 400px;border: 1px solid #cccccc;height: 30px;padding: 0 10px;}
+
+.expert-edit .expert-questions dt{vertical-align: top;}
+.expert-edit .expert-questions dd{height: 400px;overflow: auto;}
+.expert-edit .expert-questions .btn-edit-questions{color: blue;cursor: pointer;}

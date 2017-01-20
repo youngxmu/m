@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>考试</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/paper/paper.css' >
+    <link rel='stylesheet' href='css/user/exam/list.css' >
+  </head>
+  <body>
+    <div class="bg">
+    <%- include ../common/header.ejs %>
+  	<div class="container">
+      <div class="nav">
+        <ul class="nav-ul">
+          <li class="active">
+            <a href="paper/index" >系统首页</a>
+          </li>
+          <li>
+            <a href="exam/history/list" >考试记录</a>
+          </li>
+        </ul>
+      </div>
+      <div class="main" style="border:0;">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 id="content_title" class="panel-title">当前考试</h3>
+          </div>
+          <div class="panel-body detail-article">
+            <div id="paper_list"></div>
+            <div id="pagebar"></div>
+          </div>
+        </div>
+        
+      </div>
+	  </div>
+    <%- include ../common/footer.ejs %>
+   </div>
+    <script type="juicer/template" id="paper-list-tpl">
+    <div class="paper-list-title">
+        <div class="name">试卷名称</div>
+        <div class="desc">试卷描述</div>
+        
+        <div class="oper">操作</div>
+    </div>
+    {@each list as obj, index}
+    <div class="paper-list">
+      <div class="name">${obj.name}</div>
+      <div class="desc">${obj.description}</div>
+      
+      <div class="oper">
+        <span data-id="${obj.id}" class="view">
+          {@if obj.uestatus == 0}<a href="exam/detail/${obj.id}" target＝"_blank">开始考试</a>{@/if}
+          {@if obj.uestatus == 1}<a href="exam/detail/${obj.id}" target＝"_blank">继续答题</a>{@/if}
+          {@if obj.uestatus == 2}<a href="exam/uhistory/${obj.id}"   target＝"_blank">查看成绩</a>{@/if}
+        </span>
+      </div>
+    </div>
+    {@/each}
+    </script>
+    
+    <script type="juicer/template" id="question-list-tpl">
+    {@each list as obj, index}
+    <div data-id="${obj.id}" class="question-list">
+        <div class="qtype">
+          ${index|formatIndex}.&nbsp;${obj.qtype|getQType}
+        </div>
+        <div class="qbody">${obj.qbody}</div>
+        {@if obj.qtype == 2}
+          <div class="qanswer">$${obj.qanswer|formatAnswer}</div>
+        {@/if}
+    </div>
+    {@/each}
+    </script>
+
+    <script type="text/javascript" src="js/common/question.js"></script>
+    <script type="text/javascript" src="js/user/exam/list.js"></script>
+    
+    <script>
+      $(document).ready(function() {
+            moka.user.exam.list.init();
+        });
+    </script>
+  </body>
+</html>

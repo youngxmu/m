@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>军事理论教学分系统</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/jsll/list.css' >
+  </head>
+  <body>
+    <%- include ../common/header.ejs %>
+    <div class="container">
+      <div class="sidebar">
+        <div class="tree-opr">
+          <a href="javascript:void(0);" class="unfold">展开</a>
+        </div>
+        <div style="overflow:auto;min-height:500px;" >
+          <ul id="topic_tree" class="ztree"></ul>
+        </div>
+      </div>
+      <div class="main" style="padding-top:30px;font-size:14px;color:#333;">
+        <div id="content" class="info-content" ></div>
+      </div>
+    </div>
+    <%- include ../common/footer.ejs %>
+
+    <script type="text/javascript" src="js/user/jsll/jsll.js"></script>
+    <script type="text/javascript" src="js/user/jsll/list.js"></script>
+    
+    <script>
+      $(document).ready(function() {
+          moka.user.jsll.list.init();
+      });
+    </script>
+  </body>
+</html>

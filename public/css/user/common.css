@@ -1,0 +1,346 @@
+html,body{height: 100%; width: 100%;padding: 0;margin: 0;}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #a4cce5;
+}
+
+a {color: #00B7FF;text-decoration:none;}
+em{font-style: normal;}
+ul,li{margin: 0;padding: 0;}
+li{list-style-type: none;}
+
+.clear{clear:both;}
+
+
+.container{
+  min-height: 80%;
+}
+.header{
+  /*background-color: #f6f6f6;
+  background-image: url("../../img/logo-buttom.jpg");*/
+  background-position: center top;
+  background-repeat: no-repeat;
+  width: 1000px;
+  margin:0 auto;
+  background-color: transparent;
+}
+
+.top-bar{height:40px;line-height:40px;overflow:hidden;font-size:14px;color:#f6f6f6; padding:0 15px;width:auto;}
+.pull-left{float:left!important}
+.pull-right{float:right!important}
+.top-bar .pull-right a{margin-left:20px}
+.logo{position: relative;}
+.h-search-bar{
+  position: absolute;
+  right: 10px;
+  padding-top: 3px;
+  /*bottom: 50px;*/
+}
+.h-search-bar input,.h-search-bar button{vertical-align: top;display: inline-block;width: auto;}
+/* 头部 */
+.nav-div{background-color: #036; background-image: url(logo-buttom.jpg); background-position:top center;}
+.header .index-row{padding:30px 20px}
+/*.header .search{margin:40px 0 0 0;float:right}
+.header input{float:left;border:none;padding:10px 6px;height:12px;background:#F2F6F8;outline:0;width:180px}*/
+/*.header button{float:left;border:none;margin:0 0 0 1px;background:#49D;color:#FFF;height:32px;padding:8px 12px}
+form {margin-right: 1em;}*/
+
+
+.nav {background-color: #11487e;background-image: none;}
+.nav{width:1000px;height:40px;position:relative;margin:0 auto; z-index:99;
+  background-color: transparent;
+}
+.nav .nav-ul > li{float:left;width:120px;height:40px;text-align: center;}
+.nav .nav-ul > li:hover,.nav .nav-ul > li a:hover{color:#FFF;background:#38C}
+.nav .nav-ul > li a{
+  text-align:center;font:normal 16px microsoft yahei; text-decoration:none;
+  color: #f6f6f6;
+  height: 40px;line-height: 40px;
+  display: block;white-space: nowrap;
+}
+.nav .nav-ul >li.active a {
+    display: inline;
+    border-radius: 3px;
+    padding: 2px 10px;
+}
+.nav .nav-ul >li.active a {
+    color: #FFF;
+    background: #49D;
+}
+
+.logo{
+    background-image: url("../../img/logo.png");
+    background-position: center left;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    width: auto;
+    margin: 0 15px;
+}
+
+.logo-title{
+  width: 570px;
+  background-image: url("../../img/logo_title.png");
+  background-position: center left;
+  background-size: auto 70px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 100%;
+  margin-left: 110px;
+}
+
+.logo-msg{
+  width: 150px;
+  background-image: url("../../img/logo_msg.png");
+  background-position: bottom left;
+  background-size: 420px auto;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 125px;
+  vertical-align: top;
+}
+
+.logo a{ display:block;height:120px;width:100%;}
+
+
+.header-info{position: absolute;right: 20px;top:20px;font-size: 14px;color:#f6f6f6;}
+.header-info span{cursor: pointer;}
+.header-info span:hover{opacity: 0.7;}
+
+.container{width: 1000px;font-size: 0;
+  /*background-color: transparent;*/
+  background:url(../../img//cloud.png) 0 top repeat-x  #049ec4;
+   -webkit-animation: animate-cloud 20s linear infinite;
+   -moz-animation: animate-cloud 20s linear infinite;
+   -ms-animation: animate-cloud 20s linear infinite;
+   -o-animation: animate-cloud 20s linear infinite;
+   animation: animate-cloud 20s linear infinite;
+}
+
+
+pre{white-space: pre-wrap;font-size: 14px;}
+pre{background-color: #C7EDCC !important;}
+
+.pull-right a{
+  color: #ffffff;
+}
+
+.main{width: 1000px;position:relative;}
+/*.main .slide-content{width:100%;min-width:980px;height:100%; min-height:640px;position: relative;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;overflow: hidden;}
+.main .slide-content .cloud{ position:absolute; width:200px;height:100px; background:url(../../img//object.png);left:0px;top:0px;}
+.main .slide-content .cloud-0{background-position: -580px -240px;}
+.main .slide-content .cloud-1{background-position: -550px 0px;height:140px;width:260px;}
+.main .slide-content .cloud-2{background-position: -580px -140px;}
+.main .slide-content .cloud-3{background-position: -350px -140px;}
+.main .slide-content .cloud-4{background-position: -350px 0px;height:140px;}
+*/
+
+.clear{
+    clear:both;
+}
+
+/* 页脚 */
+.footer{
+    background:#F2F6F8;margin-top:30px;padding-top:15px;font-size:14px;color:#124655;
+    height: auto;
+    line-height: normal;
+    
+}
+.m-t{width: 1000px;margin: 0 auto;}
+.m-t h3{text-align: left;}
+.footer a{color:#889}
+.footer .info{overflow:hidden;border-top:1px solid #ddd;padding:15px 0;margin:30px 0;line-height:40px;bottom:0}
+.footer .copyright{float:left}
+.footer .copyright img{float:left}
+.footer .copyright h3{float:left;margin:0 10px}
+.footer .about-us{float:right}
+.footer .about-us a{margin-left:14px}
+.f-link{line-height:36px;text-align: left;}
+.f-link:after,.f-link:before{content:" ";display:table}
+.f-link:after{clear:both}
+.f-link a{margin-right:22px;display:inline-block;}
+
+.login-panel{
+  color: #f6f6f6;
+  padding-top: 120px;
+}
+.sys-info{
+  width: 700px;
+  display: inline-block;
+  height: 400px;
+  margin-right: 30px;
+}
+.login-bg{
+  background: url("../../img/login_bg_white.png") center center repeat;
+  width: 250px;
+  height: auto;
+  overflow: hidden;
+  top: 120px;
+  right: 50px;
+  position: absolute;
+  border-radius: 5px;
+  padding: 22px 30px;  
+}
+.login-bg input{
+  margin-bottom: 20px;
+}
+.login-btn-wrapper .btn{
+  width: 85px;
+}
+.login-btn-wrapper .btn:first-child{
+  margin-right: 20px;
+}
+.sys-info{
+  margin: 0 0 0 10px;
+}
+.sys-info-txt{
+  height: 60px;line-height: 60px;
+  font-size: 20px;color: #ffffff;
+}
+
+.sys-info-img{
+
+}
+.sys-info-img div{
+  width: 200px;
+  height: 150px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.sys-info-img div img{
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+
+
+
+
+.foot{
+  width: 100%;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  text-align: center;
+}
+.footer2{width: 1000px;margin: 0 auto;
+  background: url(../../img/logo-buttom.jpg) no-repeat top center #f5f5f5;
+  
+  margin: auto;
+  color: #f6f6f6;
+}
+.footer2 a{color:#f6f6f6}
+.footer2 .info{overflow:hidden;border-top:1px solid #ddd;padding:15px 15px;line-height:40px;bottom:0}
+.footer2 .copyright{float:left}
+.footer2 .copyright img{float:left}
+.footer2 .copyright h3{float:left;margin:0 10px}
+.footer2 .about-us{float:right}
+.footer2 .about-us a{margin-left:14px}
+
+.sys-hlogo{
+    background-image: url("../../img//logo.png");
+    background-position: center left;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
+    float: left;
+}
+.header{
+    background: url(../../img//logo-buttom.jpg) no-repeat top center #f5f5f5;
+    width: 100%;
+    height: auto;
+    width: 1000px;
+    margin: auto;
+}
+
+
+
+.main .res-list span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+/** login page */
+.login_con {
+    margin: 0 auto;
+    width: 378px;
+    padding-bottom: 30px;
+}
+.login_con h1 {
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+.login_list {
+    background-color: #fff;
+    margin:  0;
+    overflow: hidden;
+    padding: 0 18px;
+}
+.login_line {
+    margin: 0 0 12px;
+    overflow: hidden;
+}
+.login_line p {
+    color: #474747;
+}
+
+
+
+.input_text {
+    border: 1px solid #c0c5cd;
+    border-radius: 2px;
+    color: #b4b4b6;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 8px;
+    width: 246px;
+    color: #000000;
+}
+
+.login_line .input_text {
+    height: 36px;
+    line-height: 36px;
+    margin: 5px 0 0;
+    width: 100%;
+}
+.login_line span {
+    border: 1px solid #c0c5cd;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    height: 36px;
+    margin: 5px 0 0 12px;
+    overflow: hidden;
+    width: 138px;
+}
+
+.btn_green37 {
+    background-color: #00c044;
+    border-radius: 2px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+}
+
+.login_list .btn_wrap {
+    margin: 10px 0 0;
+    width: auto;
+}
+.login_list .btn_green37 {
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    width: 100%;
+}

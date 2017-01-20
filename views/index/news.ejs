@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/resource/resource.css' >
+    <link rel='stylesheet' href='css/user/resource/detail.css' />
+  </head>
+  <body>
+    <div class="bg">
+  	<%- include ../common/header.ejs %>
+    <div class="container detail-article">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= title %></h3>
+        </div>
+        <div class="panel-body detail-article">
+          <pre>
+            <%- content %>
+          </pre>
+        </div>
+      </div>
+  	</div>
+    <%- include ../common/footer.ejs %>
+  </div>
+    <script type="text/javascript" src='js/user/resource/resource.js'></script>
+  	<script type="text/javascript" src='js/user/resource/detail.js'></script>
+  	
+  	<script type="text/javascript">
+  		$(document).ready(function(){
+  			moka.user.resource.detail.init();
+  		});
+  	</script>
+  </body>
+</html>

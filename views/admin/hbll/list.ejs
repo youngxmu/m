@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>后备力量建设分系统</title>
+    <%- include ../common/meta.ejs %>
+         <link rel='stylesheet' href='css/admin/hbll/list.css' >
+  </head>
+  <body>
+    <%- include ../common/header.ejs %>
+    <div class="container">
+      <div class="sidebar">
+        <div class="tree-opr">
+           <a href="javascript:void(0);" class="unfold">展开</a>
+          |<a href="javascript:void(0);" class="add">增加</a>
+          |<a href="javascript:void(0);" class="edit">编辑</a>
+          |<a href="javascript:void(0);" class="del">删除</a>
+        </div>
+        <div style="overflow:auto;min-height:500px;" >
+          <ul id="topic_tree" class="ztree"></ul>
+          <ul id="series_tree" class="ztree" style="display:none;"></ul>
+        </div>
+      </div>
+      <div class="main" style="padding-top:30px;font-size:14px;color:#333;">
+        <textarea id="editor" placeholder="输入文章正文" style="height:100%;" ></textarea>
+        <div class="btn-wrapper" style="font-size:14px;">
+          <span id="btn_save" class="btn btn-primary">保存</span>
+        </div>  
+      </div>
+    </div>
+    <script type="text/template" id="edit_menu_dlg">
+    <div class="">
+      <input id="menu_name" placeholder="输入名称" value="${name}" style="line-height:24px;padding: 0 10px;">
+    </div>
+    </script>
+    
+    <script type="text/javascript" src="js/admin/hbll/list.js"></script>
+    <script>
+      $('.hbll').addClass('current');
+      $(document).ready(function() {
+          moka.admin.hbll.list.init();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ../common/meta.ejs %>
+    <title>学员管理</title>
+    <link rel='stylesheet' href='css/admin/user/list.css' />
+  </head>
+  <body>
+    <%- include ../common/header.ejs %>
+  	<div class="container">
+        <div class="fpanel">
+            <ul class="nav nav-tabs sub-nav">
+                <% if(type == 1){ %><li data-type="1" ><a href="admin/teacher/list">教师管理</a></li><%}%>
+                <li data-type="2" class="active"><a href="admin/user/list">学员管理</a></li>
+                <div class="tool-bar">
+                    <div class="search-panel" >
+                        <dl>
+                            <dt>姓名</dt><dd><input id="user_name" ></dd>
+                            <dt>手机</dt><dd><input id="user_tel" ></dd>
+                            <dt>邮箱</dt><dd><input id="user_email" ></dd>
+                            <dd>
+                                <span id="btn_search" class="btn btn-primary" >查询</span>
+                                <span id="btn_import" class="btn btn-primary" >导入</span>
+                                <a href="tpl/user.xls" class="btn btn-primary" >模板下载</a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </ul>
+        	<div class="list-table" >
+        		<table>
+        			<thead>
+        				<tr>
+        					<th>ID</th>
+        					<th>姓名</th>
+        					<th>邮箱</th>
+        					<th>手机</th>
+        					<th>积分</th>
+        					<th>状态</th>
+        					<th>注册时间</th>
+        					<th style="width:80px;">操作</th>
+        				</tr>
+        			</thead>
+        			<tbody id="user_list"></tbody>
+        		</table>
+        		<div id="pagebar"></div>
+        	</div>
+        </div>
+	</div>
+
+<!-- {@if obj.status == -1}
+                    禁用
+                {@/if}
+                {@if obj.status == 0}
+                    未审核
+                {@/if}
+                {@if obj.status == 1}
+                    已审核通过
+                {@/if}
+                {@if obj.status == 2}
+                    审核拒绝
+                {@/if} -->
+	<script type="text/juicer" id="user_list_tpl">
+	{@each list as obj}
+		<tr>
+			<td>${obj.id}</td>
+			<td>${obj.name}</td>
+			<td>${obj.email}</td>
+			<td>${obj.tel}</td>
+			<td>${obj.score}</td>
+			<td>
+				{@if obj.status == 1}
+                    正常
+                {@else}
+                    禁用
+                {@/if}
+			</td>
+			<td>${obj.create_time|dateFormat}</td>
+			<td class="oper">
+				<span data-id="${obj.id}" class="edit" style="display:none;" >编辑</span>
+                <span data-id="${obj.id}" class="del" >删除</span>
+			</td>
+		</tr>
+	{@/each}
+	</script>
+	
+	<script type="text/javascript" src='js/admin/user/list.js'></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+            $('#navfouce .user').addClass('current');
+			moka.admin.user.list.init();
+		});
+	</script>
+  </body>
+  </body>
+</html>

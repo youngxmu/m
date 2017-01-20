@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include common/meta.ejs %>
+    <title>国防教育管理系统</title>
+    <link rel="stylesheet" type="text/css" href="css/index/info.css"/>
+  </head>
+  <body>
+    <%- include common/header.ejs %>
+    <div class="container" style="padding:0 ;">
+      <ol class="breadcrumb" style="border-radius:0;">
+        <li>
+          <a href="index">首页</a>
+        </li>
+        <li>
+          <a href="<%= link%>"><%= title%></a>
+        </li>
+      </ol>
+      <div class="desc-panel" ><%- content%></div>
+    </div>
+    <%- include common/footer.ejs %>
+  </body>
+</html>

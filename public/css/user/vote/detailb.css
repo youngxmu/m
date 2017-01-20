@@ -1,0 +1,23 @@
+.container{width: 1000px;
+	background-image: url("../../../img/bg-clouds.png");
+	background-color: #4DA5E4;
+}
+
+
+.question-list{padding: 10px;
+	display: none;
+	border-bottom: 1px dashed #cccccc;
+	display: block;
+	color :#000000;
+}
+.question-list.active{display: block;}
+.question-list .qbody{line-height: 1.5;}
+.question-list .qanswer-panel{line-height: 1.5;}
+.question-list .qanswer{cursor: pointer;line-height: 2;padding: 0 10px;}
+.question-list .qanswer.selected{background: blue;color: #ffffff}
+
+.btn-wrapper{margin: 10px;}
+.btn-commit{display: inline-block;line-height: 30px;padding: 0 20px;border: 1px solid #cccccc;
+	cursor: pointer;
+}
+

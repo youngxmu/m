@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>国防后备力量</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/hbll/hbll.css' >
+    <link rel='stylesheet' href='css/user/hbll/list.css' >
+    <style type="text/css">
+      .nav-ul li{display: none;}
+      .nav-ul li.index, .nav-ul li.active{display: inline-block;}
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+      <%- include ../common/header.ejs %>
+      <div class="container">
+        <div class="nav">
+          <ul class="nav-ul">
+            <li class="index">
+              <a href="hbll/index">系统首页</a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar sidebar-tree">
+          <div class="tree-opr">
+            <a href="javascript:void(0);" class="unfold">展开</a>
+          </div>
+          <div>
+            <ul id="topic_tree" class="ztree"></ul>
+          </div>
+        </div>
+        <div class="main" style="padding-top:30px;font-size:14px;color:#333;">
+          <div class="info-content" >
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 id="content_title" class="panel-title">&nbsp;</h3>
+              </div>
+              <div class="panel-body detail-article">
+                <pre id="content" >
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%- include ../common/footer.ejs %>
+    </div>
+    <script type="text/template" id="resource-tpl">
+    <div class="res-list">
+      <span class="res-type">类型</span>
+      <span class="res-title">标题</span>
+      <span>作者</span>
+      <span>时间</span>
+    </div>
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-type"><i class="ico ico-${resource.file_name|getFileType}"></i></span>
+      <span class="res-title">
+        <a href="resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>${resource.author}</span>
+      <span>${resource.create_time}</span>
+    </div>
+    {@/each}
+    </script>
+
+    
+    <script type="text/javascript" src="js/user/hbll/list.js"></script>
+    
+    <script>
+      $('#nav_hbll').addClass('aHover');
+      $(document).ready(function() {
+          moka.user.hbll.list.init();
+      });
+    </script>
+  </body>
+</html>

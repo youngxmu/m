@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ../common/meta.ejs %>
+    <title><% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>专家信息</title>
+    <link rel='stylesheet' href='js/lib/timepicker/bootstrap-datetimepicker.min.css' />
+    <link rel='stylesheet' href='css/admin/expert/edit.css' />
+  </head>
+  <body>
+  	<input type="hidden" id="expertId" value="<%= id %>">
+    <%- include ../common/header.ejs %>  
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li data-type="1" class="active"><a href="javascript:void(0);">基本情况</a></li>
+        <li data-type="2" ><a href="javascript:void(0);">学术成果</a></li>
+        <li data-type="3" ><a href="javascript:void(0);">教学成果</a></li>
+      </ul>
+      <div id="info_panel" class="main">
+        <div class="t-dinput">
+          <label>姓名</label><input name="name" value="<%= name %>" style="margin-right:58px;">
+        </div>
+        <div class="t-dinput">
+          <label>性别</label>
+          男<input name="gender" type="radio" value="男" <%if(gender == '男'){%>checked=checked<%}%>>
+          女<input name="gender" type="radio" value="女" <%if(gender == '女'){%>checked=checked<%}%>>
+        </div>
+        <div class="t-dinput">
+          <label>生日</label><input name="birthday" value="<%= birthday %>" style="margin-right:58px;">
+        </div>
+        <div class="t-dinput">
+          <label>电话</label><input name="tel" value="<%= tel %>" >
+        </div>
+        <div class="t-dinput">
+          <label>职称</label><input name="title" value="<%= title %>"  style="margin-right:58px;">
+        </div>
+         <div class="t-dinput">
+          <label>方向</label><input name="topic" value="<%= topic %>" >
+          <label>区域</label>
+          地方专家学者<input name="job_type" type="radio" value="地方专家学者" <%if(job_type == '地方专家学者'){%>checked=checked<%}%>>
+          军队专家学者<input name="job_type" type="radio" value="军队专家学者" <%if(job_type == '军队专家学者'){%>checked=checked<%}%>>
+        </div>
+        <div class="t-input">
+          <label>单位</label><input name="unit" value="<%= unit %>" >
+        </div>
+        <div class="t-input">
+          <label>地址</label><input name="address" value="<%= address %>" >
+        </div>
+        <div class="avatar-panel">
+          <label>头像</label><input id="avatar" name="avatar" value="<%= avatar %>" type="hidden" >
+          <div id="btn_upload" class="avatar-view">
+            <% if(typeof avatar != 'undefined'){%><img src="<%= avatar %>"><% } %>
+          </div>
+        </div>
+        <div class="t-input">
+          <label>描述</label><textarea name="description" ><%= description %></textarea>
+        </div>
+        <div class="t-btn" style="margin-top:0;padding-left:60px;">
+          <span id="btn_commit" class="btn btn-primary">提交</span>
+        </div>
+      </div>
+      <div id="list_panel" class="main" style="display:none;">
+        <table class="table table-striped" style="font-size:14px;">
+            <thead>
+              <tr>
+                <td class="">序号</td>
+                <td class="">标题</td>
+                <td class="">时间</td>
+                <td class="">操作</td>
+              </tr>
+            </thead>
+            <tbody id="resource_list"></tbody>
+          </table>
+        <div id="pagebar"></div>
+      </div>
+    </div>
+    <!-- <div class="footer"></div> -->
+    <script type="text/template" id="result-list-tpl">
+    {@each list as obj, index}
+    <tr >
+      <td class="name">${index|formatIndex}</td>
+      <td class="desc"><a href="admin/expert/result/edit/${obj.article_id}?expert_id=${obj.expert_id}" target="_blank">${obj.title}</a></td>
+      <td class="desc">${obj.create_time}</td>
+      <td class="oper">
+        <span data-id="${obj.id}" ><a href="admin/expert/result/edit/${obj.article_id}?expert_id=${obj.expert_id}" target="_blank">编辑</a></span>
+        <span data-id="${obj.id}" class="del" ><a target="_blank">删除</a></span>
+      </td>
+    </tr>
+    {@/each}
+    </script>
+    <script type="text/javascript" src="js/lib/timepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/lib/timepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+	  <script type="text/javascript" src='js/admin/expert/edit.js'></script>
+	
+  	<script type="text/javascript">
+  		$(document).ready(function(){
+        $('#navfouce .expert').addClass('current');
+  			moka.admin.expert.edit.init();
+  		});
+  	</script>
+  </body>
+</html>

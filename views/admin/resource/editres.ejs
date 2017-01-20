@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> <% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>资源</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/admin/article/detail.css' />
+  </head>
+  <body>
+    <% if(typeof id != 'undefined'){%>
+      <input type="hidden" id="article_id" value="<%= id %>">
+    <% } %> 
+    <%- include ../common/header.ejs %>   
+  	<div class="container">
+  		<div class="res-title"><% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>文章</div>
+  		<div class="main">
+  			<div class="t-input">
+  				<label>资源标题</label>
+          <input id="title" placeholder="输入文章标题" <% if(typeof title != 'undefined'){%>value="<%= title %>"<% } %> >
+  			</div>
+  			<div class="t-input">
+  				<label>作者名称</label>
+          <input id="author" placeholder="输入作者名称" <% if(typeof author != 'undefined'){%>value="<%= author %>"<% } %> >
+  			</div>
+        <div class="t-input">
+          <label>资源描述</label>
+          <textarea id="description" placeholder="输入资源描述">
+            <% if(typeof content != 'undefined'){%><%- content %><% } %>
+          </textarea>
+        </div>
+  			<div class="t-input">
+          <label>上传资源</label>
+          <% if(typeof id != 'undefined'){%>
+            <span id="btn_upload" class="u-button blue">修改文件</span>
+            <span id="filename" class="filename"><%- org_name %></span>
+          <% }else{ %>
+            <span id="btn_upload" class="u-button blue">选择文件</span>
+            <span id="filename" class="filename">文件名称</span>
+          <% } %>
+          
+          
+          <p id="process_bar" class="process-bar" ><span id="process_rate">0%</span></p>
+        </div>
+        <div class="t-input" style="displa">
+          <label>所属栏目</label>
+          <div class="u-select-p">
+          <% if(typeof menuList != 'undefined'){%>
+          <% for(var index in menuList) { %> 
+          <% var menu = menuList[index]; %> 
+          <span class="s-menu" data-id="<%= menu.id %>" ><%= menu.name %></span>
+          <% } %> 
+          <% } %> 
+          </div>
+        </div>
+  			<div class="t-btn">
+         
+
+          <div id="btn_commit" class="u-button">提交</div>
+  			</div>
+  			
+  		</div>
+  		<div class="footer"></div>
+  	</div>
+	
+	<script type="text/javascript" src="js/admin/article/upload.js"></script>
+  <script type="text/template" id="menu_list_tpl">
+  {@each list as menu}
+  <option value="${menu.id}">${menu.name}</option>
+  {@/each}
+  </script>
+
+ 	<script>
+ 		$(document).ready(function() {
+	      	moka.admin.article.upload.init({});
+	    });
+ 	</script>
+
+  </body>
+</html>

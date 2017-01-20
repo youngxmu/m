@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include common/meta.ejs %>
+    <title>数字资源</title>
+    <link rel='stylesheet' href='css/index/list.css' >
+  </head>
+  <body>
+    <%- include common/header.ejs %>
+    <input id="pid" value="<%= mid %>" type="hidden" >
+    <input id="keyword" value="<%= keyword %>" type="hidden" >
+
+    <div class="container">
+      <ol class="breadcrumb" style="border-radius:0;">
+        <li>
+          <a href="index">首页</a>
+        </li>
+        <li>
+          <a href="<%= link%>"><%= title%></a>
+        </li>
+        <% if(typeof subtitle != 'undefined'){%>
+        <li class="active">
+          <%= subtitle%>
+        </li>
+        <% } %>
+      </ol>
+      <div class="main">
+        <div class="res-list">
+          <span class="res-title">标题</span>
+          <span>作者</span>
+          <span>时间</span>
+          <span>操作</span>
+        </div>
+        <div id="top_list"></div>
+        <div id="resource_list"></div>
+        <div id="pagebar"></div>
+      </div>
+    </div>
+    <%- include common/footer.ejs %>
+
+    <script type="text/template" id="top-resource-tpl">
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-title">
+        <a href="resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>${resource.author}</span>
+      <span>${resource.create_time}</span>
+      <span><button type="button" class="btn btn-default btn-xs setdown" data-id="${resource.id}">取消置顶</button></span>
+    </div>
+    {@/each}
+    </script>
+
+
+    <script type="text/template" id="resource-tpl">
+    
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-title">
+        <a href="resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>${resource.author}</span>
+      <span>${resource.create_time}</span>
+      <span><button type="button" class="btn btn-default btn-xs setup" data-id="${resource.id}">置顶</button></span>
+    </div>
+    {@/each}
+    </script>
+    
+    <script type="text/javascript" src="js/index/list-data.js"></script>
+    
+    <script>
+      $('#nav_hbll').addClass('aHover');
+      $(document).ready(function() {
+          moka.index.listdata.init();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <%- include common/meta.ejs %>
+    <title>国防教育研究中心</title>
+    <link rel="stylesheet" type="text/css" href="css/index/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index/slick-theme.css"/>
+    <script type="text/javascript" src="js/lib/slick.min.js"></script>
+  </head>
+  <body>
+    <%- include common/header.ejs %>
+    <div class="main">
+      <div class="index-row">
+        <div class="rl">
+          <div class="box-title">国防教育动态<a href="index/nlist" >更多</a></div>
+          <ul id="gfjydt" class="info-panel"></ul>
+        </div>
+        <div class="rm">
+          <div id="pic" class="pic-panel"></div>
+          <div class="slick-dots"></div>
+        </div>
+        <div class="ry">
+          <div class="box-title">通知公告<a href="index/mlist" >更多</a></div>
+          <ul id="gfjy" class="info-panel"></ul>
+        </div>
+      </div>
+
+      <div class="system-panel">
+        <div class="system-label">
+          
+          国防教育信息系统
+        </div>
+        <div class="system-box">
+          <div class="system-row">
+            <li><i class="ico"></i><a target="_blank" href="jsll/index" >军事理论教学</a></li>
+            <li><i class="ico"></i><a target="_blank" href="jsjn/index" >军事技能教学</a></li>
+            <li><i class="ico"></i><a target="_blank" href="paper/index" >学习考试管理</a></li>
+          </div>
+          <div class="system-row">
+            <li><i class="ico"></i><a target="_blank" href="resource/index" >国防教育资源</a></li>
+            <li><i class="ico"></i><a target="_blank" href="hbll/index">国防后备力量</a></li>
+            <!-- <li><i class="ico"></i><a target="_blank" href="vote/index" >国防教育测评</a></li> -->
+            <li><i class="ico"></i><a target="_blank" href="expert/index" >国防师资力量</a></li>
+          </div>
+        </div>
+      </div>
+      <div class="index-row">
+        <div class="rl">
+          <div class="box-title">国防历史<a href="index/res/list/1" >更多</a></div>
+          <ul id="info1" class="info-panel"></ul>
+        </div>
+        <div class="rm">
+          <div class="box-title">国防法规<a href="index/res/list/2" >更多</a></div>
+          <ul id="info2" class="info-panel"></ul>
+        </div>
+        <div class="ry">
+          <div class="box-title">国防力量<a href="index/res/list/3" >更多</a></div>
+          <ul id="info3" class="info-panel"></ul>
+        </div>
+      </div>
+
+      <div class="index-row">
+        <div class="rl">
+          <div class="box-title">国防战略<a href="index/res/list/4" >更多</a></div>
+          <ul id="info4" class="info-panel"></ul>
+        </div>
+        <div class="rm">
+          <div class="box-title">国防建设<a href="index/res/list/5" >更多</a></div>
+          <ul id="info5" class="info-panel"></ul>
+        </div>
+        <div class="ry">
+          <div class="box-title">世界军事<a href="index/res/list/6" >更多</a></div>
+          <ul id="info6" class="info-panel"></ul>
+        </div>
+      </div>
+    </div>
+    <%- include common/footer.ejs %>
+    <script type="text/template" id="news_list_tpl_o">
+    {@each list as news}
+    <div style="position:relative;">
+      <a href="${news.link}" title="${news.title}" target="_blank" >
+        <img src="${news.pic_url}" width="319" height="240">
+      </a>
+      <span class="news-title" >${news.title}</span>
+    </div>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="news_list_tpl">
+    {@each list as news}
+    <li>
+      <a href="index/news/${news.id}" target="_blank">${news.title}</a>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="pic_list_tpl">
+    {@each list as news}
+    {@if news.cover}
+    <div style="position:relative;">
+      <a href="index/news/${news.id}" title="${news.title}" target="_blank" >
+        <img src="${news.cover}" width="319" height="240">
+      </a>
+      <span class="news-title" >${news.title}</span>
+    </div>
+    {@/if}
+    {@/each}
+    </script>
+
+    <script type="text/template" id="article_list_tpl">
+    {@each list as res}
+    <li>
+      <a href="resource/detail/${res.id}" target="_blank">${res.title}</a>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="msg_list_tpl">
+    {@each list as res}
+    <li>
+      <a href="index/msg/${res.id}" target="_blank">${res.title}</a>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/javascript" src="js/index/index.js"></script>
+    <script>
+      $('#nav_index').addClass('active');
+      $(document).ready(function() {
+        moka.index.init({});
+      });
+    </script>
+  </body>
+</html>

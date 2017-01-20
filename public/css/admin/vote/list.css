@@ -1,0 +1,59 @@
+/** 主页面 */
+.tool-bar{
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+.oper span{cursor: pointer;margin-left: 5px;color: blue;}
+
+.paper-list-title{}
+.paper-list-title div{display: inline-block;text-align: center;font-size: 14px;}
+.paper-list-title div:nth-child(1){width: 360px;}
+.paper-list-title div:nth-child(2){width: 500px;}
+.paper-list-title div:nth-child(3){width: 100px;}
+.paper-list{line-height: 30px;border-bottom: 1px dashed #cccccc;}
+.paper-list:last-child{border:none;}
+.paper-list div{display: inline-block;text-align: left;font-size: 14px;}
+.paper-list div:nth-child(1){width: 360px;}
+.paper-list div:nth-child(2){width: 450px;}
+.paper-list div:nth-child(3){width: 150px;}
+
+.paper-list .oper span{cursor: pointer;margin-left: 5px;color: #00B7FF;}
+
+.paper-edit{width: 800px;}
+.paper-edit dl,.paper-edit dt,.paper-edit dd{margin: 0;padding: 0;}
+.paper-edit dl{line-height: 40px;}
+.paper-edit dt,.paper-edit dd{display: inline-block;}
+.paper-edit dt {width: 80px;}
+.paper-edit dd {width: 700px;}
+.paper-edit dd input{width: 400px;border: 1px solid #cccccc;height: 30px;padding: 0 10px;}
+
+.paper-edit .paper-questions dt{vertical-align: top;}
+.paper-edit .paper-questions dd{height: 400px;overflow: auto;}
+
+.vote-qbody{
+	line-height: 2;
+	display: block;
+	background-color: #555251;
+    color: #ffffff;
+    position: relative;
+}
+
+
+.btn-edit-questions{
+	position: absolute;
+	right: 10px;
+	top: 0;display: inline-block;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.btn-edit-questions:hover{
+	opacity: 0.8;
+}
+
+.dlg-bottom-btn{
+	position: absolute;
+	bottom: -54px;
+}

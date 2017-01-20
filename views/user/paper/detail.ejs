@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+	    <title><%= name %></title>
+	    <%- include ../common/meta.ejs %>
+	    <link href="css/user/paper/paper.css" rel="stylesheet" type="text/css" media="all" />  
+	    <link href="css/user/paper/detail.css" rel="stylesheet" type="text/css" media="all" />  
+  	</head>
+  	<body>
+  		<div class="bg">
+  		<%- include ../common/header.ejs %>
+  		<input id="pid" value="<%= id %>" type="hidden">
+  		<input id="limit_time" value="<%= offset %>" type="hidden">
+
+  		<div class="container">
+  			<div class="sidebar">
+  				<div class="v-title">模拟考试</div>
+  				<div class="sidebar-bottom">
+  					<div class="exam-time">
+  						<div>剩余时间</div>
+  						<div id="timer">60:00</div>
+  					</div>
+  					<div class="btn-wrapper" style="font-size:14px;">
+						<span id="btn_commit" class="btn btn-primary">提交</span>
+					</div>
+  				</div>
+  			</div>
+	      	<div class="main">
+	      		<div class="q-body">
+	      			<div class="qbody-panel panel panel-primary" >
+			            <div class="panel-heading">
+			              <h3 id="content_title" class="panel-title">题目</h3>
+			            </div>
+			            <div class="panel-body">
+			            	<div id="question_panel" class="question-panel" >
+				  			</div>
+			            </div>
+			            <div id="selection_panel" class="selection-panel reset" ></div>
+		          	</div>
+		          	<div class="panel panel-info" style="display:none;">
+			            <div class="panel-heading">
+			              <h3 id="content_title" class="panel-title">选项</h3>
+			            </div>
+			            <div class="panel-body">
+			            </div>
+		          	</div>
+	      		</div>
+		        <div class="q-list" style="height:263px;">
+		        	<div class="panel panel-info" style="height:263px;">
+			            <div class="panel-heading">
+			              <h3 id="content_title" class="panel-title">题号</h3>
+			            </div>
+			            <div class="panel-body">
+			        		<div id="answer_panel" class="answer-panel"></div>    	
+			            </div>
+		          	</div>
+		        </div>
+	      	</div>
+	  	</div>
+	  	<%- include ../common/footer.ejs %>
+		</div>	   
+	    <script type="juicer/template" id="question-list-tpl">
+	    {@each list as obj, index}
+	    <div data-id="${obj.id}" class="question-list {@if index == 0}active{@/if}" >
+	        <div class="qbody">${index|formatIndex}.${obj.qbody}{@if obj.qtype == 3}
+				（多选）
+				{@/if}</div>
+	        {@if obj.qtype == 2 || obj.qtype == 3 || obj.qtype == 4}
+	          <div class="qanswer-panel {@if obj.qtype == 3}m{@else}s{@/if}" data-type="${obj.qtype}">
+	          	$${obj.qanswer|formatAnswer}
+	          </div>
+	        {@/if}
+	    </div>
+	    {@/each}
+	    </script>
+
+	    <script type="juicer/template" id="question-tpl">
+        <div class="qbody">${index}.${qbody}{@if qtype == 3}（多选）{@/if}
+		</div>
+        {@if qtype == 2 || qtype == 3 || qtype == 4}
+      	<div class="qanswer-panel" data-type="${qtype}">
+          	$${qanswer|formatAnswer}
+      	</div>
+        {@/if}
+	    </script>
+
+	    <script type="juicer/template" id="selection-tpl">
+        $${qanswer,answer|formatSelection}
+	    </script>
+
+	    <script type="juicer/template" id="answer-tpl">
+    	{@each list as obj, index}
+    	<div data-id="${obj.id}" class="answer-index-panel">
+    		<span data-id="${obj.id}" data-answer="" class="curr-answer"></span>
+    		<span data-id="${obj.id}" class="answer-index">${index|formatIndex}</span>
+    	</div>
+	    {@/each}
+	    </script>
+  		
+	    <script type="text/javascript" src="js/user/paper/paper.js"></script>
+		<script type="text/javascript" src="js/user/paper/detail.js"></script>
+     	<script type="text/javascript">
+		    $(document).ready(function(){
+		    	moka.user.paper.detail.init();
+		    });
+	  	</script>
+  	</body>
+</html>

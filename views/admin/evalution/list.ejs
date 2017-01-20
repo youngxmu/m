@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>试题库</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/admin/question/import.css' >
+    <link rel='stylesheet' href='css/admin/paper/list.css' >
+    
+  </head>
+  <body>
+    <%- include ../common/header.ejs %>
+  	<div class="container">
+      <div class="main">
+        <div class="top-bar">
+          <span id="btn_add" >添加试卷</span>
+        </div>
+        <div id="paper_list"></div>
+        <div id="pagebar"></div>
+      </div>
+	  </div>
+
+   
+    <script type="juicer/template" id="paper-list-tpl">
+    <div class="paper-list-title" style="display:none;">
+        <div class="name">名称</div>
+        <div class="desc">描述</div>
+        <div class="oper">操作</div>
+    </div>
+    {@each list as obj, index}
+    <div class="paper-list">
+      <div class="name">${obj.name}</div>
+      <div class="desc">${obj.description}</div>
+      <div class="oper">
+        <span data-id="${obj.id}" class="edit">编辑</span>
+        <span data-id="${obj.id}" class="del">删除</span>
+      </div>
+    </div>
+    {@/each}
+    </script>
+    
+    <script type="juicer/template" id="dlg-edit-paper-tpl">
+    <div class="paper-edit">
+      <dl>
+        <dt>试卷名称</dt>
+        <dd>
+          <input id="paper_name" value="${name}">
+        </dd>
+      </dl>
+      <dl>
+        <dt>试卷描述</dt>
+        <dd>
+          <input id="paper_desc" value="${description}">
+        </dd>
+      </dl>
+      <dl id="paper_questions" class="paper-questions">
+        <dt>试卷题目<div data-id="${id}" class="btn-edit-questions">编辑题目</div></dt>
+        <dd>
+          {@include questionListTpl, questionListData}
+        </dd>
+      </dl>
+    </div>
+    </script>
+
+    <script type="juicer/template" id="question-list-tpl">
+    {@each list as obj, index}
+    <div data-id="${obj.id}" class="question-list">
+        <div class="qtype">
+          ${index|formatIndex}.&nbsp;${obj.qtype|getQType}
+        </div>
+        <div class="qbody">${obj.qbody}</div>
+        {@if obj.qtype == 2}
+          <div class="qanswer">$${obj.qanswer|formatAnswer}</div>
+        {@/if}
+        <div class="rtanswer">正确答案：${obj.rtanswer}</div>
+    </div>
+    {@/each}
+    </script>
+
+    <script type="text/javascript" src="js/common/question.js"></script>
+    <script type="text/javascript" src="js/admin/question/import.js"></script>
+    <script type="text/javascript" src="js/admin/paper/list.js"></script>
+    
+    <script>
+      $(document).ready(function() {
+            moka.admin.paper.list.init();
+        });
+    </script>
+  </body>
+</html>

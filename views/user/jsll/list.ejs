@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>军事理论教学</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/jsll/jsll.css' >
+    <link rel='stylesheet' href='css/user/jsll/list.css' >
+    <style type="text/css">
+      .nav-ul li{display: none;}
+      .nav-ul li.index, .nav-ul li.active{display: inline-block;}
+    </style>
+  </head>
+  <body>
+    <input id="type" type="hidden" value="<%= type %>">
+    <div class="bg">
+      <%- include ../common/header.ejs %>
+      <div class="container">
+        <div class="nav tnav">
+          <ul class="nav-ul">
+            <li class="index">
+              <a href="jsll/index">系统首页</a>
+            </li>
+            <li data-type="政策" class="outline">
+              <a href="jsll/list/outline" >法规</a>
+            </li>
+            <li data-type="理论" class="tbook">
+              <a href="jsll/list/tbook" >教材</a>
+            </li>
+            <li data-type="资料" class="tplan">
+              <a href="jsll/list/tplan" >教案</a>
+            </li>
+            <li data-type="课件" class="ppt">
+              <a href="jsll/list/ppt" >课件</a>
+            </li>
+          </ul>
+        </div>
+        <div id="main_panel" class="main-panel">
+          <div class="sidebar">
+            <ul id="menu_panel" class="memu-panel"></ul>
+          </div>
+          <div class="main">
+            <div class="info-content" >
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 id="content_title" class="panel-title"></h3>
+                </div>
+                <div class="panel-body detail-article">
+                  <pre id="content" >
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="p_tree_panel" class="p-tree-panel" style="display:none;" >
+          <div class="sidebar-tree">
+            <ul id="p_topic_tree" class="ztree" ></ul>
+          </div>
+          <div class="main">
+            <div class="info-content" >
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 id="content_title" class="panel-title"></h3>
+                </div>
+                <div class="panel-body detail-article">
+                  <pre id="content" >
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tree_panel" class="tree-panel" style="display:none;">
+          <div class="sidebar-menu" style="display:none;">
+            <ul class="type-panel">
+              <li class="active" data-type="1">
+                <i class="type-ico res-txt"></i>
+                <p>文字</p>
+              </li>
+              <li data-type="2">
+                <i class="type-ico res-txt"></i>
+                <p>图片</p>
+              </li>
+              <li data-type="3">
+                <i class="type-ico res-txt"></i>
+                <p>视频</p>
+              </li>
+              <li data-type="4">
+                <i class="type-ico res-txt"></i>
+                <p>课件</p>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-tree">
+            <ul id="topic_tree" class="ztree" ></ul>
+          </div>
+          <div class="main">
+            <div class="info-content" >
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title"></h3>
+                </div>
+                <div class="panel-body detail-article">
+                </div>
+              </div>
+            </div>
+            <div id="resource_panel" style="display:none;">
+              <div id="resource_list"></div>
+              <div id="pagebar"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <%- include ../common/footer.ejs %>
+    </div>
+    
+    <script type="text/template" id="resource-tpl">
+    <div class="res-list">
+      <span class="res-type">类型</span>
+      <span class="res-title">标题</span>
+      <span>作者</span>
+      <span>时间</span>
+    </div>
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-type"><i class="ico ico-${resource.file_name|getFileType}"></i></span>
+      <span class="res-title">
+        <a href="resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>${resource.author}</span>
+      <span>${resource.create_time}</span>
+    </div>
+    {@/each}
+    </script>
+    <script type="text/template" id="menu_tpl">
+    {@each list as resource}
+    <li data-id="${resource.id}">
+      <a href="javascript:void(0);" class="btn btn-info btn-lg active" role="button">${resource.title}</a>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="pic_tpl">
+    <div class="pic_preview">
+      <img src="${file_name}" alt="${title}" class="img-thumbnail">
+    </div>
+    </script>
+    <script type="text/template" id="video_tpl">
+    <div class="pic_preview">
+      <p>
+        <a href="${file_name}" class="btn btn-success btn-lg active" role="button">下载到本地</a>
+      </p>
+      <video id="example_video_1" class="video-js vjs-default-skin"
+        controls preload="auto" width="640" height="264" style="width:600px;height:450px;"
+        poster="http://video-js.zencoder.com/oceans-clip.png"
+        data-setup='{"example_option":true}'>
+       <source src="${file_name}" type='video/mp4' />
+       <source src="${file_name}" type='video/webm' />
+       <source src="${file_name}" type='video/ogg' />
+       <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+      </video>
+    </div>
+    </script>
+
+    <script type="text/template" id="ppt_tpl">
+    <div class="ppt-preview">
+      <p>
+        {@if view_name == null }
+        <span data-id="${id}" data-path="${org_path}" data-view="${view_name}" class="btn btn-success btn-lg view-ppt" role="button">预览</span>
+        {@/if}
+        <a href="${file_name}" class="btn btn-success btn-lg" role="button">下载到本地</a>
+      </p>
+      <div id="ppt_pdf" class="ppt-view-panel" style="width:650px;height:400px;"></div>
+    </div>
+    </script>
+    
+    <script type="text/javascript" src="js/user/jsll/list.js"></script>
+    <script>
+      $(document).ready(function() {
+        var type = $('#type').val();
+        $('.nav-ul .' + type).addClass('active');
+        moka.user.jsll.list.init();
+      });
+    </script>
+  </body>
+</html>

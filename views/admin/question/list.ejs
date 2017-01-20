@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ../common/meta.ejs %>
+    <title>学习考试管理</title>
+    <link rel='stylesheet' href='css/admin/question/list.css' >
+  </head>
+  <body>
+    <%- include ../common/header.ejs %>
+  	<div class="container">
+      <div class="fpanel">
+        <ul class="nav nav-tabs sub-nav">
+          <li data-type="1" >
+            <a href="admin/paper/jsll">军事理论</a>
+          </li>
+          <li data-type="2" class="active">
+            <a href="admin/question/list">题库管理</a>
+          </li>
+          <li data-type="3" >
+            <a href="admin/paper/list">考试管理</a>
+          </li>
+          <div class="tool-bar">
+            <select id="s_q_type">
+              <option value="0">全部题型</option>
+              <option value="1">填空题</option>
+              <option value="2">选择题</option>
+              <option value="3">多项选择题</option>
+              <option value="4">判断题</option>
+            </select>
+            <span id="btn_add" class="btn btn-primary" >添加题目</span>
+          </div>
+        </ul>
+        <div class="main">
+          <div id="question_list"></div>
+          <div id="pagebar"></div>
+        </div>
+      </div>
+	  </div>
+
+   
+    <script type="juicer/template" id="question-list-tpl">
+    {@each list as obj, index}
+    <div class="question-list">
+        <div class="qtype">
+          ${index|formatIndex}.&nbsp;${obj.qtype|getQType}
+          <div class="question-oper">
+            <span data-id="${obj.id}" class="edit">编辑</span>
+            <span data-id="${obj.id}" class="del">删除</span>
+          </div>
+        </div>
+        <div class="qbody">${obj.qbody}</div>
+        {@if obj.qtype != 1}
+          <div class="qanswer">$${obj.qanswer|formatAnswer}</div>
+        {@/if}
+        <div class="rtanswer">正确答案：${obj.rtanswer}</div>
+    </div>
+    {@/each}
+    </script>
+
+    <script type="juicer/template" id="dlg-edit-question-tpl">
+    <div class="question-edit">
+      <dl>
+        <dt>题目类型：</dt>
+        <dd>
+          <select id="question_type">
+            <option value="2">选择题</option>
+            <option value="3">多项选择题</option>
+            <option value="4">判断题</option>
+            <option value="1">填空题</option>
+          </select>
+        </dd>
+      </dl>
+      <dl>
+        <dt>题干</dt>
+        <dd>
+          <textarea id="question_body">${qbody}</textarea>
+        </dd>
+      </dl>
+      <dl class="question-option">
+        <dt>选项</dt>
+        <dd class="option-panel">
+          <p><em>A</em>:<input></p>
+          <p><em>B</em>:<input></p>
+        </dd>
+        <span class="btn-op add">＋</span>
+        <span class="btn-op del disabled">－</span>
+      </dl>
+      <dl>
+        <dt>答案</dt>
+        <dd>
+          <textarea id="question_rtanswer">${rtanswer}</textarea>
+        </dd>
+      </dl>
+    </div>
+    </script>
+    
+    <script type="text/javascript" src="js/common/question.js"></script>
+    <script type="text/javascript" src="js/admin/question/list.js"></script>
+    
+    <script>
+      $(document).ready(function() {
+          $('#navfouce .paper').addClass('current');
+          moka.admin.question.list.init();
+        });
+    </script>
+  </body>
+</html>

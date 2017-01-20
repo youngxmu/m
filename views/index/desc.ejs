@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include common/meta.ejs %>
+    <title>国防教育管理系统</title>
+    <link rel="stylesheet" type="text/css" href="css/index/info.css"/>
+  </head>
+  <body>
+    <%- include common/header.ejs %>
+    <input type="hidden" id="title" value="<%= title %>">
+    <div class="container" style="padding:0 ;">
+      <ol class="breadcrumb" style="border-radius:0;">
+        <li>
+          <a href="index">首页</a>
+        </li>
+        <li>
+          <a href="<%= link%>"><%= title%></a>
+        </li>
+        <% if(typeof subtitle != 'undefined'){%>
+        <li class="active">
+          <%= subtitle%>
+        </li>
+        <% } %>
+      </ol>
+      <div class="desc-panel" ><%- content %></div>
+    </div>
+    <%- include common/footer.ejs %>
+    <script>
+
+      if($('#title').val() == '中心介绍' ){
+        $('#nav_desc').addClass('active');  
+      }
+      if($('#title').val() == '研究队伍' ){
+        $('#nav_org').addClass('active');  
+      }
+      if($('#title').val() == '管理机构' ){
+        $('#nav_units').addClass('active');  
+      }
+
+      if($('#title').val() == '关于我们' ){
+        $('#nav_about').addClass('active');  
+      }
+      
+      
+    </script>
+  </body>
+</html>

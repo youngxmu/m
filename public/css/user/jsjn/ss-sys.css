@@ -1,0 +1,96 @@
+.ss-sys{
+	width: 1024px;
+	height: 768px;
+	background-image: url(../../../jsjn/00196[1024x768x24BPP].jpg);
+	background-size: 100%;
+	background-position: center;
+position:relative;
+	display: none;
+}
+
+
+.ss-sys .sidebar{
+	width: 347px;
+}
+
+.ss-sys .main {
+	width: 630px;
+	padding: 20px;
+}
+
+
+.ss-sys .main .main-list{margin-top: 35px;}
+.ss-footer{
+	position: absolute;
+	bottom: 60px;
+	right: 50px;
+}
+.ss-back{
+	width: 151px;
+	height: 42px;
+	background-image: url(../../../jsjn/png/00037[151x42x8BPP].png);
+	background-size: 151px 42px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: inline-block;cursor: pointer;
+}
+.ss-back:hover{
+	background-image: url(../../../jsjn/png/00038[151x42x8BPP].png);
+}
+
+.ss-exit{
+	width: 151px;
+	height: 42px;
+	background-image: url(../../../jsjn/png/00041[151x42x8BPP].png);
+	background-size: 151px 42px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: inline-block;cursor: pointer;
+}
+.ss-exit:hover{
+	background-image: url(../../../jsjn/png/00042[151x42x8BPP].png);
+}
+
+.main-list .ss-main-menu-list li{
+	width: 150px;
+	margin-left: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+
+}
+.main-list .ss-main-menu-list li .def{
+	display: inline-block;
+}
+.main-list .ss-main-menu-list li .hover{
+	display: none;
+}
+.main-list .ss-main-menu-list li:hover .def{
+	display: none;
+}
+.main-list .ss-main-menu-list li:hover .hover{
+	display: inline-block;
+}
+.menu-start{text-align: right;margin:0 20px 0 0;}
+.menu-start span{font-size: 15px;color: yellow;display: inline-block;line-height: 30px;padding: 0 10px;border-radius: 4px;cursor: pointer;
+	background-color: rgba(0,0,0,0.4);
+}
+.menu-start span:hover{opacity: 0.7;}
+
+.main-list .main-menu-list.menu-h {text-align: center;}
+.main-list .main-menu-list.menu-h li{
+	margin: 0 20px;
+	display: inline-block;
+	width: auto;
+}
+
+
+
+.main-menu-list{
+	min-height: 200px;
+	max-height: 400px;
+}
+
+.text-left{text-align: left !important;}
+.text-left li{margin-bottom: 20px !important;}

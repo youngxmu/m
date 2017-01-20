@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ../common/meta.ejs %>
+    <title>国防教育测评</title>
+    <link rel='stylesheet' href='css/admin/question/import.css' >
+    <link rel='stylesheet' href='css/admin/vote/list.css' >
+  </head>
+  <body>
+    <%- include ../common/header.ejs%>   
+  	<div class="container">
+      <div class="fpanel">
+        <ul class="nav nav-tabs sub-nav">
+          <li data-type="1" class="active">
+            <a href="javascript:void(0);">当前测评</a>
+          </li>
+          <li data-type="2" >
+            <a href="javascript:void(0);">历史测评</a>
+          </li>
+          <div class="tool-bar">
+            <span id="btn_add"    class="btn btn-primary">创建测评</span>
+            <span id="btn_import" class="btn btn-primary" >导入测评</span>
+            <a href="tpl/vote.xls" class="btn btn-primary" >模板下载</a>
+          </div>
+        </ul>
+        <div class="main">
+          <div>
+            <table class="table table-striped" style="font-size:14px;">
+              <thead>
+                <tr>
+                  <th class="">名称</th>
+                  <th class="">描述</th>
+                  <th class="">状态</th>
+                  <th class="">时间</th>
+                  <th class="">操作</th>
+                </tr>
+              </thead>
+              <tbody id="paper_list"></tbody>
+            </table>
+          </div>
+          <div id="pagebar"></div>
+        </div>
+      </div>
+	  </div>
+
+    <script type="juicer/template" id="paper-list-tpl">
+      {@each list as obj, index}
+      <tr >
+        <td class="name">${obj.name}</td>
+        <td class="desc">${obj.description}</td>
+        <td class="desc">{@if obj.status == 1}进行中{@/if}{@if obj.status == 0}已停止{@/if}</td>
+        <td class="desc">${obj.create_time}</td>
+        <td class="oper">
+          <span data-id="${obj.id}" class="view">统计</span>
+          <span data-id="${obj.id}" class="edit">编辑</span>
+          {@if obj.status == 1}
+            <span data-id="${obj.id}" class="stop">关闭</span>
+          {@/if}
+          {@if obj.status == 0}
+            <span data-id="${obj.id}" class="start">开启</span>
+          {@/if}
+          <span data-id="${obj.id}" class="del" >删除</span>
+        </td>
+      </tr>
+      {@/each}
+    </script>
+    
+    <script type="juicer/template" id="dlg-edit-paper-tpl">
+      <div class="paper-edit">
+        <dl>
+          <dt>测评标题</dt>
+          <dd>
+            <input id="paper_name" value="${name}">
+          </dd>
+        </dl>
+        <dl>
+          <dt>测评说明</dt>
+          <dd>
+            <input id="paper_desc" value="${description}">
+          </dd>
+        </dl>
+        <dl id="paper_questions" class="paper-questions">
+          <dt>测评题目</dt>
+          <dd>
+            {@include questionListTpl, questionListData}
+          </dd>
+        </dl>
+        <div class="dlg-bottom-btn">
+          <span data-id="${id}" class="btn-add-questions btn btn-primary">添加题目</span>
+        </div>
+      </div>
+    </script>
+
+    <script type="juicer/template" id="question-list-tpl">
+      {@each list as obj, index}
+      <div data-id="${obj.id}" class="question-list {@if index == 0}active{@/if}" >
+          <div class="qbody vote-qbody">
+            ${index|formatIndex}.${obj.qbody}
+            {@if obj.qtype == 3}（多选）{@/if}
+            <span data-id="${obj.id}" class="btn-edit-questions">编辑</span>
+          </div>
+          {@if obj.qtype == 2 || obj.qtype == 3 || obj.type == 4}
+            <div class="qanswer-panel {@if obj.qtype == 3}m{@else}s{@/if}" data-type="${obj.qtype}" data-id="${obj.id}">
+              $${obj.qanswer|formatAnswer}
+            </div>
+          {@/if}
+      </div>
+      {@/each}
+    </script>
+
+    <script type="juicer/template" id="question-tpl">
+    <div class="question-list">
+        <div class="qbody">${qbody}</div>
+        {@if qtype == 2 || qtype == 3 || qtype == 4}
+          <div class="qanswer">$${qanswer|formatAnswer}</div>
+        {@/if}
+        <div class="rtanswer">正确答案：${rtanswer}</div>
+    </div>
+    </script>
+
+    <script type="juicer/template" id="dlg-edit-question-tpl">
+    <div class="question-edit">
+      <dl>
+        <dt>题目类型：</dt>
+        <dd>
+          <select id="question_type">
+            <option value="2">选择题</option>
+            <option value="3">多项选择题</option>
+            <option value="4">判断题</option>
+            <option value="1">填空题</option>
+          </select>
+        </dd>
+      </dl>
+      <dl>
+        <dt>题干</dt>
+        <dd>
+          <textarea id="question_body">${qbody}</textarea>
+        </dd>
+      </dl>
+      <dl class="question-option">
+        <dt>选项</dt>
+        <dd class="option-panel">
+          <p><em>A</em>:<input></p>
+          <p><em>B</em>:<input></p>
+        </dd>
+        <span class="btn-op add">＋</span>
+        <span class="btn-op del disabled">－</span>
+      </dl>
+      <dl>
+        <dt>答案</dt>
+        <dd>
+          <textarea id="question_rtanswer">${rtanswer}</textarea>
+        </dd>
+      </dl>
+    </div>
+    </script>
+
+
+    <script type="text/javascript" src="js/common/component.js"></script>
+    <script type="text/javascript" src="js/common/question.js"></script>
+    <script type="text/javascript" src="js/admin/question/import.js"></script>
+    <script type="text/javascript" src="js/admin/vote/list.js"></script>
+    
+    <script>
+      $(document).ready(function() {
+        $('#navfouce .vote').addClass('current');
+        moka.admin.vote.list.init();
+      });
+    </script>
+  </body>
+</html>

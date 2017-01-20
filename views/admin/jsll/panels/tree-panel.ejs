@@ -1,0 +1,28 @@
+<div id="tree_panel" style="display:none;">
+  <div class="sidebar" >
+    <div class="tree-opr" >
+      <a href="javascript:void(0);" class="unfold">展开</a>
+      |<a href="javascript:void(0);" class="del">删除</a>
+    </div>
+    <ul id="topic_tree" class="ztree"></ul>
+  </div>
+  <div class="main" >
+    <div id="txt_title" class="info-title">
+      <label>标题</label><input id="tree_content_title" placeholder="输入标题">
+    </div>
+    <div id="txt_panel" class="info-content" >
+      <textarea class="editor-area" id="txt_editor" placeholder="输入文章正文" autofocus></textarea>
+      <div class="btn-wrapper" style="font-size:14px;margin-top: 15px;text-align:right;">
+        <span id="btn_txt" class="btn btn-primary">提交</span>
+      </div>
+    </div>
+    <div id="resource_panel" class="info-content" style="display:none;">
+      <input id="ppt_path" type="hidden"></a>
+      <div id="ppt_pdf" class="ppt-view-panel" style="width:650px;height:400px;"></div>
+      <div class="btn-wrapper" style="font-size:14px;margin-top: 15px;text-align:right;">
+        <span id="btn_upload" class="btn btn-success" role="button">修改文件</span>
+        <a id="btn_download" href="" class="btn btn-success" role="button">下载文件</a>
+        <span id="btn_txt" class="btn btn-primary">提交</span>
+      </div>
+    </div>
+</div>

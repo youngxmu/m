@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>首页管理</title>
+  <%- include ../common/meta.ejs %>
+  <link rel='stylesheet' href='css/admin/index/sort.css' >
+</head>
+<body>
+  <%- include ../common/header.ejs %>
+  <input id="id" type="hidden" value="<%= id %>">
+	<div class="container" style="font-size:14px;">
+    <div class="fpanel">
+      <ul class="nav nav-tabs sub-nav">
+        <li><a href="javascript:void(0);">国防历史</a></li>
+        <li><a href="javascript:void(0);">国防法规</a></li>
+        <li><a href="javascript:void(0);">国防力量</a></li>
+        <li><a href="javascript:void(0);">国防战略</a></li>
+        <li><a href="javascript:void(0);">国防建设</a></li>
+        <li><a href="javascript:void(0);">世界军事</a></li>
+        <a href="admin/index" style="float:right;font-size: 14px;line-height: 40px;">返回</a>
+      </ul>
+      <div class="res-setting" >
+        <ul id="res_sort_list" class="list-group sort-list" ></ul>
+        <div class="res-list" >
+            <div id="res_list" class=""></div>
+            <div id="res_pagebar" class="pagebar"></div>
+        </div>
+      </div>  
+    </div>
+  </div>
+
+  <script type="text/template" id="sort-list-tpl">
+    {@each list as obj, index}
+    <a href="javascript:void(0);" class="list-group-item">
+      <span class="sort-title"><span class="sort-index">${index|formatIndex}</span>${obj.title}</span>
+      <span class="sort-del">
+        <span class="glyphicon glyphicon-trash"></span>
+      </span>
+    </a>
+    {@/each}
+  </script>
+
+  <script type="text/template" id="res-list-tpl">
+    {@each list as resource}
+    <div class="res-item">
+      <span class="res-type"><i class="ico ico-${resource.content_type|getTypeName}"></i></span>
+      <span class="res-title">
+        <a href="admin/resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>
+        <em data-id="${resource.id}" class="sel btn btn-primary btn-sm ">选择</em>
+      </span>
+    </div>
+    {@/each}
+  </script>
+  <script type="text/javascript" src="js/admin/index/sort.js"></script>
+  <script>
+    $(document).ready(function() {
+        moka.admin.sort.init();
+    });
+  </script>
+</body>
+</html>

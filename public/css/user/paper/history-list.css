@@ -1,0 +1,38 @@
+
+.container{
+background-color: transparent;
+}
+/** 主页面 */
+.main{padding: 15px 15px 80px 15px;
+    background-color: rgba(255,255,255,0.5);}
+
+
+
+.building{width: 100%;margin-top: 150px; text-align: center; font-size: 18px;color: #cccccc;}
+
+
+.paper-list-title{line-height: 30px;border-bottom: 1px solid #cccccc;}
+.paper-list-title div{display: inline-block;text-align: left;font-size: 14px;line-height: 30px;vertical-align: top;}
+.paper-list-title div:nth-child(1){width: 360px;}
+.paper-list-title div:nth-child(2){width: 460px;}
+.paper-list-title div:nth-child(3){width: 100px;}
+.paper-list{line-height: 30px;border-bottom: 1px dashed #cccccc;}
+.paper-list:last-child{border:none;}
+.paper-list div{display: inline-block;text-align: left;font-size: 14px;}
+.paper-list div:nth-child(1){width: 360px;}
+.paper-list div:nth-child(2){width: 460px;}
+.paper-list div:nth-child(3){width: 100px;}
+
+.paper-list .oper span{cursor: pointer;margin-left: 5px;color: blue;}
+
+.paper-edit{width: 800px;}
+.paper-edit dl,.paper-edit dt,.paper-edit dd{margin: 0;padding: 0;}
+.paper-edit dl{line-height: 40px;}
+.paper-edit dt,.paper-edit dd{display: inline-block;}
+.paper-edit dt {width: 80px;}
+.paper-edit dd {width: 700px;}
+.paper-edit dd input{width: 400px;border: 1px solid #cccccc;height: 30px;padding: 0 10px;}
+
+.paper-edit .paper-questions dt{vertical-align: top;}
+.paper-edit .paper-questions dd{height: 400px;overflow: auto;}
+.paper-edit .paper-questions .btn-edit-questions{color: blue;cursor: pointer;}

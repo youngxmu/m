@@ -1,0 +1,83 @@
+.container{font-size: 14px;}
+.tool-bar{
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+/** 查询区域 */
+.search-panel{line-height: 34px;}
+.search-panel dl{display: block;margin:0;}
+.search-panel dl dt, .search-panel dl dd{display: inline-block;}
+.search-panel dl dt{text-align: right;}
+.search-panel dl dd{margin:0 10px 0 5px;vertical-align: top;}
+.search-panel dl dd input{width:100px;border: 1px solid #cccccc;padding:0 5px;line-height: 34px;}
+.search-panel dl dd select{border: 1px solid #cccccc;line-height: 32px;height:34px;}
+
+/** tab area */
+.tab-panel{line-height: 24px;padding:10px 0;}
+.tab-panel .simp-tab{padding: 0 10px; border-right:1px solid #cccccc;cursor: pointer;}
+.tab-panel .simp-tab:last-child{border-right: 0;}
+.tab-panel .simp-tab.current{font-weight: bold;}
+
+/** 操作区域 */
+.oper-panel{line-height: 24px;padding:10px 0;}
+.oper-panel .btn{display: inline-block;padding: 0 20px;border-style: 3px;border:1px solid #cccccc;background-color: #f5f5f5;cursor: pointer;}
+.oper-panel .btn:hover{background-color: #ffffff;}
+.list-table{width: 960px;}
+
+
+/** 基本列表 */
+.list-table table{width:100%;border-collapse:collapse;font-size: 12px;line-height: 28px;}
+.list-table table th{text-align: center;}
+.list-table table tr td{text-align: center;}}
+.list-table table tr td:first-child{text-align: center;}
+.list-table table, th, td{border: 1px solid #cccccc;}
+.list-table table td.oper {text-align: center;}
+.list-table table td.oper span{margin-right:10px; color: blue; cursor: pointer;}
+.list-table table td.oper span:last-child{margin-right: 0;}
+
+
+/** 弹框中内容 */
+.v-table{line-height: 30px;font-size: 12px;}
+
+.v-table dl{display: block;margin:0;}
+.v-table dl dt, .v-table dl dd{display: inline-block;}
+.v-table dl dt{text-align: right;width:50px;}
+.v-table dl dd{margin:0 10px 0 5px;width:140px;}
+.v-table dl dd input{width:120px;border: 1px solid #cccccc;padding:0 5px;line-height: 24px;}
+.v-table dl dd select{border: 1px solid #cccccc;line-height: 24px;height:26px;width:100px;}
+
+
+/** 编辑列表 */
+.edit-table{width: 960px;overflow: auto;}
+.edit-table table{width:100%;border-collapse:collapse;font-size: 12px;line-height: 28px;}
+.edit-table table th{text-align: center;}
+.edit-table table tr td:first-child{text-align: center;}
+.edit-table table, th, td{border: 1px solid #cccccc;padding: 0;}
+.edit-table table td input {width:96%;line-height: 28px;padding: 0 2%;border:none;}
+
+/** 审核 查看详情 */
+.d-table{width:420px;}
+.d-table .d-left{width:220px;border-right: 1px solid #cccccc;display: inline-block;}
+.d-table .d-left dl dt, .d-table .d-left dl dd{display: inline-block;}
+.d-table .d-left dl dt{text-align: right;width:60px;}
+.d-table .d-left dl dd{margin:0 10px 0 5px;width:140px;}
+.d-table .d-left dl dd input{width:120px;border: 1px solid #cccccc;padding:0 5px;line-height: 24px;}
+.d-table .d-right{width:180px;display: inline-block;float:right;}
+.d-table .d-right dl span{display: inline-block;line-height: 24px;width: 75px;margin:0 10px 10px 0;text-align: center;border: 1px solid #cccccc;cursor: pointer;}
+.d-table .d-right dl span:last-child{margin-right: 0;}
+.d-table .d-right dl span.selected{background: #357ebd;color: #ffffff;}
+
+.img-list-panel{margin-top:15px;}
+.img-list-panel div{width:80px;display:inline-block;}
+.img-list-panel span{width:70px;height:70px;margin-right:8px;display:table-cell;border: 1px solid #cccccc;text-align:center;background: #000000;vertical-align: middle;opacity: 0.7;}
+.img-list-panel span:last-child{margin-right:0;}
+.img-list-panel span img{max-width:70px;max-height:70px;}
+
+
+.user-edit-panel{margin:auto;width: 420px;}
+.user-edit-panel dl{margin-bottom: 10px;}
+.user-edit-panel dt,.user-edit-panel dd{display: inline-block;line-height: 30px;}
+.user-edit-panel dt{width: 60px;text-align: right;padding-right: 10px;}
+.user-edit-panel dd input{width: 240px; border: 1px solid #cccccc;line-height: 30px;padding: 0 5px;}
+

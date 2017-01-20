@@ -1,0 +1,55 @@
+<script type="juicer/template" id="dlg-edit-tpl">
+<div class="main">
+  <div class="t-input">
+    <label>资源标题</label>
+    <input id="title" placeholder="输入文章标题" value="${title}" >
+  </div>
+  <div class="t-input">
+    <label>作者名称</label>
+    <input id="author" placeholder="输入作者名称" value="${author}" >
+  </div>
+    <div class="t-input">
+    <label>资源描述</label>
+    <textarea id="description" placeholder="输入资源描述">${author}</textarea>
+    </div>
+  <div class="t-input">
+    <label>上传资源</label>
+  {@if file_name}
+    <span id="btn_upload" class="u-button blue">修改文件</span>
+    <span class="text"><a href="${file_name}" download="${title}">${title}</a></span>
+  {@/if}
+    <span id="btn_upload" class="u-button blue">选择文件</span>
+    <span id="filename" class="filename">文件名称</span>
+  {@/if}
+    <p id="process_bar" class="process-bar" ><span id="process_rate">0%</span></p>
+  </div>
+  <div class="t-input">
+    <label>所属栏目</label>
+    <div class="u-select-p">
+    <span class="s-menu" data-id="<%= menu.id %>" ><%= menu.name %></span>
+    </div>
+  </div>
+  <div class="t-btn">
+    <div id="btn_commit" class="u-button">提交</div>
+  </div>
+</div>
+</script>
+<script type="juicer/template" id="dlg-editres-tpl">
+  <div class="main">
+    <div class="t-input">
+      <label>文章标题</label>
+      <input id="title" placeholder="输入文章标题" value="${title}" >
+    </div>
+    <div class="t-input">
+      <label>作者名称</label>
+      <input id="author" placeholder="输入作者名称" value="${author}" >
+    </div>
+    <textarea id="editor" placeholder="输入文章正文" autofocus></textarea>
+    <div class="t-btn" style="margin-top:20px;">
+      <span class="s-menu" data-id="<%= menu.id %>" ><%= menu.name %></span>
+    </div>
+    <div id="btn_commit" class="u-button">提交</div>
+  </div>
+</script>
+
+<script type="text/javascript" src='js/admin/common/editor.js'></script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>学员管理</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/admin/user/list.css' />
+  </head>
+  <body>
+    <%- include ../common/header.ejs %>
+  	<div class="container">
+        <div class="fpanel">
+            <ul class="nav nav-tabs sub-nav">
+                <li data-type="1" class="active" ><a href="admin/teacher/list">教师管理</a></li>
+                <li data-type="2" ><a href="admin/user/list">学员管理</a></li>
+                <div class="tool-bar">
+                    <div class="search-panel" >
+                        <dl>
+                            <dt>ID</dt><dd><input id="user_id" ></dd>
+                            <dt>姓名</dt><dd><input id="user_name" ></dd>
+                            <dt>手机</dt><dd><input id="user_tel" ></dd>
+                            <dt>邮箱</dt><dd><input id="user_email" ></dd>
+                            <dd>
+                                <span id="btn_search" class="btn btn-primary" >查询</span>
+                            </dd>
+                            <dd>
+                                <span id="btn_add_user" class="btn btn-primary" >添加教师</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </ul>
+        	<div class="list-table" >
+        		<table>
+        			<thead>
+        				<tr>
+                            <th>序号</th>
+                            <th>账号</th>
+        					<th>姓名</th>
+        					<th>手机</th>
+                            <th>权限</th>
+        					<th>创建时间</th>
+        					<th style="width:80px;">操作</th>
+        				</tr>
+        			</thead>
+        			<tbody id="user_list"></tbody>
+        		</table>
+        		<div id="pagebar"></div>
+        	</div>
+        </div>
+	</div>
+
+	<script type="text/juicer" id="user_list_tpl">
+	{@each list as obj, index}
+	<tr>
+		<td>${index|formatIndex}</td>
+        <td>${obj.name}</td>
+		<td>${obj.username}</td>
+		<td>${obj.tel}</td>
+		<td>{@if obj.type == 1}超级管理员{@/if}{@if obj.type == 2}管理员{@/if}</td>
+		<td>${obj.create_time|dateFormat}</td>
+		<td class="oper">
+			<span data-id="${obj.id}" class="edit" >编辑</span>
+            <span data-id="${obj.id}" class="del" >删除</span>
+		</td>
+	</tr>
+	{@/each}
+	</script>
+
+    <script type="text/juicer" id="dlg_user_edit_tpl">
+    <div id="user_edit_panel" class="user-edit-panel">
+        <dl><dt>账号</dt><dd><input name="name" value="${name}"></dd></dl>
+        <dl><dt>密码</dt><dd><input name="password" value=""></dd></dl>
+        <dl><dt>姓名</dt><dd><input name="username" value="${username}"></dd></dl>
+        <dl><dt>手机</dt><dd><input name="tel" value="${tel}"></dd></dl>
+    </div>
+    </script>
+	
+	<script type="text/javascript" src='js/admin/user/tlist.js'></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			moka.admin.teacher.list.init();
+		});
+	</script>
+  </body>
+  </body>
+</html>

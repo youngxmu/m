@@ -1,0 +1,35 @@
+.container ol.breadcrumb{margin: 0;}
+.container{width: 1000px;padding: 0;font-size: 14px;}
+.container{
+   background:url(../../../img/cloud.png) 0 bottom repeat-x  #049ec4;
+   -webkit-animation: animate-cloud 20s linear infinite;
+   -moz-animation: animate-cloud 20s linear infinite;
+   -ms-animation: animate-cloud 20s linear infinite;
+   -o-animation: animate-cloud 20s linear infinite;
+   animation: animate-cloud 20s linear infinite;
+}
+   
+.main{padding: 10px 20px;}
+.info-content{}
+.main .res-list{border-bottom: 1px dashed #cccccc;line-height: 40px;color: #f6f6f6;font-size: 0;}
+.main .res-list:last-child{border-bottom: 0;}
+.main .res-list span{width: 150px;display: inline-block;vertical-align: top;
+	font-size: 15px;
+}
+.main .res-list-title span{width: 150px;display: inline-block;vertical-align: top;text-align: center;
+	font-size: 15px;
+}
+.main .res-list-title span:nth-child(1){width:530px;}
+.main .res-list-title span:nth-child(2){width:130px;}
+.main .res-list-title span:nth-child(3){width:200px;}
+.main .res-list-title span:nth-child(4){width:100px;}
+
+.main .res-list span a {color: #f6f6f6;}
+.main .res-list span:nth-child(1){width:530px;}
+.main .res-list span:nth-child(2){width:130px;}
+.main .res-list span:nth-child(3){width:200px;}
+.main .res-list span:nth-child(4){width:100px;}
+.main .res-list .ico {
+	width: 28px;	height: 28px;
+	vertical-align: middle;
+}

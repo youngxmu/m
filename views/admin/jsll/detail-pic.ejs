@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- include ../../common/meta.ejs %>
+    <link rel='stylesheet' href='css/resource/detail.css' />
+  </head>
+  <body>
+  	<%- include ../../common/header.ejs %>
+    <input type="hidden" id="article_id" value="<%= id %>">
+    <div class="container detail-article">
+      <div class="article-title" >
+        <%= title %>
+      </div>
+
+
+      <div class="t-input">
+        <label>资源标题</label>
+        <span class="text"><%= title %></span>
+      </div>
+      <div class="t-input">
+        <label>作者名称</label>
+        <span class="text"><%= author %></span>
+      </div>
+      <div class="t-input">
+        <label>发布时间</label>
+        <span class="text"><%= update_time %></span>
+      </div>
+      <div class="t-input">
+        <label>资源描述</label>
+        <span class="text"><%= description %></span>
+      </div>
+      <div class="t-input">
+        <label>资源链接</label>
+        <span class="text"><a href="<%= file_name %>" download><%- title %></a></span>
+      </div>
+      <div class="t-preview">
+        <img src="<%= file_name %>">
+      </div>
+      <div class="t-input">
+        <label>所属栏目</label>
+        <div class="u-select-p">
+        <% if(typeof menuList != 'undefined'){%>
+        <% for(var index in menuList) { %> 
+        <% var menu = menuList[index]; %> 
+        <span class="s-menu" data-id="<%= menu.id %>" ><%= menu.name %></span>
+        <% } %> 
+        <% } %> 
+        </div>
+      </div>
+    	<div class="footer"></div>
+	</div>
+
+  <script type="text/javascript" src="js/user/jsll/jsll.js"></script>
+	<script type="text/javascript" src='js/user/resource/detail.js'></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			moka.user.resource.detail.init();
+		});
+	</script>
+  </body>
+  </body>
+</html>

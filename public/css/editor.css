@@ -1,0 +1,6 @@
+*{box-sizing: content-box;}
+.header{height:100px;line-height: 100px;font-size: 36px;font-weight: 700;text-align: center;}
+.t-input{font-size: 0;line-height: 60px}
+.t-input input{line-height: 40px;border: 1px solid #cccccc; width: 838px;font-size: 20px;padding: 0 10px;}
+.t-input label{line-height: 40px;width: 90px;text-align: right;padding-right: 10px;display: inline-block;*display: inline;font-size: 20px;}
+.footer{margin-top:20px;height:100px;line-height: 100px;font-size: 24px;font-weight: 700;text-align: center;}

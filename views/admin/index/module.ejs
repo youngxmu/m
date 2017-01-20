@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>首页管理</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/admin/index/module.css' >
+  </head>
+  <body>
+    <%- include ../common/header.ejs %>
+  	<div class="container" style="font-size:14px;">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="javascript:void(0);">门户首页关键字设定</a>
+        </li>
+        <a href="admin/index" style="float:right;font-size: 14px;line-height: 40px;">返回</a>
+      </ul>
+      <div class="module-container">
+        <div class="module-panal">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">国防教育</h3>
+              <span class="btn btn-default btn-sm heading-btn">增加</span>
+            </div>
+            <div class="panel-body detail-article">
+              <div class="key-panel"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+	  </div>
+
+    <script type="text/template" id="module-tpl">
+    {@each list as item, index}
+    <div class="module-panal">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">${item.name}</h3>
+          
+        </div>
+        <div class="panel-body detail-article" style="border-bottom:1px solid #cccccc;">
+          <div id="upkey_panel_${item.id}" class="key-panel">
+            <span class="label" >置顶字</span>
+            {@each item.upkeys as key, index}
+            <div>${key}<span data-id="${item.id}" data-key="${key}" data-t="1" class="del-key">×</span></div>
+            {@/each}
+            <span data-id="${item.id}" data-t="1" class="btn btn-default btn-sm heading-btn add-key">增加</span>
+          </div>
+        </div>
+        <div class="panel-body detail-article">
+          <div id="key_panel_${item.id}" class="key-panel">
+            <span class="label" >关键字</span>
+            {@each item.keys as key, index}
+            <div>${key}<span data-id="${item.id}" data-key="${key}" data-t="2" class="del-key">×</span></div>
+            {@/each}
+            <span data-id="${item.id}" data-t="2" class="btn btn-default btn-sm heading-btn add-key">增加</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    {@/each}
+    </script>
+    <script type="text/javascript" src="js/admin/index/module.js"></script>
+    <script>
+      $(document).ready(function() {
+          moka.admin.indexm.init();
+      });
+    </script>
+  </body>
+</html>

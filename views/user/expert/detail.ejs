@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= name %></title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/expert/expert.css' >
+    <link rel='stylesheet' href='css/user/expert/detail.css' />
+  </head>
+  <body>
+    <input type="hidden" id="expert_id" value="<%= id %>">
+    <div class="bg">
+      <%- include ../common/header.ejs %>
+      <div class="container">
+        <div id="nav_tabs" class="nav">
+          <ul class="nav-ul">
+            <li class="index">
+              <a href="javascript:window.history.back();">返回</a>
+            </li>
+            <li target="info_panel" class="active"><a href="javascript:void(0);">基本情况</a></li>
+            <li target="xs_panel" ><a href="javascript:void(0);">学术成果</a></li>
+            <li target="jx_panel" ><a href="javascript:void(0);">教学成果</a></li>
+          </ul>
+        </div>
+        <!-- <ul class="nav nav-tabs">
+          <li target="info_panel" class="active"><a href="javascript:void(0);">基本情况</a></li>
+          <li target="xs_panel" ><a href="javascript:void(0);">学术成果</a></li>
+          <li target="jx_panel" ><a href="javascript:void(0);">教学成果</a></li>
+        </ul> -->
+        <div>
+          <div id="info_panel" class="expert-info" style="padding-top:20px;">
+            <div class="expert-info-left" >
+              <div class="expert-avatar" >
+                <img src="<%= avatar %>" class="img-thumbnail">
+              </div>
+            </div>
+            <div class="expert-info-right" >
+              <div class="expert-desc" >
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 id="content_title" class="panel-title"><%= name %></h3>
+                  </div>
+                  <div id="content" class="panel-body detail-article">
+                    <%= description %>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 id="content_title" class="panel-title">电话</h3>
+                </div>
+                <div id="content" class="panel-body detail-article">
+                  <%= tel %>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 id="content_title" class="panel-title">地址</h3>
+                </div>
+                <div id="content" class="panel-body detail-article">
+                  <%= address %>
+                </div>
+              </div>
+
+              <!-- <div class="expert-contactinfo" >
+                <p>电话：<%= tel %></p>
+                <p>地址：<%= address %></p>
+              </div> -->
+            </div>  
+          </div>
+          <div id="xs_panel" class="xs" >
+            <div id="xs_list"></div>
+            <div id="xs_pagebar" style="background-color:rgba(255,255,255,0.24)"></div>
+          </div>
+          <div id="jx_panel" class="jx" >
+            <div id="jx_list"></div>
+            <div id="jx_pagebar" style="background-color:rgba(255,255,255,0.4)"></div>
+          </div>
+        </div>
+      </div>
+      <%- include ../common/footer.ejs %>
+    </div>
+    <script type="text/template" id="result-list-tpl">
+    <div class="res-list">
+      <span class="res-type">序号</span>
+      <span class="res-title">标题</span>
+      <span>时间</span>
+    </div>
+    {@each list as resource, index}
+    <div class="res-list">
+      <span class="res-type">${index|formatIndex}</span>
+      <span class="res-title">
+        <a href="article/detail/${resource.article_id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>${resource.create_time}</span>
+    </div>
+    {@/each}
+    </script>
+    <script type="text/javascript" src='js/user/expert/detail.js'></script>
+  
+    <script type="text/javascript">
+      $(document).ready(function(){
+        moka.user.expert.detail.init();
+      });
+    </script>
+  </body>
+</html>

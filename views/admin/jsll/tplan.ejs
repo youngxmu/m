@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ../common/meta.ejs %>
+    <title>军事理论教学</title>
+    <link rel='stylesheet' href='css/admin/jsll/list.css' >
+  </head>
+  <body>
+    <%- include ../common/header.ejs %>
+    <div class="container">
+      <div class="fpanel">
+        <ul class="nav nav-tabs sub-nav" style="margin-top:15px;">
+          <li data-type="1" data-key="政策"><a href="admin/jsll/list/outline">法规</a></li>
+          <li data-type="2" data-key="教材"><a href="admin/jsll/list/tbook">教材</a></li>
+          <li data-type="3" data-key="资料" class="active"><a href="admin/jsll/list/tplan">教案</a></li>
+          <li data-type="4" data-key="课件"><a href="admin/jsll/list/ppt">课件</a></li>
+          <div class="tool-bar">
+            <span class="add btn btn-primary" >添加</span>
+            <span class="del btn btn-danger" >删除</span>
+          </div>
+        </ul>
+        <div id="tree_panel" >
+          <div class="sidebar" >
+            <ul id="topic_tree" class="ztree"></ul>
+          </div>
+          <div class="main" >
+            <div id="txt_title" class="info-title">
+              <label>标题</label><input id="tree_content_title" placeholder="输入标题">
+            </div>
+            <div id="txt_panel" class="info-content" >
+              <textarea class="editor-area" id="txt_editor" placeholder="输入文章正文" autofocus></textarea>
+              <div class="btn-wrapper" style="font-size:14px;margin-top: 15px;text-align:right;">
+                <span id="btn_txt" class="btn btn-primary">提交</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/template" id="menu_tpl">
+      {@each list as obj}
+      <li data-id="${obj.id}">
+        <div class="btn-group">
+          <button type="button" class="btn btn-info" data-id="${obj.id}">${obj.title}</button>
+          <button type="button" class="btn btn-primary del" data-id="${obj.id}"><span class="glyphicon glyphicon-trash"></span></button>
+        </div>
+      </li>
+      {@/each}
+    </script>
+    <script type="text/javascript" src="js/admin/jsll/tplan.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#navfouce .jsll').addClass('current');
+        moka.admin.jsll.tplan.init();
+      });
+    </script>
+  </body>
+</html>

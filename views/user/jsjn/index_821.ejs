@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>军事技能学习</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/jsjn/jsjn.css' >
+    <link rel='stylesheet' href='css/user/jsjn/index.css' >
+    <link rel='stylesheet' href='css/user/jsjn/sub-sys.css' >
+    <link rel='stylesheet' href='css/user/jsjn/ss-sys.css' >
+    <link rel='stylesheet' href='css/user/jsjn/detail-sys.css' >
+  </head>
+  <body>
+    <div class="bg">
+        <div class="container">
+            <div id="main_sys" class="wrapper main-sys" >
+                <div class="sidebar">
+                  <ul id="menu_bar" class="res-menu"></ul>
+                </div>
+                <div id="menu_content" class="main"></div>
+            </div>
+
+            <div id="sub_sys" class="wrapper sub-sys" >
+                <div class="sidebar">
+                  <ul id="sub_menu_bar" class="res-menu"></ul>
+                </div>
+                <div id="sub_menu_content" class="main"></div>
+                <div class="sub-footer">
+                  <span class="sub-back"></span>
+                  <span class="sub-exit"></span>
+                </div>
+            </div>
+
+            <div id="ss_sys" class="wrapper ss-sys" >
+                <div class="sidebar">
+                  <ul id="ss_menu_bar" class="res-menu"></ul>
+                </div>
+                <div id="ss_menu_content" class="main"></div>
+                <div class="ss-footer">
+                  <span class="ss-back"></span>
+                  <span class="ss-exit"></span>
+                </div>
+            </div>
+
+            <div id="detail_sys" class="wrapper detail-sys" >
+                <div id="detail_menu_bar" class="sidebar">
+                  
+                </div>
+                <div id="detail_menu_content" class="main"></div>
+                <div class="detail-footer">
+                  <span class="detail-exit"></span>
+                  <span class="detail-page-first"></span>
+                  <span class="detail-page-pre"></span>
+                  <span class="detail-page-next"></span>
+                  <span class="detail-page-last"></span>
+                  <span class="detail-page-go">
+                    <input id="page_no" value="1">
+                  </span>
+                  <span class="detail-back"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/template" id="menu-tpl">
+    {@each list as obj, index}
+    <li data-index="${index}" >
+      <img class="def"    style="${obj.def|getImgStyle}" src="jsjn/png/${obj.def}.png" >
+      <img class="hover"  style="${obj.def|getImgStyle}" src="jsjn/png/${obj.hover}.png" >
+    </li>
+    {@/each}
+    </script>
+    <script type="text/template" id="menu-content-tpl">
+      <div class="main-title">
+        <img style="${top|getImgStyle}" src="jsjn/png/${top}.png">
+      </div>
+      <div class="main-list">
+        <ul class="main-menu-list">
+          {@each jie as obj, index}
+          <li data-type="${sysType}" data-index="${index}">
+            <img class="def"    style="${obj.def|getImgStyle}" src="jsjn/png/${obj.def}.png" >
+            <img class="hover"  style="${obj.def|getImgStyle}" src="jsjn/png/${obj.hover}.png">
+          </li>
+          {@/each}
+        </ul>
+      </div>
+    </script>
+
+    <script type="text/template" id="menu-content2-tpl">
+      <div class="main-title">
+        <img style="${top|getImgStyle}" src="jsjn/png/${top}.png">
+      </div>
+      <div class="main-list">
+        <ul class="main-menu-list">
+          <img style="${content|getImgStyle}" src="jsjn/png/${content}.png">
+        </ul>
+      </div>
+      <div class="menu-start" data-click="${click}" ><span>开始学习</span><div>
+    </script>
+
+    <script type="text/template" id="menu-content3-tpl">
+      <div class="main-title">
+        <img style="${top|getImgStyle}" src="jsjn/png/${top}.png">
+      </div>
+      <div class="main-list">
+        <ul class="main-menu-list">
+          {@each videos as obj, index}
+          <li class="video-wrapper" data-type="${sysType}" data-index="${index}">
+            <video src="${obj.src}" controls='controls' preload="preload"></video>
+            <a class="video-title" target="_blank" href="${obj.link}">${obj.title}</a>
+          </li>
+          {@/each}
+        </ul>
+      </div>
+    </script>
+
+    <!-- sub-submenu -->
+    <script type="text/template" id="ss-menu-content-tpl">
+      <div class="main-title">
+        <img style="${top|getImgStyle}" src="jsjn/png/${top}.png">
+      </div>
+      <div class="main-list">
+        <ul class="ss-main-menu-list">
+          {@each jie as obj, index}
+          <li data-type="${sysType}" data-index="${index}">
+            <img class="def"    style="${obj.def|getImgStyle}" src="jsjn/png/${obj.def}.png" >
+            <img class="hover"  style="${obj.def|getImgStyle}" src="jsjn/png/${obj.hover}.png">
+          </li>
+          {@/each}
+        </ul>
+      </div>
+    </script>
+
+    <script type="text/template" id="detail-menu-tpl">
+    <ul class="res-menu {@if detailMenuStyle}detail${detailMenuStyle}-res-menu{@/if}">
+      <img class="top" src="jsjn/png/${top}.png" style="${top|getImgStyle}">
+      {@each jie as obj, index}
+      <li data-index="${index}" >
+        <img class="def" src="jsjn/png/${obj.def}.png" style="{@if imgStyle}${imgStyle}{@/if}${obj.def|getImgStyle}">
+        <img class="hover" src="jsjn/png/${obj.hover}.png" style="{@if imgStyle}${imgStyle}{@/if}${obj.hover|getImgStyle}">
+        <img class="active" src="jsjn/png/${obj.active}.png" style="{@if imgStyle}${imgStyle}{@/if}${obj.active|getImgStyle}">
+      </li>
+      {@/each}
+    </ul>
+    </script>
+
+    <script type="text/template" id="detail-menu2-tpl">
+    <ul class="res-menu {@if detailMenuStyle}detail${detailMenuStyle}-res-menu{@/if}">
+      <img class="top" src="jsjn/png/${top}.png" style="${top|getImgStyle}">
+      {@each mjie as m, jindex}
+        <ul class="mjie${m.style}">
+        {@if m.style==2 && m.def}
+          <img style="${m.def|getImgStyle}" src="jsjn/png/${m.def}.png">
+        {@/if}
+        {@each m.menu as obj, mindex}
+          <li data-index="${jindex}-${mindex}" >
+            <img class="def" src="jsjn/png/${obj.def}.png" style="${obj.def|getImgStyle}">
+            <img class="hover" src="jsjn/png/${obj.hover}.png" style="${obj.hover|getImgStyle}">
+            <img class="active" src="jsjn/png/${obj.active}.png" style="${obj.active|getImgStyle}">
+          </li>
+        {@/each}
+        </ul>
+      {@/each}
+    </ul>
+    </script>
+    
+    <script type="text/template" id="detail-content-tpl">
+      <div class="detail-title">
+        {@if rightTop}
+        <img style="${rightTop|getImgStyle}" src="jsjn/png/${rightTop}.png">
+        {@/if}
+      </div>
+      <div class="detail-main-list">
+        <ul class="content-list">
+          {@each content as obj, index}
+          <li class="content {@if index == 0}current{@/if}" data-index="${index}" >
+            <img class="def" src="jsjn/png/${obj}.png" style="${obj|getImgStyle}">
+          </li>
+          {@/each}
+        </ul>
+      </div>
+    </script>
+
+    <script type="text/javascript" src="js/user/jsjn/nc.js"></script>
+    <script type="text/javascript" src="js/user/jsjn/c1.js"></script>
+    <script type="text/javascript" src="js/user/jsjn/c2.js"></script>
+    <!--<script type="text/javascript" src="js/user/jsjn/c3.js"></script>-->
+    <script type="text/javascript" src="js/user/jsjn/xxrj/c3/c31.js"></script>
+    <script type="text/javascript" src="js/user/jsjn/xxrj/c3/c32.js"></script>
+    <script type="text/javascript" src="js/user/jsjn/xxrj/c3/c33.js"></script>
+    <script type="text/javascript" src="js/user/jsjn/xxrj/c3/c34.js"></script>
+    <script type="text/javascript" src="js/user/jsjn/xxrj/c3/c35.js"></script>
+    <script type="text/javascript" src="js/user/jsjn/c4.js"></script>
+    <script type="text/javascript" src="js/user/jsjn/index.js"></script>
+    <script>
+        $(function () {
+            moka.user.jsjn.index.init();
+        });
+    </script>
+  </body>
+</html>

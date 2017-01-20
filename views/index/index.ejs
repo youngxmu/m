@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include common/meta.ejs %>
+    <title>国防教育研究中心</title>
+    
+  </head>
+  <body>
+    <%- include common/header.ejs %>
+    <div class="conten">
+      <div class="one">
+        <div class="lunbo">
+          <div id="KinSlideshow" class="lunbotu " style="visibility:hidden;"></div>
+        </div>
+        <div class="news1">
+          <div class="news1Title">
+            <p>通知公告</p>
+            <a href="index/mlist" class="getmore">更多>></a>
+          </div>
+          <div class="news-conten">
+            <div class="main-li">
+              <table id="gfjy" class="li-table"></table>
+            </div>
+          </div>
+        </div>
+        <div class="news2">
+          <div class="news1Title">
+            <p>国防教育测评</p>
+            <a href="vote/index" class="getmore">更多>></a>
+          </div>
+          <div class="news-conten">
+            <div class="main-li">
+              <table id="vote_panel" class="li-table"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="clear:both;"></div>
+
+      <div class="two">
+        <div class="newscontent-left">
+          <div class="newscontent-Title">
+          <a href="index/nlist" class="getmore">更多>></a>
+            <ul class="newscontentTitle">
+              <!-- <li><img src="img/index/gffg.jpg"/></li> -->
+              <li><img src="img/index/gfjydt.jpg"/></li>
+            </ul>
+          </div>
+          <div class="list-content">
+            <div class="new1New">
+              <table id="gfjydt" class="newBox"></table>
+            </div>
+            <!-- <div class="new1New">
+              <table id="info2" class="newBox"></table>
+            </div>
+            <div class="new1New new2New">
+              <table id="gfjydt" class="newBox"></table>
+            </div> -->
+          </div>
+        </div>
+        <div class="newscontent-right">
+          <div class="news1Title">
+            <p>国防教育信息系统</p>
+          </div>
+          <div class="news-maue">
+            <ul>
+              <li><a href="jsll/index" target="_blank" ><img src="img/index/img1.jpg"/></a></li>
+              <li><a href="jsjn/index" target="_blank" ><img src="img/index/img2.jpg"/></a></li>
+              <li><a href="resource/index" target="_blank" ><img src="img/index/img3.jpg"/></a></li>
+              <li><a href="hbll/index" target="_blank" ><img src="img/index/img4.jpg"/></a></li>
+              <li><a href="paper/index" target="_blank" ><img src="img/index/img5.jpg"/></a></li>
+              <li><a href="expert/index" target="_blank" ><img src="img/index/img6.jpg"/></a></li>
+            </ul>
+            <div style="clear:both;"></div>
+          </div>
+        </div>
+      </div>
+      <div style="clear:both;"></div>
+      <div class="three">
+        <div class="hengfu"></div>
+      </div>
+      <div style="clear:both;"></div>
+
+      <div class="four">
+        <div class="four-div">
+          <div class="listTitle">
+            <a href="index/res/list/1" class="getmore">更多>></a>
+            <p>国防历史</p>
+          </div>
+          <div class="div-liststyle">
+            <div class="div-four">
+              <ul id="info1"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="four-div">
+          <div class="listTitle">
+          <a href="index/res/list/2" class="getmore">更多>></a>
+            <p>国防法规</p>
+          </div>
+          <div class="div-liststyle">
+            <div class="div-four">
+              <ul id="info2"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="four-div">
+          <div class="listTitle">
+          <a href="index/res/list/3" class="getmore">更多>></a>
+            <p>国防力量</p>
+          </div>
+          <div class="div-liststyle">
+            <div class="div-four">
+              <ul id="info3"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="clear:both;"></div>
+      <div class="four">
+        <div class="four-div">
+          <div class="listTitle">
+          <a href="index/res/list/4" class="getmore">更多>></a>
+            <p>国防战略</p>
+          </div>
+          <div class="div-liststyle">
+            <div class="div-four">
+              <ul id="info4"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="four-div">
+          <div class="listTitle">
+          <a href="index/res/list/5" class="getmore">更多>></a>
+            <p>国防建设</p>
+          </div>
+          <div class="div-liststyle">
+            <div class="div-four">
+              <ul id="info5"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="four-div">
+          <div class="listTitle">
+          <a href="index/res/list/6" class="getmore">更多>></a>
+            <p>世界军事</p>
+          </div>
+          <div class="div-liststyle">
+            <div class="div-four">
+              <ul id="info6"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="clear:both;"></div>
+
+      <div class="six">
+        <div class="six-btn"><img src="img/index/yqll.jpg"/>
+          <ul class="link">
+            <li><a>解放军报</a></li>
+            <li><a>参考信息</a></li>
+            <li><a>国防报</a></li>
+          </ul>
+          <a class="more">更多 >></a>
+        </div>
+        <div class="borderbottom"><img src="img/index/border.jpg" /></div>
+      </div>
+    </div>
+    <%- include common/footer.ejs %>
+    <script type="text/template" id="news_list_tpl_o">
+    {@each list as news}
+    <div style="position:relative;">
+      <a href="${news.link}" title="${news.title}" target="_blank" >
+        <img src="${news.pic_url}" width="319" height="240">
+      </a>
+      <span class="news-title" >${news.title}</span>
+    </div>
+    {@/each}
+    </script>
+
+
+
+
+    <script type="text/template" id="news_list_tpl">
+    {@each list as res}
+    <tr class="newTitle">
+      <td>
+        <div>
+          <img src="img/index/ico.jpg"/>
+          <a href="index/news/${res.id}" target="_blank">${res.title}</a>
+          <span>${res.create_time|midDateFormat}</span>
+        </div>
+      </td>
+    </tr>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="pic_list_tpl">
+    {@each list as news}
+    {@if news.cover}
+    <a href="index/news/${news.id}" target="_blank">
+      <img src="${news.cover}" alt="${news.title}" />
+    </a>
+    {@/if}
+    {@/each}
+    </script>
+
+    <script type="text/template" id="article_list_tpl">
+    {@each list as res}
+    <li>
+      <img src="img/index/ico.jpg"/>
+      <a href="resource/detail/${res.id}" target="_blank">${res.title}</a>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="msg_list_tpl">
+    {@each list as res}
+    <tr class="liTitle">
+      <td>
+        <div>
+          <img src="img/index/ico.jpg"/>
+          <a href="index/msg/${res.id}" target="_blank">${res.title}</a>
+          <span>${res.create_time|midDateFormat}</span>
+        </div>
+      </td>
+    </tr>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="vote_list_tpl">
+    {@each list as res}
+    <tr class="liTitle">
+      <td>
+        <div>
+          <img src="img/index/ico.jpg"/>
+          <a href="vote/detail/${res.id}" target="_blank">${res.name}</a>
+          <span>${res.create_time|midDateFormat}</span>
+        </div>
+      </td>
+    </tr>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="vote_list_tpl">
+    {@each list as res}
+    <tr class="liTitle">
+      <td>
+        <div>
+          <img src="img/index/ico.jpg"/>
+          <a href="index/msg/${res.id}" target="_blank">${res.title}</a>
+          <span>${res.create_time|midDateFormat}</span>
+        </div>
+      </td>
+    </tr>
+    {@/each}
+    </script>
+
+    <script type="text/javascript" src="js/index/index.js"></script>
+    <script>
+      $('#nav_index').addClass('active');
+      $(document).ready(function() {
+        moka.index.init({});
+      });
+    </script>
+  </body>
+</html>

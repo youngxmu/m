@@ -1,0 +1,161 @@
+<div class="header"> 
+  <img src="img/index/bg.jpg" height="165" width="100%" />
+  <div class="logocss"><img src="img/index/logo.png"/></div>
+  <div style="position:relative;top:-272px; left:530px; width:500px;">
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="500" height="165">
+      <param name="movie" value="img/5.swf"/>
+      <param name="quality" value="high" />
+      <param name="wmode" value="transparent">
+      <embed src="img/index/5.swf" wmode="transparent" quality="high"  type="application/x-shockwave-flash" width="500" height="165"></embed>
+    </object>
+  </div>
+</div>
+<div class="tab">
+  <div class="headerCont">
+    <div class="menu_nav clearfix">
+      <div id="nav-menu">
+        <ul class="menu">
+          <li style="clear:both; background:none;">
+            <a href="index"><span>首页</span></a>
+          </li>
+          <li id="nav_desc" >
+            <a href="index/info/desc" >中心简介</a>
+          </li>
+          <li id="nav_org" >
+            <a href="index/info/org" >研究队伍</a>
+          </li>
+          <li id="nav_science" >
+            <a href="index/info/science" >学术成果</a>
+
+            <ul class="children"><!--sub-nav  style="display:none;"-->
+              <li><a href="index/science/list/1" >课题</a></li>
+              <li><a href="index/science/list/2" >专著</a></li>
+              <li><a href="index/science/list/3" >论文</a></li>
+              <li><a href="index/science/list/4" >教材</a></li>
+              <li><a href="index/science/list/5" >研究报告</a></li>
+            </ul>
+          </li>
+          <li id="nav_vote" >
+            <a href="vote/index" target="_blank" >国防教育测评</a>
+          </li>
+          <li id="nav_about" >
+            <a href="index/info/about" >关于我们</a>
+          </li>
+          <li id="nav_bbs" >
+            <a href="http://192.168.2.231:8888" target="_blank" >国防论坛</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="juicer/template" id="dlg-login-tpl">
+  <div class="login_bg">
+    <div style="position:absolute;left:20px;top:20px;" class="login-logo"></div>
+      <form method="post" id="ajax_login_form" action="auth/user/login">
+        <input name="type" value="1" type="hidden"><!--普通用户登录-->
+        <div class="login_con">
+          <div class="login_list">
+            <div class="login_line">
+              <p>邮箱</p>
+              <input type="text" id="email" placeholder="注册邮箱" name="email" class="input_text" >
+            </div>
+            <div class="login_line">
+              <p>密码</p>
+              <input type="password" id="password" placeholder="密码" name="password" class="input_text">
+            </div>
+            <div class="btn_wrap" id="login_submit" style="height:48px;">
+              <a href="javascript:void(0)" class="btn_green37">登录</a>
+            </div>
+            <div style="margin:20px 0;height:48px;" class="btn_wrap">
+              <a class="btn_green37" href="user/register">注册</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</script>
+<script>
+  $(document).ready(function() {
+  $(".newscontentTitle").children("li").mousemove(function(){
+  var index=$(this).index();
+  $(".new1New").hide();
+  $(".new1New").eq(index).show();
+  })
+
+
+$('#nav-menu .menu > li').hover(function(){
+  $(this).find('.children').animate({ opacity:'show', height:'show' },200);
+  $(this).find('.xialaguang').addClass('navhover');
+}, function() {
+  $('.children').stop(true,true).hide();
+  $('.xialaguang').removeClass('navhover');
+});
+  
+    $('body').on('click', '#login_submit', function(){
+      var options = {
+          success: function (data) {
+              console.log(data);
+          }
+      };
+      // ajaxForm
+      $("#ajax_login_form")[0].submit();
+    });
+    $('#btn_login').click(function(){
+      var dd = dialog({
+          title: '登录',
+          content: $('#dlg-login-tpl').html()
+      });
+      dd.showModal();
+    });
+
+      function scrollTxt(){
+        var controls={}, 
+          values={},
+          t1=500, /*播放动画的时间*/
+          t2=3000, /*播放时间间隔*/
+          si;
+        controls.rollWrap=$("#slogan");
+        controls.rollWrapUl=controls.rollWrap.children();
+        controls.rollWrapLIs=controls.rollWrapUl.children();
+
+
+        values.liNums=controls.rollWrapLIs.length;
+        values.liHeight=controls.rollWrapLIs.eq(0).height();
+        values.ulHeight=controls.rollWrap.height();
+        this.init=function(){
+          autoPlay();
+          pausePlay();
+        }
+        /*滚动*/
+        function play(){
+          controls.rollWrapUl.animate({"margin-top" : "-"+values.liHeight}, t1, function(){
+            $(this).css("margin-top" , "0").children().eq(0).appendTo($(this));
+          });
+        }
+        /*自动滚动*/
+        function autoPlay(){
+          /*如果所有li标签的高度和大于.roll-wrap的高度则滚动*/
+          if(values.liHeight*values.liNums > values.ulHeight){
+            si=setInterval(function(){
+              play();
+            },t2);
+          }
+        }
+        /*鼠标经过ul时暂停滚动*/
+        function pausePlay(){
+          controls.rollWrapUl.on({
+            "mouseenter":function(){
+              clearInterval(si);
+            },
+            "mouseleave":function(){
+              autoPlay();
+            }
+          });
+        }
+      }
+      new scrollTxt().init();
+  });
+</script>

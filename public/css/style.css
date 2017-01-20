@@ -1,0 +1,223 @@
+/** 导航页面 */
+.nav{width:200px;margin:auto;padding-top: 50px;}
+.nav dl{display:block;line-height:40px;font-size:24px;}
+.nav dl a{}
+
+/** 查询区域 */
+.search-panel{line-height: 30px;}
+.search-panel dl{display: block;margin:0;}
+.search-panel dl dt, .search-panel dl dd{display: inline-block;}
+.search-panel dl dt{text-align: right;}
+.search-panel dl dd{margin:0 10px 0 5px;}
+.search-panel dl dd input{width:120px;border: 1px solid #cccccc;padding:0 5px;line-height: 24px;}
+.search-panel dl dd select{border: 1px solid #cccccc;line-height: 24px;height:26px;}
+
+/** tab area */
+.tab-panel{line-height: 24px;padding:10px 0;}
+.tab-panel .simp-tab{padding: 0 10px; border-right:1px solid #cccccc;cursor: pointer;}
+.tab-panel .simp-tab:last-child{border-right: 0;}
+.tab-panel .simp-tab.current{font-weight: bold;}
+
+/** 操作区域 */
+.oper-panel{line-height: 24px;padding:10px 0;}
+.oper-panel .btn{display: inline-block;padding: 0 20px;border-style: 3px;border:1px solid #cccccc;background-color: #f5f5f5;cursor: pointer;}
+.oper-panel .btn:hover{background-color: #ffffff;}
+.list-table{width: 960px;}
+
+
+/** 基本列表 */
+.list-table table{width:100%;border-collapse:collapse;font-size: 12px;line-height: 28px;}
+.list-table table th{text-align: center;}
+.list-table table tr td{text-align: center;}}
+.list-table table tr td:first-child{text-align: center;}
+.list-table table, th, td{border: 1px solid #cccccc;}
+.list-table table td.oper {text-align: center;}
+.list-table table td.oper span{margin-right:10px; color: blue; cursor: pointer;}
+.list-table table td.oper span:last-child{margin-right: 0;}
+
+
+/** 弹框中内容 */
+.v-table{line-height: 30px;font-size: 12px;}
+
+.v-table dl{display: block;margin:0;}
+.v-table dl dt, .v-table dl dd{display: inline-block;}
+.v-table dl dt{text-align: right;width:50px;}
+.v-table dl dd{margin:0 10px 0 5px;width:140px;}
+.v-table dl dd input{width:120px;border: 1px solid #cccccc;padding:0 5px;line-height: 24px;}
+.v-table dl dd select{border: 1px solid #cccccc;line-height: 24px;height:26px;width:100px;}
+
+
+/** 编辑列表 */
+.edit-table{width: 960px;overflow: auto;}
+.edit-table table{width:100%;border-collapse:collapse;font-size: 12px;line-height: 28px;}
+.edit-table table th{text-align: center;}
+.edit-table table tr td:first-child{text-align: center;}
+.edit-table table, th, td{border: 1px solid #cccccc;padding: 0;}
+.edit-table table td input {width:96%;line-height: 28px;padding: 0 2%;border:none;}
+
+/** 审核 查看详情 */
+.d-table{width:420px;}
+.d-table .d-left{width:220px;border-right: 1px solid #cccccc;display: inline-block;}
+.d-table .d-left dl dt, .d-table .d-left dl dd{display: inline-block;}
+.d-table .d-left dl dt{text-align: right;width:60px;}
+.d-table .d-left dl dd{margin:0 10px 0 5px;width:140px;}
+.d-table .d-left dl dd input{width:120px;border: 1px solid #cccccc;padding:0 5px;line-height: 24px;}
+.d-table .d-right{width:180px;display: inline-block;float:right;}
+.d-table .d-right dl span{display: inline-block;line-height: 24px;width: 75px;margin:0 10px 10px 0;text-align: center;border: 1px solid #cccccc;cursor: pointer;}
+.d-table .d-right dl span:last-child{margin-right: 0;}
+.d-table .d-right dl span.selected{background: #357ebd;color: #ffffff;}
+
+.img-list-panel{margin-top:15px;}
+.img-list-panel div{width:80px;display:inline-block;}
+.img-list-panel span{width:70px;height:70px;margin-right:8px;display:table-cell;border: 1px solid #cccccc;text-align:center;background: #000000;vertical-align: middle;opacity: 0.7;}
+.img-list-panel span:last-child{margin-right:0;}
+.img-list-panel span img{max-width:70px;max-height:70px;}
+
+
+
+
+/** img preview */
+.page{ width:58px; height:27px; line-height:27px; background-color:#005081; text-align:center; color:#ffffff; font-size:12px; position:absolute; top:0; left:0;}
+.page_lf{ background:url(../img/ico/ico_page_lf.png?__sprite) no-repeat 0 0 ; position:absolute; top:170px; left:18px; width:50px; height:50px; display:block}
+.page_rt{ background:url(../img/ico/ico_page_rt.png?__sprite) no-repeat 0 0 ; position:absolute; top:170px; right:18px; width:50px; height:50px; display:block}
+.page_lf:hover{ background:url(../img/ico/ico_page_lf_hover.png?__sprite) no-repeat 0 0;}
+.page_rt:hover{ background:url(../img/ico/ico_page_rt_hover.png?__sprite) no-repeat 0 0;}
+.page_lf:active{ background:url(../img/ico/ico_page_lf_click.png?__sprite) no-repeat 0 0;}
+.page_rt:active{ background:url(../img/ico/ico_page_rt_click.png?__sprite) no-repeat 0 0;}
+.page_lf.page_lf_first{ background:url(../img/ico/ico_page_lf_first.png?__sprite) no-repeat 0 0; cursor:auto}
+.page_rt.page_rt_last{ background:url(../img/ico/ico_page_lf_last.png?__sprite) no-repeat 0 0; cursor:auto}
+
+
+.header-player-fs{color: #ffffff;font-size: 22px;height: 60px;line-height: 60px;padding: 0 0 0 20px;position: fixed;text-align: left;top: 0;width: 100%;z-index: 10000;}
+.header-player-fs .btn_round_blue30{font-size:12px;float:right;margin: 15px 40px 0 0;border:1px solid #ffffff;line-height: 30px;padding: 0 15px;}
+.img-player-fs-mask{width:100%;height:100%;position:fixed;z-index:9997;background-color: #000000;left:0;top:0;opacity: 0.75;}
+.img-player-fs{width:100%;height:100%;position:fixed;z-index:9998;left:0;top:0;margin-top:60px;}
+
+.img-player-fs .page_lf{top:50%;margin-top:-25px;}
+.img-player-fs .page_rt{top:50%;margin-top:-25px;}
+.img-player-fs ul{height:100%;}
+.img-player-fs ul li{height:100%;}
+.img-player-fs ul li img{max-width: 100%;max-height: 100%;}
+.rotate90{
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg); 	/* IE 9 */
+	-moz-transform:rotate(90deg); 	/* Firefox */
+	-webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+	-o-transform:rotate(90deg); 	/* Opera */
+}
+.rotate180{
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); 	/* IE 9 */
+	-moz-transform:rotate(180deg); 	/* Firefox */
+	-webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+	-o-transform:rotate(180deg); 	/* Opera */
+}
+.rotate270{
+	transform:rotate(270deg);
+	-ms-transform:rotate(270deg); 	/* IE 9 */
+	-moz-transform:rotate(270deg); 	/* Firefox */
+	-webkit-transform:rotate(270deg); /* Safari 和 Chrome */
+	-o-transform:rotate(270deg); 	/* Opera */
+}
+
+.dlg-avator{
+	border: 1px solid #cccccc;
+    display: inline-block;
+    height: 80px;
+    text-align: center;
+    width: 80px;
+}
+
+/** login page */
+.login_con {
+    margin: 104px auto;
+    width: 360px;
+}
+.login_con h1 {
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+.login_list {
+    background-color: #fff;
+    margin: 35px 0 0;
+    overflow: hidden;
+    padding: 25px 18px;
+}
+.login_line {
+    margin: 0 0 12px;
+    overflow: hidden;
+}
+.login_line p {
+    color: #474747;
+}
+
+
+
+.input_text {
+    border: 1px solid #c0c5cd;
+    border-radius: 2px;
+    color: #b4b4b6;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 8px;
+    width: 246px;
+    color: #000000;
+}
+
+
+
+
+
+.login_line .input_text {
+    height: 36px;
+    line-height: 36px;
+    margin: 5px 0 0;
+    width: 322px;
+}
+.login_line span {
+    border: 1px solid #c0c5cd;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    height: 36px;
+    margin: 5px 0 0 12px;
+    overflow: hidden;
+    width: 138px;
+}
+
+.btn_green37 {
+    background-color: #00c044;
+    border-radius: 2px;
+    color: #fff;
+    display: block;
+    float: left;
+    font-size: 16px;
+    height: 37px;
+    line-height: 37px;
+    padding: 0 30px;
+    text-align: center;
+}
+
+.login_list .btn_wrap {
+    margin: 10px 0 0;
+    width: auto;
+}
+.login_list .btn_green37 {
+    font-size: 18px;
+    height: 48px;
+    line-height: 48px;
+    width: 282px;
+}
+
+
+/***/
+.album-box{display: inline-block;width: 120px;height: 120px;border: 1px solid #cccccc;margin: 20px 10px 0 0;background-color: #e8e8e8;cursor: pointer;position: relative;}
+.album-box .chkbox{position: absolute;left:1px;top: 1px;border:none;}
+.album-box.selected{border: 2px solid #428bca;width: 118px;height: 118px;}
+.album-box .album-img-wraper{display: table-cell;width: 120px;height: 120px;vertical-align: middle;text-align: center;}
+.album-box .album-img-wraper img{max-width: 120px;max-height: 120px;}
+.album-box .album-del{position: absolute;background: url('../img/ico/del.png');right: 0;bottom: 0;background-size: 20px 20px;width: 20px;height: 20px;}
+.album-box .album-del:hover{opacity: 0.8;}

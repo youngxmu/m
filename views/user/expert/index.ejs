@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ../common/meta.ejs %>
+    <title>国防师资力量</title>
+    <link rel='stylesheet' href='css/user/expert/expert.css' >
+    <style type="text/css">
+    .header{
+        display: none;
+    }
+    .container{
+      height: 100%;
+      background: transparent;
+    }
+
+    .search-bar{
+      width: 240px;
+      height: 34px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: 0px;
+      margin-top: 84px;
+      margin-left: -100px;
+      padding: 0px;
+      font-size: 0;
+      text-align: center;
+    }
+        
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+      <%- include ../common/header.ejs %>
+
+      <div class="gf-content"> 
+      <img src="img/index/gfszll-logo.png"/>
+      </div>
+      <div class="gfjyzy-img">
+        <a href="expert/list/base">
+          <img src="img/index/gfszll-ico1.png" />
+        </a>
+        <a href="expert/list/type">
+          <img src="img/index/gfszll-ico2.png" />
+        </a>
+      </div>
+      <div class="search-bar" style="display:none;">
+        <input id="search_key" type="text" class="form-control" placeholder="输入姓名" style="display:inline-block;width:180px;height:34px;line-height:34px;    vertical-align: top;">
+        <button id="btn_search" type="button" class="btn btn-primary">查询</button>
+      </div>
+      <div class="container" style="display:none;">
+        <div class="index-main" >
+          <div class="sys-logo"><div class="sys-title"></div></div>
+          <div class="sys-panel">
+              <a href="expert/list/base">
+                <div class="sys-info">
+                    <div class="sys-info-img">
+                        <img src="img/paper/study.png" class="img-thumbnail">
+                    </div>
+                    <div class="sys-info-txt">基本搜索</div>
+                </div>
+              </a>
+              <a href="expert/list/type">
+                <div class="sys-info">
+                    <div class="sys-info-img">
+                      <img src="img/paper/exam.png" class="img-thumbnail">
+                    </div>
+                    <div class="sys-info-txt">分类搜索</div>
+                </div>
+              </a>
+          </div>
+          <!-- <div class="sys-enter">
+            <a href="expert/list"><div class="btn btn-lg btn-primary btn-shadow">进入系统</div></a>
+          </div> -->
+        </div>
+        <div class="main" style="display:none;">
+          <div class="login-panel">
+            <div class="sys-info">
+              <div class="jumbotron">
+                <h1>教师●专家●学者</h1>
+                <p>更多位国防，国防教育做出杰出贡献的专家教授</p>
+              </div>
+            </div>
+            <div class="login-bg">
+              <form method="post" action="auth/user/login">
+                <h3>登录</h3>
+                <input type="hidden" name="sysType" value="expert">
+                <input class="form-control" name="email" type="text" placeholder="用户名/邮箱">
+                <input class="form-control" name="password" type="password" placeholder="密码">
+                <% if(typeof errmsg != 'undefined'){%>
+                <div class="alert alert-danger" role="alert"><%= errmsg %></div>
+                <% } %>
+                <div class="login-btn-wrapper">
+                  <button type="submit" class="btn btn-primary">登录</button>
+                  <a href="user/register" class="btn btn-primary" role="button">注册</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+        $('#btn_search').on('click', function(){
+          window.location.href = 'expert/list/base?key=' + $('#search_key').val();
+        });
+
+        $('body').on('keydown','#search_key',function(e){
+            var event = window.event || e;
+            if(event.keyCode == 13){
+                window.location.href = 'expert/list/base?key=' + $('#search_key').val();
+            }
+        });
+      });
+    </script>
+
+  </body>
+</html>

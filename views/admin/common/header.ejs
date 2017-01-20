@@ -1,0 +1,121 @@
+<div class="header">
+  <div class="top-bar" style="display:none;">
+      <div class="pull-right">
+        <span data-markup="time"></span>
+        <div class="pull-left"><span id="date-time" data-markup="time"><%= currDate %></span></div>
+      </div>
+  </div>
+  <h1 class="logo" >
+    <a href="index">
+      <div class="logo-title"></div>
+    </a>
+    <div class="curr-time"><span id="date-time" data-markup="time"><%= currDate %></span></div>
+  </h1>
+  <div class="header-nav">
+    <ul id="navfouce" class="nav-ul">
+      <li class="index"><a href="admin/index"          >首 页</a></li>
+      <li class="resource"><a href="admin/article/list"  >国防教育资源</a></li>
+      <li class="jsll"><a href="admin/jsll/list"    >军事理论教学</a></li>
+      <li class="jsjn"><a href="admin/jsjn/list"    >军事技能教学</a></li>
+      <li class="paper"><a href="admin/paper/list"   >学习考试管理</a></li>
+      <li class="hbll"><a href="admin/hbll/list"   >国防后备力量</a></li>
+      <li class="vote"><a href="admin/vote/list"    >国防教育测评</a></li>
+      <li class="expert"><a href="admin/expert/list"  >师资力量</a></li>
+      <li class="user"><a href="admin/user/list"  >用户管理</a></li>
+      <% if(islogin){ %>
+        <li class="logout" style="float:right;"><a href="auth/admin/logout" >退出</a></li>
+      <% } %>
+      <div class="clears"></div>
+    </ul>
+  </div>
+</div>
+
+
+
+<!-- style="display:none;" 
+<div class="page-header" >
+    <div class="nav_menu">
+        <div class="nav">
+            <div class="list" id="navlist">
+                <ul id="navfouce">
+                    <li><a href="admin/index"         class="index" style="width:100px;">首 页</a></li>
+                    <li><a href="admin/article/list"  class="resource">国防教育资源</a></li>
+                    <li><a href="admin/jsll/list"     class="jsll">军事理论教学</a></li>
+                    <li><a href="admin/jsjn/list"     class="jsjn">军事技能教学</a></li>
+                    <li><a href="admin/paper/list"    class="paper">学习考试管理</a></li>
+                    <li><a href="admin/hbll/list"     class="hbll">国防后备力量</a></li>
+                    <li><a href="admin/vote/list"     class="vote">国防教育测评</a></li>
+                    <li><a href="admin/expert/list"   class="expert">师资力量</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner">
+      <a href="index" style="color:#333;"><div class="t-logo">后台管理系统</div></a>
+      <div class="t-right">
+        <% if(islogin){ %>
+          <div class="t-btn" style="display:none;"><a href="admin/article/uneval">文章审核</a></div>
+          <div class="t-btn"><a href="admin/user/list">用户管理</a></div>
+          <div class="t-btn" ><a href="auth/admin/logout">退出</a></div>
+        <% }else{ %>
+          <div class="t-btn" id="btn_login" ><a href="javascript:void(0);">登录</a></div>
+        <% } %>
+        <div class="search-box" style="display:none;">
+          <div class="input-group clearfix">
+            <input type="text" value="" placeholder="请输入搜索关键词" name="keyword" autocomplete="off" id="keyword">
+            <div class="btn-submit">
+                 <button href="javascript:void(0);" type="submit" id="btn_search">
+                     <i class="icon icon-search icon-large"></i>
+                 </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+-->
+<script type="juicer/template" id="dlg-login-tpl">
+  <div class="login_bg">
+    <div style="position:absolute;left:20px;top:20px;" class="login-logo"></div>
+      <form method="post" id="ajax_login_form" action="auth/admin/login">
+        <input name="type" value="1" type="hidden"><!--普通用户登录-->
+        <div class="login_con">
+          <div class="login_list">
+            <div class="login_line">
+              <p>邮箱</p>
+              <input type="text" id="username" placeholder="用户名" name="username" class="input_text" >
+            </div>
+            <div class="login_line">
+              <p>密码</p>
+              <input type="password" id="password" placeholder="密码" name="password" class="input_text">
+            </div>
+            <div class="btn_wrap" id="login_submit">
+              <a href="javascript:void(0)" class="btn_green37">登录</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</script>
+<script>
+  $(document).ready(function() {
+    $('body').on('click', '#login_submit', function(){
+      var options = {
+          success: function (data) {
+              console.log(data);
+          }
+      };
+      // ajaxForm
+      $("#ajax_login_form")[0].submit();
+    });
+    $('#btn_login').click(function(){
+      var dd = dialog({
+          title: '登录',
+          content: $('#dlg-login-tpl').html()
+      });
+      dd.showModal();
+    });
+  });
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include common/meta.ejs %>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='css/index/list.css' >
+  </head>
+  <body>
+    <%- include common/header.ejs %>
+    <input id="pid" value="<%= mid %>" type="hidden" >
+    <input type="hidden" id="title" value="<%= title %>">
+    <div class="container">
+      <ol class="breadcrumb" style="border-radius:0;">
+        <li>
+          <a href="index">首页</a>
+        </li>
+        <li>
+          <a href="<%= link%>"><%= title%></a>
+        </li>
+        <% if(typeof subtitle != 'undefined'){%>
+        <li class="active">
+          <%= subtitle%>
+        </li>
+        <% } %>
+      </ol>
+      <div class="main">
+        <div class="res-list">
+          <span class="res-title">标题</span>
+          <span>作者</span>
+          <span>时间</span>
+        </div>
+        <div id="top_list"></div>
+        <div id="resource_list"></div>
+        <div id="pagebar"></div>
+      </div>
+    </div>
+    <%- include common/footer.ejs %>
+
+    <script type="text/template" id="top-resource-tpl">
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-title">
+        <a href="article/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>{@if resource.author}${resource.author}{@else}admin{@/if}</span>
+      <span>${resource.create_time}</span>
+    </div>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="resource-tpl">
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-title">
+        <a href="article/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>{@if resource.author}${resource.author}{@else}admin{@/if}</span>
+      <span>${resource.create_time}</span>
+    </div>
+    {@/each}
+    </script>
+    <script type="text/javascript" src="js/lib/jquery.ztree.all.min.js"></script>
+    <script type="text/javascript" src="js/index/list.js"></script>
+    
+    <script>
+      if($('#title').val() == '数字资源' ){
+        $('#nav_res').addClass('active');  
+      }else{
+        $('#nav_people').addClass('active');  
+      }
+      // if($('#title').val() == '数字资源' ){
+      //   $('#nav_people').addClass('active');
+      // }
+      
+      $(document).ready(function() {
+          moka.index.list.init();
+      });
+    </script>
+  </body>
+</html>

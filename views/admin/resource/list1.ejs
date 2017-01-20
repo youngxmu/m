@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>数字资源</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/admin/article/list.css' />
+  </head>
+  <body>
+    <input type="hidden" id="mid" value="<%= mid %>">
+    <div class="banner">
+      <div class="t-logo">系统logo占位</div>
+      <div class="search-box">
+         <div class="input-group clearfix">
+             <input type="text" value="" placeholder="请输入搜索关键词" name="keyword" autocomplete="off" id="keyword">
+             <div class="btn-submit">
+                 <button href="javascript:void(0);" type="submit" id="btn_search">
+                     <i class="icon icon-search icon-large"></i>
+                 </button>
+             </div>
+         </div>
+      </div>
+    </div>
+    <div class="nav">
+      <% for(var index in submenuList){ %>
+      <% var menu = submenuList[index]; %>
+        <span data-id="<%= menu.id %>" ><%= menu.name %></span>
+      <% } %>
+    </div>
+    <div class="container">
+      <div id="main_list" class="main-atlist">
+        <!-- <div class="crumb">
+          <a href="index">首页</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="article/list">数字资源</a>
+        </div> -->
+        
+      </div>
+    </div>
+
+
+    <script type="text/template" id="twop_tpl">
+    <div class="twop">
+      <ul class="twop-nav">
+        {@each leafMenus as menu}
+        <li>
+          <span data-id="${menu.id}">${menu.name}</span>
+        </li>
+        {@/each}
+      </ul>
+    </div>
+    <div class="twop">
+      <ul id="article_list" class="twop-list"></ul>
+      <div id="pagebar"></div>
+    </div>
+    </script>
+
+    <script type="text/template" id="onep_tpl">
+    <div class="onep">
+      <ul id="article_list" class="onep-list"></ul>
+      <div id="pagebar"></div>
+    </div>
+    </script>
+
+    <script type="text/template" id="article_list_tpl">
+    {@each list as resource}
+    <li>
+      <a href="article/detail/${resource.id}" target="_blank">${resource.title}</a>
+      <span class="date">${resource.create_time}</span>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/javascript" src="js/admin/article/list.js"></script>
+    <script>
+      $(document).ready(function() {
+            moka.admin.article.list.init({});
+        });
+    </script>
+  </body>
+</html>

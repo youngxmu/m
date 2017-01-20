@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+	    <title><%= name %></title>
+	    <%- include ../common/meta.ejs %>
+	    <link rel='stylesheet' href='css/user/vote/vote.css' >
+	    <link href="css/user/vote/detail.css" rel="stylesheet" type="text/css" media="all" />  
+  	</head>
+  	<body>
+  		<input id="pid" value="<%= id %>" type="hidden">
+  		<div class="bg">
+	  		<%- include ../common/header.ejs %>
+	  		<div class="container">
+	  			<div class="nav">
+			        <ul class="nav-ul">
+			          <li>
+			            <a href="vote/list">主页</a>
+			          </li>
+			        </ul>
+		      	</div>
+		      	<div class="main" >
+		      	 	<div class="panel panel-primary">
+			            <div class="panel-heading">
+							<h3 id="content_title" class="panel-title"><%= name %></h3>
+			            </div>
+			            <div class="panel-body detail-article">
+			            	<div id="question_panel" class="question-panel" style="font-size:14px;">
+				  			</div>
+			            </div>
+		          	</div>
+		      	</div>
+		  	</div>
+		  	<%- include ../common/footer.ejs %>
+		</div>
+	  	<script type="juicer/template" id="question-tpl">
+	    <div class="question-list">
+	        <div class="qbody">${qbody}</div>
+	        {@if qtype == 2 || qtype == 3 || qtype == 4}
+	          <div class="qanswer">$${qanswer|formatAnswer}</div>
+	        {@/if}
+	        <div class="rtanswer">正确答案：${rtanswer}</div>
+	    </div>
+	    </script>
+	   	<script type="juicer/template" id="question-list-tpl">
+	    {@each list as obj, index}
+	    <div data-id="${obj.id}" class="question-list {@if index == 0}active{@/if}" >
+	        <div class="qbody label label-info">${index|formatIndex}.${obj.qbody}{@if obj.qtype == 3}
+				（多选）
+				{@/if}</div>
+	        {@if obj.qtype == 2 || obj.qtype == 3 || obj.qtype == 4}
+	          <div class="qanswer-panel {@if obj.qtype == 3}m{@else}s{@/if}" data-type="${obj.qtype}" data-id="${obj.id}">
+	          	$${obj.qanswer|formatAnswer}
+	          </div>
+	        {@/if}
+	    </div>
+	    {@/each}
+	    </script>
+	    <script type="juicer/template" id="question-list-tpl2">
+	    {@each list as obj, index}
+	    <div data-id="${obj.id}" class="question-list {@if index == 0}active{@/if}" >
+	        <div class="qbody">${index|formatIndex}.${obj.qbody}{@if obj.qtype == 3}
+				（多选）
+				{@/if}
+			</div>
+	        {@if obj.qtype == 2 || obj.qtype == 3 || obj.qtype == 4}
+	          <div class="qanswer-panel {@if obj.qtype == 3}m{@else}s{@/if}" data-type="${obj.qtype}" data-id="${obj.id}">
+	          	$${obj.qanswer|formatAnswer}
+	          </div>
+	        {@/if}
+	    </div>
+	    {@/each}
+	    </script>	    
+		<script type="text/javascript"  src="js/user/vote/detail.js"></script>
+     	<script type="text/javascript">
+     		$('#nav_jjcp').addClass('aHover');
+		    $(document).ready(function(){
+		    	moka.user.vote.detail.init();
+		    });
+	  	</script>
+  	</body>
+</html>
+

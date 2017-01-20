@@ -1,0 +1,76 @@
+.main{font-size: 0;}
+.tool-bar{
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+.tool-bar select{border: 1px solid #cccccc;
+  line-height: 30px;padding: 0 10px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.question-list{font-size: 14px;line-height: 30px;border: 1px solid #cccccc;margin-bottom: 10px;}
+.question-list > div{
+  padding: 0 10px;
+}
+
+.question-list .qtype{
+  background-color: #555251;
+  /*border: 1px solid #474645;*/
+  color: #ffffff;
+}
+
+.question-list .qtype .question-oper{
+  float: right;
+  padding: 0 10px 0 0 0;
+  color: #ffffff;
+}
+
+.question-list .qtype .question-oper span{display: inline-block; width: 50px;text-align: center;cursor: pointer;}
+.question-list .qbody{}
+.question-list .qanswer{text-indent: 10px;}
+.question-list .qanswer p{margin:0;}
+.question-list .rtanswer{border-top: 1px solid #474645;}
+
+
+
+
+.question-edit{width:600px;}
+.question-edit dl {line-height: 30px;}
+.question-edit dl dt{display: inline-block;margin: 0;width: 80px;vertical-align: top;}
+.question-edit dl dd{display: inline-block;margin: 0;}
+.question-edit dl dd select{border: 1px solid #cccccc;width: 100px;}
+.question-edit dl dd textarea{border: 1px solid #cccccc;width: 500px;resize:vertical;}
+.question-edit .question-option{position: relative;}
+.question-edit .question-option p{margin: 0 0 5px 0;}
+.question-edit .question-option input{ width: 420px;margin-left:5px;border: 1px solid #cccccc;line-height: 30px;
+  padding: 0 5px;
+}
+.question-edit .question-option em{width: 10px;text-align: left;}
+.question-edit .question-option .btn-op{
+  font-size: 24px;
+  border: 1px solid #cccccc;
+  line-height: 30px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+}
+.question-edit .question-option .btn-op.disabled{
+  cursor: normal;
+  background-color: #d8d8d8;
+}
+
+.question-edit .question-option .btn-op:hover{opacity: 0.7}
+.question-edit .question-option .btn-op.disabled:hover{opacity: 1}
+
+.question-edit .question-option .btn-op.add{
+  right: 12px;top: 0
+}
+
+.question-edit .question-option .btn-op.del{
+  right: 12px;;top: 37px;
+}

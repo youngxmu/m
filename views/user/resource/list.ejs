@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>国防教育资源库</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/resource/resource.css' >
+    <link rel='stylesheet' href='css/user/resource/list.css' >
+    <style type="text/css">
+      .nav-ul li{display: none;}
+      .nav-ul li.index, .nav-ul li.active{display: inline-block;}
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+      <%- include ../common/header.ejs %>
+      <input id="type" value="<%= type %>" type="hidden" >
+      <input id="search_title" value="<%= keyword %>" type="hidden" >
+      <div class="container">
+        <div class="nav tnav">
+          <ul class="nav-ul">
+            <li class="index">
+              <a href="resource/index" >系统首页</a>
+            </li>
+            <li class="txt">
+              <a href="resource/list/txt" >基本知识</a>
+            </li>
+            <li class="other">
+              <a href="resource/list/other" >参考资料</a>
+            </li>
+            <li class="pic">
+              <a href="resource/list/pic" >图片</a>
+            </li>
+            <li class="video">
+              <a href="resource/list/video" >视频</a>
+            </li>
+            <li class="ppt">
+              <a href="resource/list/ppt" >课件</a>
+            </li>
+          </ul>
+        </div>
+        <%if(type == 'txt' || type == 'other'){%>
+          <div id="tree_panel" class="sidebar sidebar-tree" >
+            <ul id="topic_tree" class="ztree"></ul>
+          </div>
+        <%}else{%>
+          <div id="res_panel" class="main">
+            <div id="resource_list"></div>
+            <div id="pagebar"></div>
+          </div>
+        <%}%>
+
+        <!-- <div id="menu_panel" class="sidebar" style="display:none;" >
+          <ul class="type-panel" >
+            <li data-type="1">
+              <i class="type-ico res-txt"></i>
+              <p>文字</p>
+            </li>
+            <li data-type="2">
+              <i class="type-ico res-pic"></i>
+              <p>图片</p>
+            </li>
+            <li data-type="3">
+              <i class="type-ico res-video"></i>
+              <p>视频</p>
+            </li>
+            <li data-type="4">
+              <i class="type-ico res-ppt"></i>
+              <p>课件</p>
+            </li>
+          </ul>
+        </div> -->
+
+        
+
+        <div id="info_panel" class="main main-tree"  style="display:none;">
+          <div class="info-content" >
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 id="content_title" class="panel-title"></h3>
+              </div>
+              <div class="panel-body detail-article">
+                <pre id="content" >
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+  	  </div>
+      <%- include ../common/footer.ejs %>
+    </div>
+    <script type="text/template" id="resource-tpl">
+      <div class="res-list">
+        <span class="res-type">类型</span>
+        <span class="res-title">标题</span>
+        <span>作者</span>
+        <span>时间</span>
+      </div>
+      {@each list as resource}
+      <div class="res-list">
+        <span class="res-type"><i class="ico ico-${resource.content_type|getTypeName}"></i></span>
+        <span class="res-title">
+          <a href="resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+        </span>
+        <span>{@if resource.author}${resource.author}{@/if}{@if !resource.author}admin{@/if}</span>
+        <span>${resource.create_time}</span>
+      </div>
+      {@/each}
+    </script>
+
+    <script type="text/javascript" src='js/user/resource/resource.js'></script>
+    <script type="text/javascript" src="js/user/resource/list.js"></script>
+    <script>
+      $(document).ready(function() {
+        var type = $('#type').val();
+        $('.nav-ul .' + type).addClass('active');
+        if(type == 'txt'){
+          $('.nav-ul .other').show();
+        }
+        if(type == 'other'){
+          $('.nav-ul .txt').show();
+        }
+        moka.user.resource.list.init();
+      });
+    </script>
+  </body>
+</html>

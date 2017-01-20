@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>首页管理</title>
+  <%- include ../common/meta.ejs %>
+  <link rel='stylesheet' href='css/admin/index/index.css' >
+  <style type="text/css">
+    .res-menu li button{width: auto;}
+    .res-menu li .btn-group button:first-child {
+      width: 120px;
+    }
+  </style>
+</head>
+<body>
+  <%- include ../common/header.ejs %>
+	<div class="container">
+    <div class="fpanel">
+      <ul class="nav nav-tabs sub-nav">
+        <li data-type="1" data-mid="100101" class="active"><a href="javascript:void(0);">中心简介</a></li>
+        <li data-type="2" data-mid="100102"><a href="javascript:void(0);">研究队伍</a></li>
+        <li data-type="4" data-mid="100104"><a href="javascript:void(0);">学术成果</a></li>
+        <li data-type="5" data-mid="100401"><a href="javascript:void(0);">数字资源</a></li>
+        <li data-type="6" data-mid="1005"><a href="javascript:void(0);">关于我们</a></li>
+        <li data-type="7" data-mid=""><a href="javascript:void(0);">国防动态</a></li>
+        <li data-type="8" data-mid=""><a href="javascript:void(0);">国防信息</a></li>
+      </ul>
+
+      <div id="editor_panel" class="editor-panel" >
+        <textarea id="editor" placeholder="输入文章正文" autofocus><% if(typeof content != 'undefined'){%><%- content %><% } %></textarea>
+        <div class="btn-wrapper" style="font-size:14px;">
+          <span id="btn_modify" class="btn btn-primary">提交</span>
+        </div>
+      </div>
+
+      <%- include panels/team-panel.ejs %>
+      <%- include panels/tree-panel.ejs %>
+
+      <div id="list_panel" style="display:none;">
+        <div class="res-list">
+          <span class="res-type">类型</span>
+          <span class="res-title">标题</span>
+          <span>作者</span>
+          <span>时间</span>
+          <span>操作</span>
+        </div>
+        <div id="s_top_list" style="border-bottom: 1px dashed #cccccc;"></div>
+        <div id="s_resource_list"></div>
+        <div id="s_pagebar"></div>
+      </div>
+      
+      <div id="pic_panel" style="display:none;font-size:13px;">
+        <div id="news_panel"></div>
+        <div class="btn-wrapper" style="font-size:14px;">
+          <span id="btn_commit" class="btn-commit">提交</span>
+        </div>  
+      </div>
+      <div id="nnn_panel" class="msg-panel " style="display:none;">
+        <div id="news_box" class="msg-list-panel">
+          <div class="msg-oper">
+            <span id="btn_add_news" class="btn btn-default">添加</span>
+            <span id="btn_del_news" class="btn btn-default">删除</span>
+          </div>
+          <ul id="news_list_panel" ></ul>
+        </div>
+        <div id="news_content_panel" class="msg-content-panel">
+          <div class="msg-title"><label>标题</label><input id="news_title" placeholder="输入标题"></div>
+          <textarea id="news_editor" placeholder="输入文章正文" style="height:500px;" ></textarea>
+          <div class="btn-wrapper" style="font-size:14px;">
+            <span id="btn_save_news" class="btn btn-primary">保存</span>
+          </div>  
+        </div>
+      </div>
+    	<div id="msg_panel" class="msg-panel " style="display:none;">
+        <div id="msg_box" class="msg-list-panel">
+          <div class="msg-oper">
+            <span id="btn_add_msg" class="btn btn-default">添加</span>
+            <span id="btn_del_msg" class="btn btn-default">删除</span>
+          </div>
+          <ul id="msg_list_panel" ></ul>
+        </div>
+        <div id="msg_content_panel" class="msg-content-panel">
+          <div class="msg-title"><label>标题</label><input id="msg_title" placeholder="输入标题"></div>
+          <textarea id="msg_editor" placeholder="输入文章正文" style="height:500px;" ></textarea>
+          <div class="btn-wrapper" style="font-size:14px;">
+            <span id="btn_save_msg" class="btn btn-primary">保存</span>
+          </div>  
+        </div>
+      </div>
+    </div>  
+  </div>
+
+  <script type="text/template" id="news-tpl">
+    {@each list as news, index}
+    <div class="news-edit">
+        <dl>
+          <label>首页图文序号${news.index}</label>
+        </dl>
+        <dl>
+          <label>标题：</label><input class="newstitle" name="title" value="${news.title}">
+        </dl>
+        <dl>
+          <label>链接：</label><input class="link" name="link" value="${news.link}">
+        </dl>
+        <dl>
+          <label>图片：</label><input class="pic_url" name="pic_url" value="${news.pic_url}">
+        </dl>
+    </div>
+    {@/each}
+  </script>
+
+  <script type="text/template" id="article-tpl">
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-type"><i class="ico ico-${resource.file_name|getFileType}"></i></span>
+      <span class="res-title">
+        <a href="admin/resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>${resource.author}</span>
+      <span>${resource.create_time}</span>
+      <span class="oper">
+        <a href="admin/resource/detail/${resource.id}" target="_blank" data-id="${resource.id}" class="edit">编辑</a>
+        <a href="javascript:void(0);" data-id="${resource.id}" class="del">删除</a>
+      </span>
+    </div>
+    {@/each}
+  </script>
+
+  <script type="text/template" id="top-resource-tpl">
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-type"><i class="ico ico-${resource.content_type|getTypeName}"></i></span>
+      <span class="res-title">
+        <a href="admin/resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>${resource.author}</span>
+      <span>${resource.create_time}</span>
+      <span><em data-id="${resource.id}" class="btndown btn btn-danger">取消</em></span>
+    </div>
+    {@/each}
+  </script>
+
+  <script type="text/template" id="resource-tpl">
+  {@each list as resource}
+  <div class="res-list">
+    <span class="res-type"><i class="ico ico-${resource.content_type|getTypeName}"></i></span>
+    <span class="res-title">
+      <a href="admin/resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+    </span>
+    <span>${resource.author}</span>
+    <span>${resource.create_time}</span>
+    <span>
+      <em data-id="${resource.id}" class="btnup btn btn-primary">置顶</em>
+      <em data-id="${resource.id}" class="btn btn-primary del-res">删除</em>
+    </span>
+  </div>
+  {@/each}
+  </script>
+
+  <script type="text/template" id="message-tpl">
+  {@each list as item}
+  <li data-id="${item.id}">${item.title}</li>
+  {@/each}
+  </script>
+
+  <script type="text/template" id="team-tpl">
+  {@each list as item}
+  <li data-id="${item.id}">${item.name}<div style="float: right;">
+    <span class="btn btn-primary mv-up" style="padding: 1px 5px;font-size: 12px;margin-right: 10px;">上移</span>
+    <span class="btn btn-primary mv-down" style="padding: 1px 5px;font-size: 12px;">下移</span>
+  </div>
+  </li>
+  {@/each}
+  </script>
+
+  <script type="text/javascript" src="simditor/scripts/module.js"></script>
+  <script type="text/javascript" src="simditor/scripts/hotkeys.js"></script>
+  <script type="text/javascript" src="simditor/scripts/uploader.js"></script>
+  <script type="text/javascript" src="simditor/scripts/simditor.js"></script>
+  <script type="text/javascript" src="js/admin/index/index.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#navfouce .index').addClass('current');
+      moka.admin.index.init();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>404</title>
+	<%- include common/base.ejs %>
+	<style type="text/css">
+		body {margin: 0;}
+		.notfound {
+		  background-image: url('img/astronauta.jpg'), url('img/stars404.png');
+		  background-position: right top, center center;
+		  background-repeat: no-repeat, repeat;
+		  background-size: cover, auto;
+		}
+		.notfound .wrapper {
+		  position: absolute;
+		  top: 60%;
+		  right: 2%;
+		  color: #fff;
+		  width: 635px;
+		  font-size: 19px;
+		  line-height: 29px;
+		  -webkit-font-smoothing: antialiased;
+		  padding: 20px;
+		  font-family: 'Source Sans Pro', sans-serif;
+		}
+		.notfound .wrapper .big {
+		  font-size: 30px;
+		  font-weight: 700;
+		  line-height: 68px;
+		  margin-bottom: 48px;
+		}
+		.notfound .wrapper a {
+		  color: #ffcc00;
+		  text-decoration: none;
+		  font-weight: 700;
+		}
+		@media only screen and (max-width: 666px) {
+		  .notfound .wrapper {
+		    left: auto;
+		    right: 0;
+		    width: 100%;
+		    max-width: 450px;
+		    top: 35%;
+		  }
+		  .notfound .wrapper .big {
+		    font-size: 20px;
+		    line-height: 50px;
+		    margin-bottom: 15px;
+		  }
+		}
+	</style>
+</head>
+<body class="notfound">
+	<div class="wrapper">
+    	<div class="big">
+    		<h1>
+    			<% if(msg) {%>
+    				<%= msg %>
+    			<%}else{%>
+    				你访问的资源找不到啦
+    			<%}%>
+    		</h1>
+    	</div>
+	</div>
+</body>
+</html>

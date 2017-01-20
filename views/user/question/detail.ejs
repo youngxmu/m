@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+	    <title>2016年湖北省控烟知识答题抢红包</title>
+	    <%- include common/meta.ejs %>
+	    <link href="css/index.css" rel="stylesheet" type="text/css" media="all" />  
+	  	<script>
+	      (function (doc, win) { 
+	        var docEl = doc.documentElement,
+	          resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+	          recalc = function () {
+	            var clientWidth = docEl.clientWidth;
+	            if (!clientWidth) return;
+	            docEl.style.fontSize = parseInt(100 * (clientWidth / 320) * 320 / 750,10) + 'px';
+	          };
+	        if (!doc.addEventListener) return; 
+	        doc.addEventListener('DOMContentLoaded', recalc, false);
+	      })(document, window);
+	 	</script>
+	    
+  	</head>
+  	<body>
+  		<div style="display: none;">
+  			<img src="http://xmdx.dev.cnhubei.com/static/wwjy/img/slogo.jpg">
+  		</div>
+  		<input type="hidden" id="complete" value="<%= complete %>">
+
+  		<input type="hidden" id="nickname" value="<%= userInfo.nickname %>">
+  		<input type="hidden" id="openid" value="<%= userInfo.openid %>">
+  		<input type="hidden" id="score" value="<%= userInfo.score %>">
+  		<input type="hidden" id="subscribe" value="<%= userInfo.subscribe %>">
+
+  		<div id="wrapper" class="container" >
+  			<ul id="question_panel" class="question-panel">
+  				
+  			</ul>
+	    </div>
+
+	    <script type="template/javascript" id="question-list-tpl">
+		{@each list as obj, index}
+		<li>
+			<div class="qtitle">
+				<span class="qindex">${index|formatIndex}</span>
+				${obj.qbody }
+				{@if obj.qtype == 3}
+				（多选）
+				{@/if}
+			</div>
+			<div class="qanswer-panel {@if obj.qtype == 3}m{@else}s{@/if}" data-type="${obj.qtype}">
+				$${obj.qanswer|formatAnswer}
+			</div>
+		</li>
+		{@/each}
+		<div class="btn-wrapper">
+			<span id="btn_commit" class="btn-red">答题参与抽奖</span>
+		</div>
+		</script>
+		<script type="text/javascript"  src="js/index.js"></script>
+     	<script type="text/javascript">
+		    $(document).ready(function(){
+		    	game.index.init();
+		    });
+	  	</script>
+  	</body>
+</html>

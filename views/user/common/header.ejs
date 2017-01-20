@@ -1,0 +1,159 @@
+<div class="header">
+  <div class="top-bar">
+      <div class="pull-left">
+        <a href="index"><span class="sys-hlogo"></span></a>
+        <span id="sys_title" class="sys-title"></span>
+      </div>
+      <div class="h-search-bar" style="display:none;">
+        <input id="h_search_key" type="text" class="form-control" placeholder="输入关键字"
+          <% if(typeof keyword != 'undefined') {%>
+          value="<%= keyword %>""
+          <%}%>
+        >
+        <button id="h_btn_search" type="button" class="btn btn-primary">查询</button>
+      </div>
+      <div class="pull-right">
+        <% if(typeof username != 'undefined'){ %>
+          <span id="h_login_panel">
+            <a href="javascript:void(0);">欢迎你，<%= username%></a>
+            <a href="auth/user/logout" class="">退出</a>
+          </span>
+        <% }else{ %>
+          <span id="h_login_panel" style="display:none;">
+            <a href="javascript:void(0);">登录</a><a href="javascript:void(0);">注册</a>
+          </span>
+        <% } %>
+      </div>
+  </div>
+  <h1 class="logo" style="display:none;">
+    <a href="index">
+      <div class="logo-title"></div>
+    </a>
+    <div class="h-search-bar">
+      <input id="h_search_key" type="text" class="form-control" placeholder="资源名称" style="display:inline-block;width:180px;height:34px;line-height:34px;"
+      <% if(typeof keyword != 'undefined') {%>
+      value="<%= keyword %>""
+      <%}%>
+      >
+      <button id="h_btn_search" type="button" class="btn btn-primary">查询</button>
+    </div>
+  </h1>
+</div>
+
+<script type="juicer/template" id="dlg-login-tpl">
+  <div class="login_bg">
+    <div style="position:absolute;left:20px;top:20px;" class="login-logo"></div>
+      <form method="post" id="ajax_login_form" action="auth/user/login">
+        <input name="type" value="1" type="hidden"><!--普通用户登录-->
+        <div class="login_con">
+          <div class="login_list">
+            <div class="login_line">
+              <p>邮箱</p>
+              <input type="text" id="user_email" placeholder="注册邮箱" name="email" class="input_text" >
+            </div>
+            <div class="login_line">
+              <p>密码</p>
+              <input type="password" id="user_password" placeholder="密码" name="password" class="input_text">
+            </div>
+            <div class="btn_wrap" id="login_submit" style="height:48px;">
+              <a href="javascript:void(0)" class="btn_green37">登录</a>
+            </div>
+            <div style="margin:20px 0;height:48px;" class="btn_wrap">
+              <a class="btn_green37" href="user/register">注册</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</script>
+
+<script type="juicer/template" id="dlg-admin-tpl">
+  <div class="login_bg">
+    <div style="position:absolute;left:20px;top:20px;" class="login-logo"></div>
+      <form method="post" id="ajax_admin_form" action="auth/admin/login">
+        <input name="type" value="1" type="hidden"><!--普通用户登录-->
+        <div class="login_con">
+          <div class="login_list">
+            <div class="login_line">
+              <p>邮箱</p>
+              <input type="text" id="username" placeholder="用户名" name="username" class="input_text" >
+            </div>
+            <div class="login_line">
+              <p>密码</p>
+              <input type="password" id="password" placeholder="密码" name="password" class="input_text">
+            </div>
+            <div class="btn_wrap" id="admin_login_submit" style="height:48px;">
+              <a href="javascript:void(0)" class="btn_green37">登录</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</script>
+
+<script>
+  var showLogin = function(){
+    var dd = dialog({
+        title: '登录',
+        content: $('#dlg-login-tpl').html()
+    });
+    dd.showModal();
+    $('#user_email').focus();
+  };
+  var showAdminLogin = function(){
+    var dd = dialog({
+        title: '登录',
+        content: $('#dlg-admin-tpl').html()
+    });
+    dd.showModal();
+    $('#username').focus();
+    
+  };
+  $(document).ready(function() {
+    var url = window.location.href;
+    var title = "国防教育资源库";
+    if(url.indexOf('jsll') != -1){
+      title = '军事理论教学';
+    }
+    if(url.indexOf('jsjn') != -1){
+      title = '军事技能学习';
+    }
+    if(url.indexOf('jsll') != -1){
+      title = '';
+    }
+    if(url.indexOf('paper') != -1){
+      title = '理论学习考试';
+    }
+    if(url.indexOf('hbll') != -1){
+      title = '国防后备力量';
+    }
+    if(url.indexOf('vote') != -1){
+      title = '国防教育测评';
+    }
+    if(url.indexOf('expert') != -1){
+      title = '国防师资力量';
+    }
+    title='';
+    $('#sys_title').text(title);
+   
+    $('#btn_login').click(showLogin);
+
+    $('#h_btn_search').click(function(){
+      var keyword = $('#h_search_key').val();
+      window.location.href = 'resource/list?keyword=' + keyword;
+    });
+
+   
+
+    $('body').on('keydown','#ajax_admin_form',function(e){
+        console.log(1);
+        var event = window.event || e;
+        if(event.keyCode == 13){
+            $('#ajax_admin_form')[0].submit();
+        }
+    });
+
+  });
+</script>

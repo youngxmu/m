@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>学习考试管理</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/paper/paper.css' >
+    <link rel='stylesheet' href='css/user/paper/list.css' >
+    <style type="text/css">
+      .nav-ul li{display: none;}
+      .nav-ul li.index, .nav-ul li.active{display: inline-block;}
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+    <%- include ../common/header.ejs %>
+  	<div class="container">
+      <div class="nav">
+        <ul class="nav-ul">
+          <li class="index">
+            <a href="paper/index" >系统首页</a>
+          </li>
+          <li data-type="理论" style="display:block;" class="active">
+            <a href="javascript:void(0);" >军事理论</a>
+          </li>
+          <li data-type="题库" style="display:block;">
+            <a href="javascript:void(0);" >题库浏览</a>
+          </li>
+          <li data-type="test" style="display:block;">
+            <a href="javascript:void(0);" >模拟考试</a>
+          </li>
+          <li data-type="history" style="display:block;">
+            <a href="javascript:void(0);" >考试查询</a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar" style="padding:0;">
+        <ul id="menu_panel" class="memu-panel"></ul>
+        <ul id="topic_tree" class="ztree" style="display:none;"></ul>
+      </div>
+      <div class="main">
+        <div class="info-content" >
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 id="content_title" class="panel-title"></h3>
+            </div>
+            <div class="panel-body detail-article">
+              <pre id="content" >
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+	  </div>
+    <%- include ../common/footer.ejs %>
+    </div>
+    <script type="juicer/template" id="paper-list-tpl">
+    <div class="paper-list-title" style="display:none;">
+        <div class="name">名称</div>
+        <div class="desc">描述</div>
+        <div class="oper">操作</div>
+    </div>
+    {@each list as obj, index}
+    <div class="paper-list">
+      <div class="name">${obj.name}</div>
+      <div class="desc">${obj.description}</div>
+      <div class="oper">
+        <span data-id="${obj.id}" class="view">
+          <a href="paper/detail/${obj.id}">查看</a>
+        </span>
+      </div>
+    </div>
+    {@/each}
+    </script>
+    
+    <script type="juicer/template" id="question-type-tpl">
+    <div class="q-type-list">
+    {@each list as obj, index}
+      <div data-id="${obj.id}" class="q-type">
+        ${index|formatIndex}.&nbsp;${obj.qtype|getQType}
+      </div>
+    {@/each}
+    </div>
+    </script>
+
+    <script type="juicer/template" id="question-list-tpl">
+    {@each list as obj, index}
+    <div data-id="${obj.id}" class="question-list" style="float:left;">
+        <div class="qbody">${obj.qbody}</div>
+        {@if obj.qtype != 1}
+          <div class="qanswer">$${obj.qanswer|formatAnswer}</div>
+        {@/if}
+        <div class="showanswer"><a href="javascript:void(0);">显示答案</a></div>
+        <div class="rtanswer" style="display: none;">正确答案：${obj.rtanswer}</div>
+    </div>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="resource-tpl">
+    <div class="res-list">
+      <span class="res-type">类型</span>
+      <span class="res-title">标题</span>
+      <span>作者</span>
+      <span>时间</span>
+    </div>
+    {@each list as resource}
+    <div class="res-list">
+      <span class="res-type"><i class="ico ico-${resource.file_name|getFileType}"></i></span>
+      <span class="res-title">
+        <a href="resource/detail/${resource.id}" target="_blank">${resource.title}</a>
+      </span>
+      <span>${resource.author}</span>
+      <span>${resource.create_time}</span>
+    </div>
+    {@/each}
+    </script>
+    <script type="text/template" id="menu_tpl">
+    {@each list as resource}
+    <li data-id="${resource.id}">
+      <a href="javascript:void(0);" class="btn btn-info btn-lg active" role="button">${resource.title}</a>
+    </li>
+    {@/each}
+    </script>
+
+    
+    <script type="text/javascript" src="js/common/question.js"></script>
+    <script type="text/javascript" src="js/user/paper/paper.js"></script>
+    <script type="text/javascript" src="js/user/paper/list.js"></script>
+    
+    <script>
+      $(document).ready(function() {
+          moka.user.paper.list.init();
+      });
+    </script>
+  </body>
+</html>

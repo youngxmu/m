@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include common/meta.ejs %>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>火箭军指挥学院</title>
+  </head>
+  <style>
+
+</style>
+  <body>
+    <%- include common/header.ejs %>
+    <div class="cont">
+    	<div class="new1Box">
+        <div class="l_scorll">
+          <div class="Warp" id="Warp">
+            <ul id="pic">
+              <!-- <li><a target="_blank" href=""><img src="images/金刚-~3.jpg" width="319" height="240"></a></li>
+              <li><a target="_blank" href=""><img src="images/美国战斧精确打击.jpg" width="319" height="240"></a></li>
+              <li><a target="_blank" href=""><img src="images/以色列G-550预警机.jpg" width="319" height="240"></a></li>
+              <li><a target="_blank" href=""><img src="images/以色列预警机.jpg" width="319" height="240"></a></li>
+              <li><a target="_blank" href=""><img src="images/5.jpg" width="319" height="240"></a></li> -->
+            </ul>
+          </div>
+          <p class="s_b_p"><i></i>
+        </div>
+        <div class="new1Mid" style="width:845px;">
+          <ul class="new1Title2">
+            <h1 class="new1Title2"><span>国防教育资源</span></h1>
+            <a href="resource/list" style="position:relative;top:-30px; left:790px; font-size:12px; color:#696;">>>更多</a>
+            <div class="clears"></div>
+          </ul>
+          <div class="new1New">
+            <table id="gfjy" class="newBox"></table>
+          </div>
+        </div>
+        <!--new1Mid/
+        <div class="new1Right">
+          <h1 class="new1Title2"><span>国防教育测评</span></h1>
+          <a style="position:relative;top:-22px; left:280px; font-size:12px; color:#696">>>更多</a>
+          <ul id="gfjycp"></ul>
+        </div>
+
+        -->
+        <div class="clears"></div>
+      </div>
+
+      <div class="new3Box">
+        <div class="new3Mid">
+          <h1 class="new1Title2"><span>军事理论教学</span></h1>
+          <a href="jsll/list" style="position:relative;top:-22px; left:385px; font-size:12px; color:#696">>>更多</a>
+          <ul id="jsll"></ul>
+        </div>
+        <div class="new3Left">
+          <h1 class="new1Title2"><span>军事技能教学</span></h1>
+          <a herf="jsjn/list" style="position:relative;top:-22px; left:640px; font-size:12px; color:#696">>>更多</a>
+          <div class="new3LeftBox">
+            <dl>
+              <dt><a href="newinfo.html"><img src="images/new3leftiimg.jpg" width="158" height="97" /></a></dt>
+              <dd class="new3ddTitle">有图片的放一个示例在这里</dd>
+              <dd>这里是该图片对应的部分部分详细内容这里是该图片对应的部分详细内容</dd>
+            </dl>
+            <img src="images/fenge.jpg" width="3" height="193" style="float:left;margin-top:18px;" />
+            <ul id="jsjn" class="new3LeftNew">
+              
+            </ul>
+            <!--new3LeftNew/--> 
+            
+          </div>
+        </div>
+        <div class="clears"></div>
+      </div>
+
+
+      <div class="new2Box">
+        <div class="new2Mid2">
+          <ul class="new1Title2">
+            <h1 class="new1Title2"><span>学习考试管理</span></h1>
+            <a href="paper/list" style="position:relative;top:-30px; left:540px; font-size:12px; color:#696">>>更多</a>
+            <div class="clears"></div>
+          </ul>
+          <table id="paper" class="newBox">
+            <!--newList/-->
+          </table>
+        </div>
+      </div>
+      <div class="clears"></div>
+    </div>
+    <script type="text/template" id="article_list_tpl_b">
+    {@each list as resource}
+    <li>
+      <a href="article/detail/${resource.id}" target="_blank">${resource.title}</a>
+      <span class="date">${resource.create_time|getMD}</span>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="article_list_tpl">
+    {@each list as resource}
+    <tr class="newTitle">
+      <td>
+        <div>
+          <a href="article/detail/${resource.id}"  target="_blank">${resource.title}</a>
+          <span>${resource.create_time|getMD}</span>
+        </div>
+      </td>
+    </tr>
+    <tr class="newList">
+      <td>${resource.description}</td>
+    </tr>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="article_list_tpl2">
+    {@each list as resource}
+    <li>
+      <a href="article/detail/${resource.id}" target="_blank">${resource.title}</a>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="paper_list_tpl">
+    {@each list as resource}
+    <li>
+      <a href="article/detail/${resource.id}" target="_blank">${resource.title}</a>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="paper_list_tpl3">
+    {@each list as resource}
+    <li>
+      <a href="jsll/list" target="_blank">${resource.name}</a>
+      <span class="date">${resource.create_time|getMD}</span>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="paper_list_tpl4">
+    {@each list as resource}
+    <li>
+      <a href="paper/detail/${resource.id}" target="_blank">${resource.title}</a>
+      <span class="date">${resource.create_time|getMD}</span>
+    </li>
+    {@/each}
+    </script>
+
+    <script type="text/template" id="paper_list_tpl5">
+    {@each list as resource}
+    <tr class="newTitle">
+      <td>
+        <div>
+          <a href="paper/detail/${resource.id}"  target="_blank">${resource.name}</a>
+          <span>${resource.create_time|getMDH}</span>
+        </div>
+      </td>
+    </tr>
+    <tr class="newList">
+      <td>${resource.description}</td>
+    </tr>
+    {@/each}
+    </script>
+
+    <script type="text/javascript" src="js/index.js"></script>
+    <script>
+      $('#nav_index').addClass('aHover');
+      $(document).ready(function() {
+        moka.index.init({});
+      });
+
+    </script>
+  </body>
+</html>

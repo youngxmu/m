@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>注册成功</title>
+    <%- include ../common/meta.ejs %>
+  </head>
+  <body>
+
+  <div class="login_bg">
+    <div style="" >注册成功</div>
+    <div style="" >
+      <a href="auth/login">登录</a>
+    </div>
+  </div>
+ 	
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#login_submit').click(function(){
+        $('#ajax_login_form')[0].submit();
+      });
+
+      $('body').on('keydown','#ajax_login_form',function(e){
+        var event = window.event || e;
+        if(event.keyCode == 13){
+          $('#ajax_login_form')[0].submit();
+        }
+      });
+    });
+  </script>
+  </body>
+</html>

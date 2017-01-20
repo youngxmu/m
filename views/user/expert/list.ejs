@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ../common/meta.ejs %>
+    <title>师资力量</title>
+    <link rel='stylesheet' href='css/user/expert/expert.css' >
+    <link rel='stylesheet' href='css/user/expert/list.css' >
+    <style type="text/css">
+      .nav-ul li{display: none;}
+      .nav-ul li.index, .nav-ul li.active{display: inline-block;}
+      .repos{position: absolute;right: 10px;top: 10px;}
+    </style>
+  </head>
+  <body>
+    <input id="type" type="hidden" value="<%= type %>">
+    <div class="bg">
+      <%- include ../common/header.ejs %>
+      <div class="container" style="padding:0;">
+        <!-- <div class="nav">
+          <ul class="nav-ul">
+            <li class="index">
+              <a href="hbll/index">系统首页</a>
+            </li>
+          </ul>
+        </div> -->
+        <div id="nav_tabs" class="nav">
+          <ul class="nav-ul">
+            <li class="index">
+              <a href="expert/index">系统首页</a>
+            </li>
+            <li target="list_panel" class="base">
+              <a href="expert/list/base">基本搜索</a>
+            </li>
+            <li target="type_panel" class="type">
+              <a href="expert/list/type" >分类查看</a>
+            </li>
+          </ul>
+        </div>
+        <div class="main" >
+          <div id="list_panel" >
+            <%if(type == 'base'){%>
+            <div class="search-bar">
+              <input id="search_key" type="text" value="<%= key %>" class="form-control" placeholder="输入姓名" style="display:inline-block;width:180px;height:34px;line-height:34px;">
+              <button id="btn_search" type="button" class="btn btn-primary" >查询</button>
+            </div>
+            <%}%>
+          </div>
+          <%if(type == 'type'){%>
+          <div class="search-bar repos">
+            <input id="search_key" type="text" value="<%= key %>" class="form-control" placeholder="输入姓名" style="display:inline-block;width:180px;height:34px;line-height:34px;">
+            <button id="btn_search" type="button" class="btn btn-primary" >查询</button>
+          </div>
+          <%}%>
+
+          <div id="type_panel" style="display:none;">
+            <div class="search-bar">
+              <button type="button" class="btn btn-primary">地方专家学者</button>
+              <button type="button" class="btn btn-primary">军队专家学者</button>
+            </div>
+          </div>
+          <div id="expert_list" ></div>
+        </div>
+        <div id="pagebar" style="background-color:rgba(255,255,255,0.3);margin-top: 10px;"></div>  
+      </div>
+      <%- include ../common/footer.ejs %>
+    </div>
+    <script type="juicer/template" id="expert-list-tpl">
+    <div class="expert-list-title" style="display:none;">
+      <div class="">序号</div>
+      <div class="name">姓名</div>
+      <div class="name">出生年月</div>
+      <div class="name">职称</div>
+      <div class="name">电话</div>
+      <div class="name">地址</div>
+      <div class="oper">操作</div>
+    </div>
+    {@each list as obj, index}
+    <div class="expert-list">
+      <div class="name">${index|formatIndex}</div>
+      <div class="name">${obj.name}</div>
+      <div class="name">${obj.birthday}</div>
+      <div class="name">${obj.title}</div>
+      <div class="name">${obj.tel}</div>
+      <div class="desc">${obj.address}</div>
+      <div class="oper">
+        <span data-id="${obj.id}" >
+          <a class="btn btn-info" href="expert/detail/${obj.id}" >查看</a>
+        </span>
+      </div>
+    </div>
+    {@/each}
+    </script>
+    
+    <script type="juicer/template" id="dlg-edit-expert-tpl">
+    <div class="expert-edit">
+      <dl>
+        <dt>试卷名称</dt>
+        <dd>
+          <input id="expert_name" value="${name}">
+        </dd>
+      </dl>
+      <dl>
+        <dt>试卷描述</dt>
+        <dd>
+          <input id="expert_desc" value="${description}">
+        </dd>
+      </dl>
+      <dl id="expert_questions" class="expert-questions">
+        <dt>试卷题目<div data-id="${id}" class="btn-edit-questions">编辑题目</div></dt>
+        <dd>
+          {@include questionListTpl, questionListData}
+        </dd>
+      </dl>
+    </div>
+    </script>
+
+    <script type="juicer/template" id="question-list-tpl">
+    {@each list as obj, index}
+    <div data-id="${obj.id}" class="expert-list">
+        <div class="qtype">
+          ${index|formatIndex}.&nbsp;${obj.qtype|getQType}
+        </div>
+        <div class="qbody">${obj.qbody}</div>
+        {@if obj.qtype == 2}
+          <div class="qanswer">$${obj.qanswer|formatAnswer}</div>
+        {@/if}
+        <div class="rtanswer">正确答案：${obj.rtanswer}</div>
+    </div>
+    {@/each}
+    </script>
+
+    <script type="text/javascript" src="js/user/expert/list.js"></script>
+    
+    <script>
+      $(document).ready(function() {
+          var type = $('#type').val();
+          $('.nav-ul .' + type).addClass('active');
+          moka.user.expert.list.init();
+        });
+    </script>
+  </body>
+</html>

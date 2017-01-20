@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>国防教育资源库</title>
+    <%- include ../common/meta.ejs %>
+    <link rel='stylesheet' href='css/user/resource/resource.css' >
+    <link rel='stylesheet' href='css/user/resource/resource.css' />
+    <style type="text/css">
+    .header{
+        display: none;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="bg">
+  	<%- include ../common/header.ejs %>
+    <div class="container">
+      <div class="index-main" >
+        <div class="sys-logo"><div class="sys-title"></div></div>
+        <div class="sys-enter">
+          <a href="resource/list"><div class="btn btn-lg btn-primary btn-shadow">进入系统</div></a>
+        </div>
+        <div class="login-panel" style="display:none;">
+          <div class="sys-info">
+            <div class="sys-info-txt">
+              国防教育图像，文字，课件，视频，资源都在这里
+            </div>
+            <div class="sys-info-img">
+              <div class="">
+                <img src="img/resource/file.png" class="img-thumbnail">
+              </div>
+              <div class="">
+                <img src="img/resource/video.png" class="img-thumbnail">
+              </div>
+              <div class="">
+                <img src="img/resource/data.png" class="img-thumbnail">
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <script type="text/javascript" src='js/user/resource/resource.js'></script>
+  	<script type="text/javascript">
+  		$(document).ready(function(){
+  			moka.user.resource.init();
+  		});
+  	</script>
+  </body>
+</html>

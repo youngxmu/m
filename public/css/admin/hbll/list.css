@@ -1,0 +1,35 @@
+.container{font-size: 0;height: 100%;}
+.sidebar {
+  width: 179px;
+  border-right: 1px solid #cccccc;
+  display: inline-block;
+  height: 100%;
+}
+.sidebar .tree-opr{
+  line-height: 30px;
+  font-size: 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+.sidebar .tree-opr a{
+  display: inline-block;width: 40px;text-align: center;
+  font-size: 12px;vertical-align: top;
+}
+
+.main{width: 780px;display: inline-block;vertical-align: top;
+  padding: 10px 20px;
+  height: 100%;
+  padding-bottom: 100px;
+  position: relative;
+}
+.btn-wrapper{
+  height: 80px;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+.btn-wrapper .btn{
+  padding: 6px 20px;
+}
+.simditor{height: 100%;}

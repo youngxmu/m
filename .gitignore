@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+.idea
+logs/*.log*
+public/uploads/*
+public/jsjn/JPG/*
+public/jsjn/PNG/*
+public/jsjn/jpg/*
+public/jsjn/png/*
