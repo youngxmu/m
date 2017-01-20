@@ -27,14 +27,12 @@
 			_this.loadResList();
 		},
 		initEvent : function(){
-			$('body').on('click', '.add-key', _this.add);
-			$('body').on('click', '.del-key', _this.del);
-			$("#res_list").dragsort({ 
-				dragSelector: "a", 
-				dragBetween: true, 
-				// dragEnd: _this.saveOrder, 
-				placeHolderTemplate: '<a class="list-group-item"></a>'
-			});
+			// $('body').on('click', '.add-key', _this.add);
+			// $('body').on('click', '.del-key', _this.del);
+			
+		},
+		saveOrder : function(){
+			console.log(1);
 		},
 		loadTop : function(){
 			$.ajax({
@@ -71,6 +69,13 @@
 						html = '<div style="line-height:30px;background:#FFEBE5;padding-left:12px;">当前未设置排序</div>';
 					}
 					_this.$sortPanel.html(html);
+					$("#res_sort_list").dragsort({ 
+						dragSelector: "li", 
+						dragBetween: true, 
+						dragEnd: _this.saveOrder, 
+						placeHolderTemplate: '<li class="list-group-item"><span class="sort-title"><span class="sort-index"></span>&nbsp;</span><span class="sort-del"><span class="glyphicon glyphicon-trash"></span></span></li>'
+					});
+					
 				}
 			});
 		},
