@@ -30,13 +30,14 @@
   </div>
 
   <script type="text/template" id="sort-list-tpl">
+  
     {@each list as obj, index}
-    <a href="javascript:void(0);" class="list-group-item">
+    <li class="list-group-item">
       <span class="sort-title"><span class="sort-index">${index|formatIndex}</span>${obj.title}</span>
       <span class="sort-del">
         <span class="glyphicon glyphicon-trash"></span>
       </span>
-    </a>
+    </li>
     {@/each}
   </script>
 
