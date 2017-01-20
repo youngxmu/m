@@ -94,7 +94,6 @@ router.post('/setdown', function (req, res, next) {
     });
 });
 
-
 router.get('', function (req, res, next) {
     res.render('admin/index/index');
 });
@@ -168,6 +167,7 @@ router.post('/modules', function (req, res, next) {
     	}
     });
 });
+
 router.post('/updateModule', function (req, res, next) {
 	var id = req.body.id;
 	var keywords = req.body.keywords;
@@ -419,7 +419,7 @@ router.post('/sort', function (req, res, next) {
 
 router.get('/sort/:id', function (req, res, next) {
     var id = req.params.id
-    res.render('admin/index/sort', {id,id});
+    res.render('admin/index/sort', {id:id});
 });
 
 
