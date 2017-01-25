@@ -1,2 +1,0 @@
-moka.article.data = {
-};
