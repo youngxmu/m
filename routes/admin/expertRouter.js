@@ -95,7 +95,7 @@ router.get('/detail/:id', function (req, res, next) {
         expertModel.getExpertById(id, function (err, result) {
             if (!err && result) {
                 var expert = result;
-                expert.avatarView = config.imgHost + '/uploads/' + expert.avatar;
+                expert.avatarView = config.imgHost + expert.avatar;
                 res.render('admin/expert/detail', expert);
             } else {
                 res.render('error', {
@@ -142,7 +142,7 @@ router.get('/edit/:id', function (req, res, next) {
                     expert.birthday = commonUtils.formatShortDate(expert.birthday);    
                 }
                 
-                expert.avatarView = config.imgHost + '/uploads/' + expert.avatar;
+                expert.avatarView = config.imgHost + expert.avatar;
 
                 res.render('admin/expert/edit', expert);
             } else {
@@ -275,7 +275,7 @@ router.get('/result/edit/:id', function (req, res) {
         articleModel.getArticleById(id, function (err, article) {
             if(!err){
                 article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
 

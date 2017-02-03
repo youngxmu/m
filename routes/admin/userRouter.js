@@ -1,7 +1,7 @@
 var express = require('express');
 var config = require("../../config");
 var logger = require("../../lib/log.js").logger("userRouter");
-var commonUtils = require("../../lib/utils.js");
+var utils = require("../../lib/utils.js");
 
 var userModel = require('../../models/userModel.js');
 
@@ -32,7 +32,7 @@ router.post('/querylist', function (req, res, next) {
 
         logger.info("查找:", start, pageSize);
         userModel.queryUserList(isVirtual, createFrom, start, pageSize, function (err, result) {
-            if (err || !result || !commonUtils.isArray(result)) {
+            if (err || !result || !utils.isArray(result)) {
                 logger.error("查找出错", err);
                 res.json({
                     success: false,
@@ -168,12 +168,14 @@ router.post('/queryUserByEmail', function (req, res, next) {
 router.post('/save', function (req, res) {
     var id = req.body.id;
     var name = req.body.name;
-    var tel = req.body.tel;
-    var email = req.body.email;
+    var nickname = req.body.nickname;
+    var school = req.body.school;
+    var clazz = req.body.clazz;
+    var no = req.body.no;
     var password = req.body.password;//明文
-    password = commonUtils.md5(password);//加盐生成真实入库密码
+    password = utils.md5(password);//加盐生成真实入库密码
     if(id){
-        userModel.update(id, name, tel, email, password, function (err, data) {
+        userModel.update(id, name, nickname, school, clazz, no, password, function (err, data) {
             if (!err) {
                 res.json({
                     success: true,
@@ -187,7 +189,7 @@ router.post('/save', function (req, res) {
             }
         });
     }else{
-        userModel.insert(name, tel, email, password, function (err, data) {
+        userModel.insert(name, nickname, school, clazz, no, password, function (err, data) {
             if (!err) {
                 res.json({
                     success: true,
@@ -201,7 +203,6 @@ router.post('/save', function (req, res) {
             }
         });
     }
-    
 });
 var xlsx = require('node-xlsx');  
 router.post('/import', function (req, res) {
@@ -215,7 +216,7 @@ router.post('/import', function (req, res) {
         var user = data[index];
         user.push(new Date());
         user.push(1);
-        user.password = utils.md5(user.password);
+        user[4] = utils.md5(user[4] + '');
         users.push(user);
     }
     userModel.importUsers(users, function (err, data) {
@@ -243,6 +244,36 @@ router.post('/del', function (req, res) {
 
     var id = req.body.id;
     userModel.del(id, function (err, data) {
+        if (!err) {
+            res.json({
+                success: true,
+                msg: "删除成功"
+            });
+        } else {
+            res.json({
+                success: false,
+                msg: "删除失败"
+            });
+        }
+    });
+});
+
+router.post('/dels', function (req, res) {
+    if(!req.session || !req.session.admin){
+        return res.json({
+            success: false,
+            msg : '没有权限'
+        });
+    }
+
+    var ids = req.body.ids;
+    if(!ids){
+        return res.json({
+            success: false,
+            msg : '未选中用户'
+        });
+    }
+    userModel.dels(ids, function (err) {
         if (!err) {
             res.json({
                 success: true,

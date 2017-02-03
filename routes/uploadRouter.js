@@ -7,11 +7,6 @@ var router = express.Router();
 //var imgPrefix = "http://localhost:3000/uploads";
 
 //uri: upload/img
-router.get('/img', function(req, res) {
-	res.render('upload', {});
-});
-
-//uri: upload/img
 router.post('/img', function(req, res, next) {
 	var files = req.files.file;
 	if(!files){
@@ -25,7 +20,6 @@ router.post('/img', function(req, res, next) {
 	res.json({
 		success: true,
 		fileName : fileName,
-		file_path: filePath,
 		filePath: filePath
 	});
 });
@@ -37,14 +31,14 @@ router.post('/file', function(req, res, next) {
 		files = req.files.upload_file;
 	}
 	var file = files[0];//?req.files.file[0]:req.files.profile[0];
-	var filePath = file.path.replace(config.uploadDir, config.imgHost + '/uploads'); 
-	var index = filePath.lastIndexOf('/');
-	var relPath = file.path.replace(config.uploadDir, ''); 
-	var fileName = filePath.substr(index + 1);
+	var filePath = file.path.replace(config.uploadDir, config.host + '/uploads'); 
+	// var index = filePath.lastIndexOf('/');
+	var fileName = file.path.replace(config.uploadDir, ''); 
+	// var fileName = filePath.substr(index + 1);
 	res.json({
 		success: true,
 		fileName : fileName,
-		relPath : relPath,
+		// relPath : relPath,
 		filePath: filePath
 	});
 });

@@ -59,7 +59,7 @@ exports.queryTeacherList = function (username, tel, start, pageSize, callback) {
 	if(tel){
 		sql += ' tel like %' + tel + '% ';
 	}
-	sql += ' order by create_time asc limit ?,?;';
+	sql += ' order by id asc limit ?,?;';
 	params.push(start);
 	params.push(pageSize);
     db.query(sql,params, callback);

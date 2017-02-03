@@ -49,7 +49,7 @@ router.get('/detail/:id', function (req, res, next) {
         articleModel.getArticleById(id, function (err, article) {
             if(!err){
                 article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
 
@@ -99,7 +99,7 @@ router.get('/upload', function (req, res, next) {
                 var article = result;
                 article.isAdmin = isAdmin;
                 article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
                 
@@ -155,7 +155,7 @@ router.get('/edit/:id', function(req, res, next) {
                 var article = result;
                 article.isAdmin = isAdmin;
                 article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
                 
@@ -202,7 +202,7 @@ router.get('/editres/:id', function(req, res, next) {
                 var article = result;
                 article.isAdmin = isAdmin;
                 article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
                 
@@ -249,7 +249,7 @@ router.get('/edit', function(req, res, next) {
                 var article = result;
                 article.isAdmin = isAdmin;
                 article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
                 
@@ -297,7 +297,7 @@ router.get('/editres', function(req, res, next) {
                 var article = result;
                 article.isAdmin = isAdmin;
                 article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
                 
@@ -365,7 +365,7 @@ router.post('/detail/:id', function (req, res, next) {
             var article = result;
             article.isAdmin = isAdmin;
             article.update_time = commonUtils.formatDate(new Date(article.update_time));
-            if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+            if(article.file_name){article.file_name = config.imgHost + article.file_name;}
             article.menuList = menuUtils.getMenuPathList(article.menu_id);
             article.file_type = commonUtils.getFileTypeName(article.file_name);
             res.json({

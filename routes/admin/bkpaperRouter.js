@@ -105,7 +105,7 @@ router.get('/detail/:id', function (req, res, next) {
                 var paper = result;
                 paper.isAdmin = isAdmin;
                 paper.update_time = commonUtils.formatDate(new Date(paper.update_time));
-                paper.file_name = config.imgHost + '/uploads/' + paper.file_name;
+                paper.file_name = config.imgHost + paper.file_name;
                 paper.menuList = menuUtils.getMenuPathList(paper.menu_id);
                 paper.file_type = commonUtils.getFileTypeName(paper.file_name);
                 res.render('admin/paper/detail', paper);

@@ -23,7 +23,6 @@ router.post('/list', function (req, res, next) {
         });
     }
 
-
     var username = req.body.username;
     var tel = req.body.tel;
     var pageNo = parseInt(req.body.pageNo);

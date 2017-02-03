@@ -844,7 +844,7 @@
 						var data = eval('(' + info.response + ')');
 						_this.fileName = data.fileName;
 						$('#team_avatar').val(_this.fileName);
-						$('#avatar_team').html('<img src="' + data.file_path + '">');
+						$('#avatar_team').html('<img src="' + data.filePath + '">');
 						if (data.success == false) {
 							util.dialog.infoDialog(data.msg);
 							return;

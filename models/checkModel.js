@@ -1,6 +1,3 @@
-/**
- * 文章审核管理
- */
 var db = require('../lib/db.js');
 var logger = require("../lib/log.js").logger("checkModel");
 var commonUtils = require("../lib/utils.js");

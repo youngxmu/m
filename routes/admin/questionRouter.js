@@ -60,7 +60,7 @@ router.get('/detail/:id', function (req, res, next) {
             var question = result;
             question.isAdmin = isAdmin;
             question.update_time = commonUtils.formatDate(new Date(question.update_time));
-            question.file_name = config.imgHost + '/uploads/' + question.file_name;
+            question.file_name = config.imgHost + question.file_name;
             question.menuList = menuUtils.getMenuPathList(question.menu_id);
             question.file_type = commonUtils.getFileTypeName(question.file_name);
             res.render('admin/question/detail', question);

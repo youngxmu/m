@@ -81,3 +81,11 @@
 .user-edit-panel dt{width: 60px;text-align: right;padding-right: 10px;}
 .user-edit-panel dd input{width: 240px; border: 1px solid #cccccc;line-height: 30px;padding: 0 5px;}
 
+.user-table tbody tr{
+	cursor: pointer;
+}
+
+.user-table tbody tr.active{
+	background-color: #337ab7;
+	color: #ffffff;
+}

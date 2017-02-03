@@ -91,7 +91,7 @@ router.get('/detail/:id', function (req, res, next) {
                 console.log(article);
                 article.isAdmin = isAdmin;
                 article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
 
@@ -142,7 +142,7 @@ router.get('/download/:id', function (req, res, next) {
         articleModel.queryArticleById(id, function (err, result) {
             if (!err && result) {
                 var article = result;
-                var link = config.imgHost + '/uploads/' + article.file_name;
+                var link = config.imgHost + article.file_name;
                 console.log(link);
                 res.redirect(link);
             } else {
@@ -268,7 +268,7 @@ router.post('/queryArticleByTitle', function (req, res, next) {
                     result[i].create_time = commonUtils.formatDate(date);
                     var article = result[i];
                     article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                    if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                    if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                     article.menuList = menuUtils.getMenuPathList(article.menu_id);
                     article.file_type = commonUtils.getFileTypeName(article.file_name);
                 }
@@ -337,7 +337,7 @@ router.post('/queryArticleByMenu', function (req, res, next) {
                     var article = result[i];
                     article.update_time = commonUtils.formatDate(new Date(article.update_time));
                     article.org_path = article.file_name;
-                    if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                    if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                     article.menuList = menuUtils.getMenuPathList(article.menu_id);
                     article.file_type = commonUtils.getFileTypeName(article.file_name);
                 }

@@ -34,7 +34,7 @@ router.get('/detail/:id', function (req, res, next) {
             if (!err && result) {
                 var article = result;
                 article.update_time = commonUtils.formatDate(new Date(article.update_time));
-                if(article.file_name){article.file_name = config.imgHost + '/uploads/' + article.file_name;}
+                if(article.file_name){article.file_name = config.imgHost + article.file_name;}
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
 

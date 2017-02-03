@@ -90,7 +90,7 @@ router.get('/detail/:id', function (req, res, next) {
         expertModel.getExpertById(id, function (err, result) {
             if (!err && result) {
                 var expert = result;
-                expert.avatar = config.imgHost + '/uploads/' + expert.avatar;
+                expert.avatar = config.imgHost + expert.avatar;
                 res.render('user/expert/detail', expert);
             } else {
                 res.render('error', {
@@ -115,7 +115,7 @@ router.post('/detail/:id', function (req, res, next) {
         expertModel.getExpertById(id, function (err, result) {
             if (!err && result) {
                 var expert = result;
-                expert.avatar = config.imgHost + '/uploads/' + expert.avatar;
+                expert.avatar = config.imgHost + expert.avatar;
                 res.render('user/expert/detail', expert);
             } else {
                 res.render('error', {

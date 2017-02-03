@@ -66,25 +66,66 @@ exports.updateUserStatus = function (email, status, callback) {
 }
 
 
-exports.insert = function (name, tel, email, password, callback) {
+// exports.insert = function (name, tel, email, password, callback) {
+//     var sql = 'insert into user ';
+//     sql += '(name, tel, email, password, create_time, status) ';
+//     sql += 'values(?,?,?,?,?,?);';
+//     db.query(sql, [name, tel, email, password, new Date(), status], callback);
+// };
+
+// exports.update = function (id, name, tel, email, password, callback) {
+//     var sql = 'update user set name = ? ';
+//     sql += ' ,tel = ? ';
+//     sql += ' ,email = ? ';
+//     sql += ' ,password = ? ';
+//     sql += ' where id = ?;';
+//     db.query(sql, [name, tel, email, password, id], callback);
+// };
+
+exports.insert = function (name, nickname, school, clazz, no, password, callback) {
     var sql = 'insert into user ';
-    sql += '(name, tel, email, password, create_time, status) ';
-    sql += 'values(?,?,?,?,?,?);';
-    db.query(sql, [name, tel, email, password, new Date(), status], callback);
+    sql += '(name, nickname, school, clazz, no, password, create_time, status) ';
+    sql += 'values(?,?,?,?,?,?,?,?);';
+    db.query(sql, [name, nickname, school, clazz, no, password, new Date(), 1], callback);
 };
 
-exports.update = function (id, name, tel, email, password, callback) {
+exports.update = function (id, name, nickname, school, clazz, no, password, callback) {
+    var params = [];
     var sql = 'update user set name = ? ';
-    sql += ' ,tel = ? ';
-    sql += ' ,email = ? ';
-    sql += ' ,password = ? ';
+    params.push(name);
+    if(nickname){
+        sql += ' , nickname = ? ';
+        params.push(nickname);
+    }
+    if(school){
+        sql += ' , school = ? ';
+        params.push(school);
+    }
+    if(clazz){
+        sql += ' , clazz = ? ';
+        params.push(clazz);
+    }
+    if(no){
+        sql += ' , no = ? ';
+        params.push(no);
+    }
+    if(password){
+        sql += ' , password = ? ';
+        params.push(password);
+    }
     sql += ' where id = ?;';
-    db.query(sql, [name, tel, email, password, id], callback);
+    params.push(id);
+    db.query(sql, params, callback);
 };
 
 exports.del = function (id, callback) {
     var sql = 'delete from user where id = ?;';
     db.query(sql, [id], callback);
+};
+
+exports.dels = function (ids, callback) {
+    var sql = 'delete from user where id in (' + ids + ');';
+    db.query(sql, [], callback);
 };
 
 exports.insertUsers = function (params, callback) {
@@ -96,7 +137,7 @@ exports.insertUsers = function (params, callback) {
 
 exports.importUsers = function (params, callback) {
     var sql = 'insert into user ';
-    sql += ' (name, school, class, no, password, create_time, status) ';
+    sql += ' (name, school, clazz, no, password, create_time, status) ';
     sql += ' values ? ;';
     db.query(sql, [params],callback);
 };

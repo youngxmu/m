@@ -100,7 +100,6 @@ var util = {
 			+ '</div>',
 	date : {
 		format : function(longTime){
-			console.log(longTime);
 			var date = new Date(longTime);
 
 			var Year= date.getFullYear();//ie火狐下都可以 
@@ -166,9 +165,9 @@ var util = {
 			callback(dd);
 		},
 		toastDialog : function(msg, timeout, callback){
-			if(!timeout){
-				timeout = 1500;
-			}
+			// if(!timeout){
+				timeout = 800;
+			// }
 			var dd = dialog({
 			    content: msg,
 			    width : 240,

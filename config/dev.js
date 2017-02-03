@@ -9,7 +9,7 @@ module.exports = {
 	uploadDir: path.resolve(__dirname, '..', 'public/uploads'),
 	uploadFileDir: path.resolve(__dirname, '..', 'public/uploads/file'),
 	redirectPath : '/',
-	imgHost: 'http://192.168.2.231:8200',
+	imgHost: 'http://192.168.2.231:8200/uploads',
 	sysHost: 'http://192.168.2.231:8200',
 	env: 'dev',
 	logfile: path.resolve(__dirname, '..', 'logs/access.log'),
@@ -58,9 +58,5 @@ module.exports = {
 		"/article/queryArticleByMenu",
 		"/version"
 	],
-
-	md5Salt: "moka_salt", //在接到模特、宅男注册时的passwd后，以此作为盐生成数据库中的密码
-
-
-	accessKey:"dev_abfeufiu$%fee23431232IJ" //内部其他系统调用本系统API时必须带上这个key
+	md5Salt: "moka_salt"
 };

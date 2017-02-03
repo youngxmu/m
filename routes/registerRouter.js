@@ -32,8 +32,6 @@ router.get('/register/valid/:code', function (req, res, next) {
 			});
 		}
 	});
-	
-
 });
 
 router.post('/register', function (req, res, next) {
@@ -79,7 +77,6 @@ router.post('/register', function (req, res, next) {
 		// 	msg : '发送成功'
 		// });
 	// });
-    
 });
 
 module.exports = router;

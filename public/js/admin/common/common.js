@@ -100,7 +100,6 @@ var util = {
 			+ '</div>',
 	date : {
 		format : function(longTime){
-			console.log(longTime);
 			var date = new Date(longTime);
 
 			var Year= date.getFullYear();//ie火狐下都可以 

@@ -15,6 +15,7 @@
 		},
 		init : function(){
 			_this.tpl.userListTpl = juicer($('#user_list_tpl').html());
+			_this.tpl.dlgUserEditTpl = juicer($('#dlg_user_edit_tpl').html());
 			_this.initEvent();
 			_this.search();
 			_this.initUploader();
@@ -44,6 +45,10 @@
 				_this.search();
 			});
 			$('#user_list').on('click', '.del', _this.onDel);
+			$('#user_list').on('click', 'tr', _this.onSel);
+			$('#btn_dels').on('click', _this.onDels);
+			$('body').on('click', '#btn_add',_this.onEdit);
+			$('#user_list').on('click', '.edit', _this.onEdit);
 		},
 		search : function(){
 			$.ajax({
@@ -113,6 +118,66 @@
 		        });
 		    }
 		},
+		onSel : function(){
+			var $this = $(this);
+			if($this.hasClass('active')){
+				$this.removeClass('active');
+			}else{
+				$this.addClass('active');
+			}
+		},
+		onEdit : function(){
+			var id = $(this).attr('data-id');
+			var user = {};
+			var title = '新增';
+			var data = {};
+			if(id){
+				user = _this.data.userMap[id];
+				title = '编辑';
+				data.id = id;
+			}
+			var content = _this.tpl.dlgUserEditTpl.render(user);
+			util.dialog.defaultDialog(content,
+				function(){
+					var $panel = $('#user_edit_panel');
+					$panel.find('input').each(function(){
+						var $this = $(this);
+						var name = $this.attr('name');
+						var val = $this.val();
+						data[name] = val;
+					});
+					for(var key in data){
+						if(key == 'name' && data[key] == ''){
+							util.dialog.infoDialog('用户名和密码必须填写');
+							return false;
+						}
+
+						if(!id && key == 'password' &&  data[key] == ''){
+							util.dialog.infoDialog('用户名和密码必须填写');
+							return false;
+						}
+					}
+
+					$.ajax({
+						url : 'admin/user/save',
+						type : 'post',
+						data : data,
+						success : function(result){
+							if(!result.success){
+								util.dialog.infoDialog(result.msg);
+								return false;
+							}
+							_this.search();
+						},
+						error : function(){
+							util.dialog.infoDialog('添加失败，请检查网络连接');
+						}
+					});
+				},
+				function(){
+				},
+				title);
+		},
 		onDel : function(){
 			var id = $(this).attr('data-id');
 			util.dialog.infoDialog('确认删除', function(){
@@ -131,7 +196,32 @@
 				});
 			});
 		},
-
+		onDels : function(){
+			var idArr = [];
+			$('#user_list .active').each(function(){
+				var id = $(this).attr('data-id');	
+				idArr.push(id);
+			});
+			if(idArr.length == 0){
+				return util.dialog.infoDialog('请选择至少1位用户');
+			}
+			
+			util.dialog.infoDialog('确认删除', function(){
+				$.ajax({
+					url : 'admin/user/dels',
+					type : 'post',
+					data : {ids:idArr.join(',')},
+					success : function(result){
+						if(result.success){
+							util.dialog.toastDialog('删除成功');
+							_this.search();
+						}else{
+							util.dialog.infoDialog('删除失败');
+						}
+					}
+				});
+			});
+		},
 
 		initUploader : function(uploadSrc, extensions) {// 初始化文件上传控件
 			plupload.addI18n({

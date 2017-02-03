@@ -111,7 +111,7 @@ router.get('/detail/:id', function (req, res, next) {
                 var vote = result;
                 vote.isAdmin = isAdmin;
                 vote.update_time = commonUtils.formatDate(new Date(vote.update_time));
-                vote.file_name = config.imgHost + '/uploads/' + vote.file_name;
+                vote.file_name = config.imgHost + vote.file_name;
                 vote.menuList = menuUtils.getMenuPathList(vote.menu_id);
                 vote.file_type = commonUtils.getFileTypeName(vote.file_name);
                 res.render('user/vote/detail', vote);

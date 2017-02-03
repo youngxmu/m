@@ -11,7 +11,7 @@ module.exports = {
 	redirectPath : '/',
 	// imgHost: 'http://192.168.2.231:8200',
 	// host: 'http://192.168.2.231:8200',
-	imgHost: 'http://localhost:8200',
+	imgHost: 'http://localhost:8200/uploads',
 	sysHost: 'http://localhost:8200',
 	env: 'dev',
 	logfile: path.resolve(__dirname, '..', 'logs/access.log'),
@@ -20,7 +20,7 @@ module.exports = {
 	//mysql config
 	host: "127.0.0.1",
 	user: "root",
-	password: "root",
+	password: "",
 	database: "moka",
 	enableDBLog: true,
 
@@ -60,8 +60,5 @@ module.exports = {
 		"/version"
 	],
 
-	md5Salt: "moka_salt", //在接到模特、宅男注册时的passwd后，以此作为盐生成数据库中的密码
-
-
-	accessKey:"dev_abfeufiu$%fee23431232IJ" //内部其他系统调用本系统API时必须带上这个key
+	md5Salt: "moka_salt"
 };

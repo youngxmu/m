@@ -16,26 +16,27 @@
                     <div class="search-panel" >
                         <dl>
                             <dt>姓名</dt><dd><input id="user_name" ></dd>
-                            <dt>手机</dt><dd><input id="user_tel" ></dd>
-                            <dt>邮箱</dt><dd><input id="user_email" ></dd>
                             <dd>
                                 <span id="btn_search" class="btn btn-primary" >查询</span>
+                                <span id="btn_add" class="btn btn-primary" >创建</span>
                                 <span id="btn_import" class="btn btn-primary" >导入</span>
-                                <a href="tpl/user.xls" class="btn btn-primary" >模板下载</a>
+                                <span id="btn_dels" class="btn btn-danger" >批量删除</span>
+                                <a href="tpl/user.xls" class="btn btn-info" >模板下载</a>
                             </dd>
                         </dl>
                     </div>
                 </div>
             </ul>
-        	<div class="list-table" >
+        	<div class="list-table user-table" >
         		<table>
         			<thead>
         				<tr>
         					<th style="width:40px;">序号</th>
+                            <th>账号</th>
         					<th>姓名</th>
-        					<th>邮箱</th>
-        					<th>手机</th>
-        					<th>积分</th>
+                            <th>学号</th>
+        					<th>学校</th>
+        					<th>班级</th>
         					<th>状态</th>
         					<th>注册时间</th>
         					<th style="width:80px;">操作</th>
@@ -62,27 +63,32 @@
                 {@/if} -->
 	<script type="text/juicer" id="user_list_tpl">
 	{@each list as obj, index}
-		<tr>
+		<tr data-id="${obj.id}">
 			<td>${index|formatIndex}</td>
 			<td>${obj.name}</td>
-			<td>${obj.email}</td>
-			<td>${obj.tel}</td>
-			<td>${obj.score}</td>
-			<td>
-				{@if obj.status == 1}
-                    正常
-                {@else}
-                    禁用
-                {@/if}
-			</td>
+            <td>${obj.nickname}</td>
+			<td>${obj.no}</td>
+			<td>${obj.school}</td>
+			<td>${obj.clazz}</td>
+			<td>{@if obj.status == 1}正常{@else}禁用{@/if}</td>
 			<td>${obj.create_time|dateFormat}</td>
 			<td class="oper">
-				<span data-id="${obj.id}" class="edit" style="display:none;" >编辑</span>
+				<span data-id="${obj.id}" class="edit" >编辑</span>
                 <span data-id="${obj.id}" class="del" >删除</span>
 			</td>
 		</tr>
 	{@/each}
 	</script>
+    <script type="text/juicer" id="dlg_user_edit_tpl">
+    <div id="user_edit_panel" class="user-edit-panel">
+        <dl><dt>账号</dt><dd><input name="name" value="${name}"></dd></dl>
+        <dl><dt>学号</dt><dd><input name="no" value="${no}"></dd></dl>
+        <dl><dt>姓名</dt><dd><input name="nickname" value="${nickname}"></dd></dl>
+        <dl><dt>学校</dt><dd><input name="school" value="${school}"></dd></dl>
+        <dl><dt>班级</dt><dd><input name="clazz" value="${clazz}"></dd></dl>
+        <dl><dt>密码</dt><dd><input name="password" type="password" value=""></dd></dl>
+    </div>
+    </script>
 	
 	<script type="text/javascript" src='js/admin/user/list.js'></script>
 
