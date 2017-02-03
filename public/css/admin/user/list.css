@@ -23,7 +23,7 @@
 .oper-panel{line-height: 24px;padding:10px 0;}
 .oper-panel .btn{display: inline-block;padding: 0 20px;border-style: 3px;border:1px solid #cccccc;background-color: #f5f5f5;cursor: pointer;}
 .oper-panel .btn:hover{background-color: #ffffff;}
-.list-table{width: 960px;}
+.list-table{width: 960px; padding-top: 20px;}
 
 
 /** 基本列表 */

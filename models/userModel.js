@@ -86,9 +86,17 @@ exports.del = function (id, callback) {
     var sql = 'delete from user where id = ?;';
     db.query(sql, [id], callback);
 };
+
 exports.insertUsers = function (params, callback) {
     var sql = 'insert into user ';
     sql += ' (name, tel, email, password, create_time, status) ';
+    sql += ' values ? ;';
+    db.query(sql, [params],callback);
+};
+
+exports.importUsers = function (params, callback) {
+    var sql = 'insert into user ';
+    sql += ' (name, school, class, no, password, create_time, status) ';
     sql += ' values ? ;';
     db.query(sql, [params],callback);
 };

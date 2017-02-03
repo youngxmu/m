@@ -215,10 +215,10 @@ router.post('/import', function (req, res) {
         var user = data[index];
         user.push(new Date());
         user.push(1);
+        user.password = utils.md5(user.password);
         users.push(user);
     }
-    console.log(users);
-    userModel.insertUsers(users, function (err, data) {
+    userModel.importUsers(users, function (err, data) {
         if (!err) {
             res.json({
                 success: true,
