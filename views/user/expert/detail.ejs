@@ -50,7 +50,11 @@
                   <h3 id="content_title" class="panel-title">电话</h3>
                 </div>
                 <div id="content" class="panel-body detail-article">
-                  <%= tel %>
+                  <%if(isAdmin){%>
+                    <%= tel %>
+                  <%}else{%>
+                    没有查看权限
+                  <%}%>
                 </div>
               </div>
 
@@ -59,7 +63,11 @@
                   <h3 id="content_title" class="panel-title">地址</h3>
                 </div>
                 <div id="content" class="panel-body detail-article">
-                  <%= address %>
+                  <%if(isAdmin){%>
+                    <%= address %>
+                  <%}else{%>
+                    没有查看权限
+                  <%}%>
                 </div>
               </div>
 

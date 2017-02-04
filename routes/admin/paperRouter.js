@@ -396,8 +396,9 @@ router.get('/doc/:id', function (req, res, next) {
                                     msg: "根据id查询试卷出错"
                                 });
                             }
+                            var jarPath = '';
                             var resource = "d://exam_tpl.doc";
-                            var target = config.uploadDir + '/exam' + exam.id + '.doc';
+                            var target = config.uploadDir + path.sep + 'exam' + exam.id + '.doc';
                             var cmd = 'java -jar d://examUtils.jar "' + resource + '" "'+ target +'" "' + key + '"';
                             console.log(cmd);
                             exec(cmd, [], function(re){

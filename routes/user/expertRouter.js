@@ -15,16 +15,19 @@ router.get('/index', function (req, res, next) {
 });
 
 router.get('/list', function (req, res, next) {
-    res.render('user/expert/list');
+    var isAdmin = req.session.admin ? true : false;
+    res.render('user/expert/list', {isAdmin : isAdmin});
 });
 
 router.get('/list/:type', function (req, res, next) {
     var type = req.params.type;
     var key = req.query.key;
+    var isAdmin = req.session.admin ? true : false;
     if(!key || key == 'undefined'){
         key = '';
     }
     res.render('user/expert/list',{
+        isAdmin : isAdmin,
         type : type,
         key : key
     });
@@ -80,7 +83,7 @@ router.post('/list', function (req, res, next) {
 //根据专家id查询
 router.get('/detail/:id', function (req, res, next) {
     var id = req.params.id;
-    var isAdmin = req.session.user ? true : false;
+    var isAdmin = req.session.admin ? true : false;
     if(id == null || id == undefined){
         res.render('error', {
             success: false,
@@ -91,6 +94,7 @@ router.get('/detail/:id', function (req, res, next) {
             if (!err && result) {
                 var expert = result;
                 expert.avatar = config.imgHost + expert.avatar;
+                expert.isAdmin = isAdmin;
                 res.render('user/expert/detail', expert);
             } else {
                 res.render('error', {

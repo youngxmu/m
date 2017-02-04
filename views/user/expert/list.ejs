@@ -58,13 +58,51 @@
               <button type="button" class="btn btn-primary">军队专家学者</button>
             </div>
           </div>
-          <div id="expert_list" ></div>
+          <table id="expert_list" class="table" style="font-size:14px;"></table>
         </div>
         <div id="pagebar" style="background-color:rgba(255,255,255,0.3);margin-top: 10px;"></div>  
       </div>
       <%- include ../common/footer.ejs %>
     </div>
+
     <script type="juicer/template" id="expert-list-tpl">
+    <thead>
+      <tr>
+        <th>序号</th>
+        <th>姓名</th>
+        <th>出生年月</th>
+        <th>职称</th>
+        <th>电话</th>
+        <th>地址</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      {@each list as obj, index}
+      <tr>
+        <td>${index|formatIndex}</td>
+        <td>${obj.name}</td>
+        <td>${obj.birthday}</td>
+        <td>${obj.title}</td>
+        <%if(isAdmin){%>
+          <td>${obj.tel}</td>
+          <td>${obj.address}</td>
+        <%}else{%>
+          <td>权限不足</td>
+          <td>权限不足</td>
+        <%}%>
+        
+        <td>
+          <span data-id="${obj.id}" >
+            <a class="btn btn-info" href="expert/detail/${obj.id}" >查看</a>
+          </span>
+        </td>
+      </tr>
+      {@/each}
+    </tbody>
+    </script>
+
+    <script type="juicer/template" id="expert-list-tpl2">
     <div class="expert-list-title" style="display:none;">
       <div class="">序号</div>
       <div class="name">姓名</div>
