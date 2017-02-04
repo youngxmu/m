@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>注册</title>
+    <%- include common/meta.ejs %>
+    <style type="text/css">
+    .container{width: 1000px;padding:0;background: #049EC4;}
+
+    .logo-title{
+      width: 570px;
+      /*background-image: url("../../../img/paper_title.png");*/
+      background-position: center left;
+      background-size: auto 70px;
+      background-repeat: no-repeat;
+      display: inline-block;
+      height: 100%;
+      margin-left: 110px;
+    }
+
+    .jumbotron{
+      background-color:rgba(0,0,0,0.4);
+    }
+
+    .sys-info{
+      width: 640px;
+        display: inline-block;
+        height: 270px;
+        margin-top: -30px;
+        padding: 0 20px;
+        border-radius: 5px;
+    }
+    .sys-info-img div{height: 180px;width: 600px;}
+
+
+    </style>
+  </head>
+  <body>
+    <%- include common/header.ejs %>
+    <div class="container">
+      <div class="main">
+        <div class="login-panel">
+          <div class="sys-info">
+            <div class="jumbotron">
+              <h1>加入我们</h1>
+              <p>注册之后可以使用所有系统资源</p>
+            </div>
+          </div>
+
+          <div class="login-bg">
+            <form method="post" id="ajax_login_form" action="user/register">
+              <input name="type" value="1" type="hidden"><!--普通用户登录-->
+              <h3>注册</h3>
+              <input class="form-control" name="email" type="text" placeholder="用户名/邮箱">
+              <input class="form-control" name="password" type="password" placeholder="密码">
+              <% if(typeof errmsg != 'undefined'){%>
+              <div class="alert alert-danger" role="alert"><%= errmsg %></div>
+              <% } %>
+              <div class="login-btn-wrapper">
+                <span id="login_submit" type="submit" class="btn btn-primary">确认</span>
+              </div>
+            </form>
+          </div>
+
+            
+        </div>
+      </div>
+    </div>
+ 	  <%- include common/footer.ejs %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#login_submit').click(function(){
+          $('#ajax_login_form')[0].submit();
+        });
+
+        $('body').on('keydown','#ajax_login_form',function(e){
+          var event = window.event || e;
+          if(event.keyCode == 13){
+            $('#ajax_login_form')[0].submit();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

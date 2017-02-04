@@ -4,66 +4,89 @@
     <title>注册</title>
     <%- include common/meta.ejs %>
     <style type="text/css">
-    .container{width: 1000px;padding:0;}
-
-    .logo-title{
-      width: 570px;
-      /*background-image: url("../../../img/paper_title.png");*/
-      background-position: center left;
-      background-size: auto 70px;
-      background-repeat: no-repeat;
-      display: inline-block;
-      height: 100%;
-      margin-left: 110px;
+    .container{width: 1000px;padding:0;background: #049EC4;position: relative;}
+    .nav{
+          position: absolute;
+          top: 0;
+          left: 50px;
+          z-index: 2;
+          width: auto;
     }
-
-
-    .jumbotron{
-      background-color:rgba(0,0,0,0.4);
-    }
-
-    .sys-info{
+    .main{
       width: 640px;
-        display: inline-block;
-        height: 270px;
-        margin-top: -30px;
-        padding: 0 20px;
-            border-radius: 5px;
+      /*display: inline-block;*/
+      margin: auto;
+      margin-top: 80px;
+      font-size: 14px;
     }
-    .sys-info-img div{height: 180px;width: 600px;}
 
+    .main form{
+      background-color: #dddddd;
+      border-radius: 10px;
+      border: 5px solid #cccccc;
+      padding: 30px;
+    }
 
     </style>
   </head>
   <body>
     <%- include common/header.ejs %>
     <div class="container">
+      <div class="nav tnav">
+        <ul class="nav-ul">
+          <li class="active">
+            <a href="javascript:void(0);" >注册</a>
+          </li>
+        </ul>
+      </div>
       <div class="main">
-        <div class="login-panel">
-          <div class="sys-info">
-            <div class="jumbotron">
-              <h1>加入我们</h1>
-              <p>注册之后可以使用所有系统资源</p>
+        <form method="post" id="ajax_login_form" class="form-horizontal" action="user/register">
+          <input name="type" value="1" type="hidden"><!--普通用户登录-->
+          <div class="form-group">
+            <label for="" class="col-sm-2 control-label">账号</label>
+            <div class="col-sm-10">
+              <input class="form-control" placeholder="账号" name="name">
             </div>
           </div>
-
-          <div class="login-bg">
-            <form method="post" id="ajax_login_form" action="user/register">
-              <input name="type" value="1" type="hidden"><!--普通用户登录-->
-              <h3>注册</h3>
-              <input class="form-control" name="email" type="text" placeholder="用户名/邮箱">
-              <input class="form-control" name="password" type="password" placeholder="密码">
-              <% if(typeof errmsg != 'undefined'){%>
-              <div class="alert alert-danger" role="alert"><%= errmsg %></div>
-              <% } %>
-              <div class="login-btn-wrapper">
-                <span id="login_submit" type="submit" class="btn btn-primary">确认</span>
-              </div>
-            </form>
+          <div class="form-group">
+            <label for="" class="col-sm-2 control-label">姓名</label>
+            <div class="col-sm-10">
+              <input class="form-control" placeholder="姓名" name="username">
+            </div>
           </div>
-
-            
-        </div>
+          <div class="form-group">
+            <label for="" class="col-sm-2 control-label">学校</label>
+            <div class="col-sm-10">
+              <input class="form-control" placeholder="学校" name="school">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-2 control-label">班级</label>
+            <div class="col-sm-10">
+              <input class="form-control" placeholder="班级" name="clazz">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+              <input class="form-control" placeholder="密码" name="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-2 control-label">确认密码</label>
+            <div class="col-sm-10">
+              <input class="form-control" placeholder="确认密码" name="repassword">
+            </div>
+          </div>
+          <% if(typeof msg != 'undefined'){%>
+          <div class="alert alert-danger" role="alert"><%= msg %></div>
+          <% } %>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button id="login_submit" type="submit" class="btn btn-default">确认</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
  	  <%- include common/footer.ejs %>

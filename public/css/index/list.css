@@ -1,12 +1,13 @@
 .container ol.breadcrumb{margin: 0;}
 .container{width: 1000px;padding: 0;font-size: 14px;}
 .container{
-   background:url(../../../img/cloud.png) 0 bottom repeat-x  #049ec4;
+   background: #049EC4;
+   /*background:url(../../../img/cloud.png) 0 bottom repeat-x  #049ec4;
    -webkit-animation: animate-cloud 20s linear infinite;
    -moz-animation: animate-cloud 20s linear infinite;
    -ms-animation: animate-cloud 20s linear infinite;
    -o-animation: animate-cloud 20s linear infinite;
-   animation: animate-cloud 20s linear infinite;
+   animation: animate-cloud 20s linear infinite;*/
 }
    
 .main{padding: 10px 20px;}

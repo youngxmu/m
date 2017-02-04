@@ -32,3 +32,6 @@
 .paper-edit .paper-questions .btn-edit-questions{color: blue;cursor: pointer;}
 
 table thead td{color: #ffffff;}
+
+table tbody tr{background-color: #eeeeee;}
+
