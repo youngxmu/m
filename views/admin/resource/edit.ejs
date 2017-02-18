@@ -1,62 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> <% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>文章</title>
     <%- include ../common/meta.ejs %>
-    <link rel='stylesheet' href='css/admin/article/detail.css' />
+    <title> <% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>文章</title>
+    <link rel='stylesheet' href='css/admin/resource/detail.css' />
   </head>
   <body>
     <% if(typeof id != 'undefined'){%>
       <input type="hidden" id="article_id" value="<%= id %>">
+      <input type="hidden" id="sys_type" value="<%= sys_type %>">
     <% } %> 
     <%- include ../common/header.ejs %>
   	<div class="container">
-  		<div class="res-title"><% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>文章</div>
-  		<div class="main">
-  			<div class="t-input">
-  				<label>文章标题</label>
-          <input id="title" placeholder="输入文章标题" <% if(typeof title != 'undefined'){%>value="<%= title %>"<% } %> >
-  			</div>
-  			<div class="t-input">
-  				<label>作者名称</label>
-          <input id="author" placeholder="输入作者名称" <% if(typeof author != 'undefined'){%>value="<%= author %>"<% } %> >
-  			</div>
-  			<textarea id="editor" placeholder="输入文章正文" autofocus><% if(typeof content != 'undefined'){%><%- content %><% } %> </textarea>
-  			<div class="t-btn" style="margin-top:20px;display:none">
-          <% if(typeof id == 'undefined'){%>
-            <div class="u-select-p">
-            <label>所属栏目：</label>
-            <% if(typeof menuList != 'undefined'){%>
-            <% for(var index in menuList) { %> 
-            <% var menu = menuList[index]; %> 
-            <span class="s-menu" data-id="<%= menu.id %>" ><%= menu.name %></span>
-            <% } %> 
-            <% } %> 
-            </div>
-          <% } %>
-          <div id="btn_commit" class="u-button">提交</div>
-  			</div>
-  			
-  		</div>
-  		<div class="footer"></div>
-  	</div>
-	
-	<script type="text/javascript" src="simditor/scripts/module.js"></script>
-	<script type="text/javascript" src="simditor/scripts/hotkeys.js"></script>
-	<script type="text/javascript" src="simditor/scripts/uploader.js"></script>
-	<script type="text/javascript" src="simditor/scripts/simditor.js"></script>
-	<script type="text/javascript" src="js/admin/article/edit.js"></script>
-  <script type="text/template" id="menu_list_tpl">
-  {@each list as menu}
-  <option value="${menu.id}">${menu.name}</option>
-  {@/each}
-  </script>
-
- 	<script>
- 		$(document).ready(function() {
-	      	moka.article.edit.init({});
-	    });
- 	</script>
+      <div class="fpanel">
+    		<div class="main">
+          <div class="res-title"><% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>文章</div>
+    			<div class="t-title t-input">
+    				<label>文章标题</label>
+            <input id="title" placeholder="输入文章标题" <% if(typeof title != 'undefined'){%>value="<%= title %>"<% } %> >
+    			</div>
+    			<div class="t-name t-input">
+    				<label>作者名称</label>
+            <input id="author" placeholder="输入作者名称" <% if(typeof author != 'undefined'){%>value="<%= author %>"<% } %> >
+    			</div>
+    			<textarea id="editor" placeholder="输入文章正文" autofocus><% if(typeof content != 'undefined'){%><%- content %><% } %> </textarea>
+    			<div class="t-btn" style="margin-top:20px;">
+            <% if(typeof id == 'undefined'){%>
+              <div class="u-select-p" style="display:none;">
+              <label>所属栏目：</label>
+              <% if(typeof menuList != 'undefined'){%>
+              <% for(var index in menuList) { %> 
+              <% var menu = menuList[index]; %> 
+              <span class="s-menu" data-id="<%= menu.id %>" ><%= menu.name %></span>
+              <% } %> 
+              <% } %> 
+              </div>
+            <% } %>
+            <div id="btn_commit" class="u-button">提交</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+  	<script type="text/javascript" src="js/admin/resource/edit.js"></script>
+    <script type="text/template" id="menu_list_tpl">
+    {@each list as menu}
+    <option value="${menu.id}">${menu.name}</option>
+    {@/each}
+    </script>
+   	<script>
+   		$(document).ready(function() {
+  	      	moka.article.edit.init({});
+  	    });
+   	</script>
 
   </body>
 </html>

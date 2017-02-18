@@ -7,6 +7,7 @@ var moka = {
 		user : {},
 		paper : {},
 		question : {},
+		resource : {},
 		article : {},
 		expert : {},
 		vote : {},

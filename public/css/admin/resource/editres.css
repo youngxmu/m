@@ -1,0 +1,63 @@
+.container{overflow: auto;}
+.res-title{height:100px;line-height: 100px;font-size: 36px;font-weight: 700;text-align: center;}
+.t-input{font-size: 0;line-height: 60px}
+.t-input input{line-height: 40px;border: 1px solid #cccccc; width: 860px;font-size: 20px;padding: 0 10px;}
+.t-input textarea{line-height: 40px;border: 1px solid #cccccc; width: 860px;font-size: 20px;padding: 0 10px;resize: vertical;}
+.t-input label{line-height: 40px;width: 100px;text-align: right;padding-right: 10px;
+	display: inline-block;*display: inline;font-size: 20px;
+	vertical-align: top;
+}
+
+.t-input .filename{font-size: 16px;margin-left: 20px;display: none;}
+.t-input .process-bar{margin-left: 100px;line-height: 20px;width: 200px;border: 1px solid #cccccc;display: none;}
+.t-input .process-bar span{width: 50%;height: 100%;background-color: blue;display: inline-block;}
+
+.t-btn{margin-top: 20px;height: 40px;}
+
+.u-select-p{display: inline-block;}
+.u-select-p span{line-height: 32px;border: 1px solid #cccccc; width: auto;font-size: 20px;padding: 0 10px;display: inline-block;}
+.u-button{float: right;}
+
+
+.t-input .u-select-p{display: inline-block;}
+
+.t-input .u-select-p select{line-height: 40px;border: 1px solid #cccccc; width: auto;font-size: 20px;padding: 0 10px;margin-right: 5px;}
+.t-input .u-button{float: none;    vertical-align: 1px;
+	    float: none;
+    vertical-align: 1px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 12px;
+}
+
+.t-input .text{line-height: 40px; width: 600px;font-size: 20px;padding: 0 10px;display: inline-block;
+  vertical-align: top;
+}
+.t-input .download{line-height: 40px; width: 860px;font-size: 20px;padding: 0 10px;}
+
+.ico {
+  width: 30px;height: 30px;display: inline-block;
+  vertical-align: middle;
+}
+
+
+.t-input  a.download{
+  background-image: url("../../../img/download.png");
+  background-position: left center;
+  padding-left: 30px;
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fpanel{padding: 20px 0 80px 0;position: relative;}
+.res-title{position: absolute;top: 0;left: 0;width: 100%;display: none;}
+.main .t-title{position: absolute;top: 20px;left: 0;}
+.main .t-name{position: absolute;top: 80px;left: 0;}
+
+#btn_commit{position: absolute;bottom: 20px;right: 0;}
+
+

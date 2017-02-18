@@ -9,53 +9,6 @@ var jsjnModel = require("../../models/jsjnModel.js");
 var jsllModel = require("../../models/jsllModel.js");
 var router = express.Router();
 
-router.post('/list', function (req, res, next) {
-    var pageNo = parseInt(req.body.pageNo);
-    var pageSize = parseInt(req.body.pageSize);
-    var type = req.body.type;
-    
-    if(!type || type == 'undefined'){
-        type = '';
-    }
-    var title = req.body.keyword;
-    if(!title || title == 'undefined'){
-        title = '';
-    }
-    resourceModel.queryResourceByTitleTotalCount(title, type, function (totalCount) {
-        logger.info("文章总数:", totalCount);
-        var totalPage = 0;
-        if (totalCount % pageSize == 0) totalPage = totalCount / pageSize;
-        else totalPage = totalCount / pageSize + 1;
-        totalPage = parseInt(totalPage, 10);
-        var start = pageSize * (pageNo - 1);
-
-        resourceModel.queryResourceByTitle(title, type, start, pageSize, function (err, result) {
-            if (err || !result || !commonUtils.isArray(result)) {
-                logger.error("查找文章出错", err);
-                res.json({
-                    success: false,
-                    msg: "查找文章出错"
-                });
-            } else {
-                for (var i in result) {
-                    var date = new Date(result[i].create_time);
-                    result[i].create_time = commonUtils.formatDate(date);
-                }
-                res.json({
-                    success: true,
-                    msg: "查找文章成功",
-                    data: {
-                        totalCount: totalCount,
-                        totalPage: totalPage,
-                        currentPage: pageNo,
-                        list: result
-                    }
-                });
-            }
-        });
-    });
-});
-
 var getViewAndData = function(resource, callback){
     var view = 'error';
     var data = {};
@@ -71,9 +24,9 @@ var getViewAndData = function(resource, callback){
                 article.menuList = menuUtils.getMenuPathList(article.menu_id);
                 article.file_type = commonUtils.getFileTypeName(article.file_name);
 
-                var view = 'admin/article/editres';
+                var view = 'admin/resource/editres';
                 if(resource.content_type == 6){
-                    view = 'admin/article/edit';
+                    view = 'admin/resource/edit';
                 }
                 data = article;
                 data.sys_type = 'article';
@@ -86,9 +39,9 @@ var getViewAndData = function(resource, callback){
     if(type == 'jsjnxx'){
         jsjnModel.queryInfoById(id, function (err, article) {
             if(!err){
-                var view = 'admin/article/edit';
+                var view = 'admin/resource/edit';
                 if(resource.content_type == 2 || resource.content_type == 3){
-                    view = 'admin/article/editres';
+                    view = 'admin/resource/editres';
                 }
                 data = article[0];
                 data.sys_type = 'jsjnxx';
@@ -167,12 +120,19 @@ router.post('/update/indexNo', function(req, res, next) {
     });
 });
 
-
 router.get('/edit', function(req, res, next) {
+    var type = req.query.type;
+    var sys_type = 'article';
+    res.render('admin/resource/edit', {type : type, sys_type : sys_type});
+});
+
+
+router.get('/upload', function(req, res, next) {
     var type = req.query.type;
     var sys_type = 'article';
     res.render('admin/resource/editres', {type : type, sys_type : sys_type});
 });
+
 
 router.get('/list', function (req, res, next) {
     var type = 'video';
@@ -180,6 +140,7 @@ router.get('/list', function (req, res, next) {
     if(!keyword || keyword == 'undefined'){
         keyword = '';
     }
+    console.log(1);
     res.render('admin/resource/list',{
         type : type,
         keyword : keyword
@@ -197,6 +158,56 @@ router.get('/list/:type', function (req, res, next) {
         keyword : keyword
     });
 });
+
+
+
+router.post('/list', function (req, res, next) {
+    var pageNo = parseInt(req.body.pageNo);
+    var pageSize = parseInt(req.body.pageSize);
+    var type = req.body.type;
+    
+    if(!type || type == 'undefined'){
+        type = '';
+    }
+    var title = req.body.keyword;
+    if(!title || title == 'undefined'){
+        title = '';
+    }
+    resourceModel.queryResourceByTitleTotalCount(title, type, function (totalCount) {
+        logger.info("文章总数:", totalCount);
+        var totalPage = 0;
+        if (totalCount % pageSize == 0) totalPage = totalCount / pageSize;
+        else totalPage = totalCount / pageSize + 1;
+        totalPage = parseInt(totalPage, 10);
+        var start = pageSize * (pageNo - 1);
+
+        resourceModel.queryResourceByTitle(title, type, start, pageSize, function (err, result) {
+            if (err || !result || !commonUtils.isArray(result)) {
+                logger.error("查找文章出错", err);
+                res.json({
+                    success: false,
+                    msg: "查找文章出错"
+                });
+            } else {
+                for (var i in result) {
+                    var date = new Date(result[i].create_time);
+                    result[i].create_time = commonUtils.formatDate(date);
+                }
+                res.json({
+                    success: true,
+                    msg: "查找文章成功",
+                    data: {
+                        totalCount: totalCount,
+                        totalPage: totalPage,
+                        currentPage: pageNo,
+                        list: result
+                    }
+                });
+            }
+        });
+    });
+});
+
 
 
 module.exports = router;

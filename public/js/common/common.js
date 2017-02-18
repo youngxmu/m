@@ -8,6 +8,7 @@ var moka = {
 		paper : {},
 		question : {},
 		article : {},
+		resource : {},
 		expert : {},
 		vote : {},
 		jsll : {},

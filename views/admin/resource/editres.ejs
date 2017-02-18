@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%- include ../common/meta.ejs %>
-    <title> <% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>资源</title>
-    <link rel='stylesheet' href='css/admin/article/detail.css' />
-  </head>
-  <body>
-    <% if(typeof id != 'undefined'){%>
-      <input type="hidden" id="article_id" value="<%= id %>">
-    <% } %> 
-    <%- include ../common/header.ejs %>   
-  	<div class="container">
+<head>
+  <%- include ../common/meta.ejs %>
+  <title> <% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>资源</title>
+  <link rel='stylesheet' href='css/admin/resource/editres.css' />
+</head>
+<body>
+  <% if(typeof id != 'undefined'){%>
+    <input type="hidden" id="article_id" value="<%= id %>">
+    <input type="hidden" id="sys_type" value="<%= sys_type %>">
+    <input type="hidden" id="file_name" value="<%= file_name %>">
+  <% } %> 
+  <%- include ../common/header.ejs %>   
+  <div class="container">
+  	<div class="fpanel">
   		<div class="res-title"><% if(typeof id != 'undefined'){%>编辑<% }else{ %>新增<% } %>文章</div>
   		<div class="main">
   			<div class="t-input">
@@ -23,15 +26,34 @@
   			</div>
         <div class="t-input">
           <label>资源描述</label>
-          <textarea id="description" placeholder="输入资源描述">
-            <% if(typeof content != 'undefined'){%><%- content %><% } %>
-          </textarea>
+          <textarea id="description" placeholder="输入资源描述"><% if(typeof content != 'undefined'){%><%- content %><% } %></textarea>
         </div>
+        <div class="t-preview">
+          <%if(type == 4){%>
+            <video id="example_video_1" class="video-js vjs-default-skin"
+            controls preload="auto" width="640" height="264" style="width:600px;height:450px;"
+            poster="http://video-js.zencoder.com/oceans-clip.png"
+            data-setup='{"example_option":true}'>
+             <source src="<%= file_name %>" type='video/mp4' />
+             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+            </video>
+          <%}%>
+          <%if(type == 3){%>
+            <img src="<%= file_name %>">
+          <%}%>
+          <%if(type == 0){%>
+            <div id="ppt_pdf" data-view="<%=view_name%>" class="ppt-view-panel" style="width:650px;height:400px;"></div>
+            <script type="text/javascript">
+              PDFObject.embed('uploads/<%=view_name%>', "#ppt_pdf");
+            </script>
+          <%}%>
+        </div>
+    
   			<div class="t-input">
           <label>上传资源</label>
           <% if(typeof id != 'undefined'){%>
             <span id="btn_upload" class="u-button blue">修改文件</span>
-            <span id="filename" class="filename"><%- org_name %></span>
+            <span class="text"><a href="<%= file_name %>" download="<%- title %>"><%- title %></a></span>
           <% }else{ %>
             <span id="btn_upload" class="u-button blue">选择文件</span>
             <span id="filename" class="filename">文件名称</span>
@@ -40,7 +62,7 @@
           
           <p id="process_bar" class="process-bar" ><span id="process_rate">0%</span></p>
         </div>
-        <div class="t-input" style="displa">
+        <div class="t-input" style="display:none;">
           <label>所属栏目</label>
           <div class="u-select-p">
           <% if(typeof menuList != 'undefined'){%>
@@ -52,16 +74,13 @@
           </div>
         </div>
   			<div class="t-btn">
-         
-
           <div id="btn_commit" class="u-button">提交</div>
   			</div>
-  			
   		</div>
-  		<div class="footer"></div>
   	</div>
-	
-	<script type="text/javascript" src="js/admin/article/upload.js"></script>
+  </div>
+
+	<script type="text/javascript" src="js/admin/resource/editres.js"></script>
   <script type="text/template" id="menu_list_tpl">
   {@each list as menu}
   <option value="${menu.id}">${menu.name}</option>
@@ -70,9 +89,9 @@
 
  	<script>
  		$(document).ready(function() {
-	      	moka.admin.article.upload.init({});
+	      	moka.admin.resource.editres.init({});
 	    });
  	</script>
 
-  </body>
+</body>
 </html>
