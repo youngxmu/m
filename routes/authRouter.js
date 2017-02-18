@@ -86,8 +86,8 @@ router.post('/user/login', function (req, res, next) {
 
     logger.info("用户尝试登陆", email, password);
 
-    var view = sysType + '/list';
-    var errView = 'user/' + sysType + '/index';
+    var view = 'index';
+    var errView = 'user/login';
     if (!email || !password) {
         return res.render(errView, {
             errmsg: "邮箱/密码不能为空"
@@ -99,6 +99,7 @@ router.post('/user/login', function (req, res, next) {
     userModel.queryUserByEmail(email, function (err, result) {
         if (!err && commonUtils.isArray(result) && result.length > 0) {
             var user = result[0];
+            console.log(user);
             if(user.password != password){
                 return res.render(errView, {
                     success: false,

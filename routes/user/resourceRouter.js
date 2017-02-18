@@ -40,8 +40,6 @@ router.get('/list/:type', function (req, res, next) {
     });
 });
 
-
-//根据”创建渠道“和”是否虚拟“查询文章
 router.post('/list', function (req, res, next) {
     var pageNo = parseInt(req.body.pageNo);
     var pageSize = parseInt(req.body.pageSize);

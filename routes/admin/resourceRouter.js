@@ -168,5 +168,36 @@ router.post('/update/indexNo', function(req, res, next) {
 });
 
 
+router.get('/edit', function(req, res, next) {
+    var type = req.query.type;
+    var sys_type = 'article';
+    res.render('admin/resource/editres', {type : type, sys_type : sys_type});
+});
+
+router.get('/list', function (req, res, next) {
+    var type = 'video';
+    var keyword = req.query.keyword;
+    if(!keyword || keyword == 'undefined'){
+        keyword = '';
+    }
+    res.render('admin/resource/list',{
+        type : type,
+        keyword : keyword
+    });
+});
+
+router.get('/list/:type', function (req, res, next) {
+    var type = req.params.type;
+    var keyword = req.query.keyword;
+    if(!keyword || keyword == 'undefined'){
+        keyword = '';
+    }
+    res.render('admin/resource/list',{
+        type : type,
+        keyword : keyword
+    });
+});
+
+
 module.exports = router;
 
