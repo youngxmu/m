@@ -9,8 +9,6 @@ var redisUtils = require('./lib/redisUtils.js')
 var utils = require('./lib/utils.js')
 var menuUtils = require('./lib/menuUtils.js')
 
-console.log(path.sep);
-console.log(path.delimiter);
 
 var log4js = require('log4js');
 var logger =  require('./lib/log.js').logger('app');
