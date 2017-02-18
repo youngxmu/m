@@ -270,7 +270,6 @@ router.get('/edit', function(req, res, next) {
 
 router.get('/editres', function(req, res, next) {
     var id = req.query.id;
-    var menuPath = req.query.menuPath;
     var isAdmin = true;
     if(!req.session.admin){
         isAdmin = false;

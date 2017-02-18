@@ -383,18 +383,7 @@
 				    leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
 			  	}
 			});
-			// _this.teamEditor = $('#team_editor'); 
-			_this.teamEditor = new Simditor({
-				toolbar : false,
-			  	textarea: $('#team_editor'),
-			  	upload : {
-			    	url: 'upload/img',
-				    params: null,
-				    fileKey: 'upload_file',
-				    connectionCount: 3,
-				    leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
-			  	}
-			});
+			_this.teamEditor = $('#team_editor'); 
 		},
 		midMap : {
 			'100101' : {type:1},
@@ -784,7 +773,8 @@
 			$this.addClass('active').siblings('li').removeClass('active');
 			var message = _this.data.teamMap[id];
 			$('#team_title').val(message.name);
-			_this.teamEditor.setValue(message.info);
+			
+			_this.teamEditor.val(message.info);
 			if(message.avatar){
 				$('#team_avatar').val(message.avatar);
 				$('#avatar_team').html('<img src="' + message.avatar + '">');
@@ -798,7 +788,7 @@
 			$('#team_title').val('');
 			$('#team_avatar').val('');
 			$('#avatar_team').html('');
-			_this.teamEditor.setValue('');
+			_this.teamEditor.val('');
 		},
 		delTeam : function(){
 			console.log(_this.data.teamId);
@@ -822,7 +812,7 @@
 		},
 		saveTeam : function(){
 			var avatar = $('#team_avatar').val();
-			var desc = _this.teamEditor.getValue();
+			var desc = _this.teamEditor.val();
 			var data = {
 				name : $('#team_title').val(),
 				avatar : avatar,

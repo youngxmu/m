@@ -14,7 +14,7 @@ router.post('/img', function(req, res, next) {
 	}
 	console.log(files);
 	var file = files[0];//?req.files.file[0]:req.files.profile[0];
-	var filePath = file.path.replace(config.uploadDir, config.imgHost + '/uploads'); 
+	var filePath = file.path.replace(config.uploadDir, config.imgHost); 
 	var index = filePath.lastIndexOf('/');
 	var fileName = filePath.substr(index + 1);
 	res.json({

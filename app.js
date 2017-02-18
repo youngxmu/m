@@ -48,7 +48,7 @@ if(config.env!='devvv'){//开发环境不需要过滤
     var whitelist = config.whitelist;
     app.use(function(req, res, next) {//判断是否登录的中间件
         res.locals.currDate = utils.indexDate(new Date());
-        res.locals.islogin = true;
+        res.locals.islogin = false;
 
 // return next();
 
@@ -76,8 +76,9 @@ if(config.env!='devvv'){//开发环境不需要过滤
             }
             res.locals.username = name;
         }
+console.log(req.session.admin);
+        if (inWhitelist || (url.indexOf('/index') != -1 && url.indexOf('/admin') == -1) || url.indexOf('/uploads') != -1 || url.indexOf('/resource') != -1) {//在白名单中，不需要过滤
 
-        if (inWhitelist || (url.indexOf('/index') != -1 && url.indexOf('/admin') == -1) || url.indexOf('/uploads') != -1) {//在白名单中，不需要过滤
             next();
         }else{
             if(req.session && req.session.user && url.indexOf('/admin') == -1){//如果存在session则继续
@@ -167,7 +168,7 @@ if(config.env!='devvv'){//开发环境不需要过滤
                             return next();
                             return res.redirect("/expert/index");
                         }
-
+console.log(url);
                         res.redirect("/auth/user/login");
                     }    
                 }
