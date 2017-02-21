@@ -90,14 +90,13 @@
 						return false;
 					}
 					_this.currNode = treeNode;
-					console.log(treeNode);
 					_this.id = _this.currNode.id;
 					$('#txt_title').val(_this.currNode.name);
 					if(_this.currNode.content){
 						if(_this.currNode.content == 'null'){
 							_this.currNode.content == '';
 						}
-						$('#content').html(_this.currNode.content);	
+						$('#content').val(_this.currNode.content);	
 					}else{
 						$.ajax({
 							url : 'jsll/info/detail/' + _this.currNode.id,
@@ -105,13 +104,13 @@
 							async : false,
 							success : function(data){
 								if(data.success){
-									if(data.data.content == 'null'){
-										data.data.content == '';
+									if(!data.data.content || data.data.content == 'null'){
+										data.data.content = '';
 									}
 									_this.currNode.content = data.data.content;
-									$('#content').html(_this.currNode.content);	
+									$('#content').val(_this.currNode.content);	
 								}else{
-									$('#content').html('');			
+									$('#content').val('');			
 								}
 							}
 						});

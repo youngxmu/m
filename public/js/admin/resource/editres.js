@@ -7,23 +7,13 @@
 		tpl : {
 			menuListTpl : null
 		},
-		data : {
-		},
+		data : {},
 		init : function() {
 			_this.articleId = $('#article_id').val();
 			_this.fileName = $('#file_name').val();
-			_this.tpl.menuListTpl = juicer($('#menu_list_tpl').html());
-			var $span = $('.u-select-p').find('span');
-			if($span.length == 0){
-				_this.mid = 0;
-				_this.initMenu();
-			}else{
-				_this.mid = $span.last().attr('data-id');
-			}
-			
 			_this.initEvent();
 
-
+			var fileType = $('#type').val();
 			var fileTypeFilters = [];
 			for(var type in P.fileType){
 				fileTypeFilters.push(type);
@@ -33,32 +23,6 @@
 		},
 		initEvent : function(){
 			$('#btn_commit').on('click', _this.commit);
-			$('.u-select-p').on('change', '.menu-s', function(){
-				_this.changeMenu($(this));
-			});
-		},
-		initMenu : function(){
-			
-		},
-		changeMenu : function($obj){
-			var $this = $(this);
-			if($obj.val()){
-				$this = $obj;
-			}
-			var menu = _this.menuMap[$this.val()];
-			var level = menu.mlevel;
-			if(level >= 3){
-				return;
-			}
-			level++;
-
-			var $target = $('#ml_'+ level +'_s');
-			var menuList = [];
-			for(var index in menu.submenu){
-		    	var smenu = _this.menuMap[menu.submenu[index]];
-		    	menuList.push(smenu);
-		    }
-			$target.html(_this.tpl.menuListTpl.render({list: menuList}));
 		},
 		initUploader : function(uploadSrc, extensions) {// 初始化文件上传控件
 			plupload.addI18n({

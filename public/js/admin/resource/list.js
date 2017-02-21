@@ -1,11 +1,8 @@
 (function(P){
 	var _this = null;
 	_this = P.admin.resource.list = {
-		pid : 1102,//系统根目录编号
-		// searchUrl : 'article/queryArticleByMenu',
+		type : '',//资源类别
 		searchUrl : 'resource/list',
-		// treeUrl : 'jsll/list',
-		treeUrl : 'resource/info/list',
 		topicTree : null,
 		topicNodes : null,
 		topicData : [],
@@ -23,38 +20,19 @@
 			_this.data.resourceTpl = juicer($('#resource-tpl').html());
 			_this.txt_editor = $('#content');
 			_this.initEvent();
-			var $tab = $('.nav-tabs li.active');
-			_this.pid = $tab.attr('data-id');
+			_this.type = $('#type').val();
+			_this.data.searchData.type = _this.type;
 			_this.searchResource();
 		},
 		initEvent : function(){
-			$('#resource_list').on('click','.view',function(){
-				var id = $(this).attr('data-id');
-				var data = _this.data.resourceList[id];
-				var options = {isPreview : false, resourceType : 2};
-			});
-
 			$('.resource-opr').on('click', '.add',function(){
 				var zTree = _this.getCurrTree();
 				_this.showAddArticle();
 			});
 			$('body').on('click', '.oper .del',_this.showDelArticle);
-
-			$('body').on('click', '.nav-tabs li', function(){
-				var $this = $(this);
-				$this.addClass('active').siblings('li').removeClass('active');
-				var pid = $this.attr('data-id');
-				var type = $this.attr('data-type');
-				_this.pid = pid;
-				if(pid){
-					_this.searchResource();	
-				}
-			});
-			$('#btn_commit').on('click', _this.commitInfo);
-			$('#btn_create').on('click', _this.create);
 		},
 		searchResource : function() {
-			_this.data.searchData.mid = _this.pid;
+			
 			$.ajax({
 				type : "post",
 				url : _this.searchUrl,
@@ -134,10 +112,6 @@
 					});
 				});
 			}
-		},
-		showAddArticle : function(){
-			var menuPath = _this.getMenuPath(_this.currNode);
-			window.open('admin/article/upload?menuPath=' + menuPath);
 		},
 		showDelArticle : function(){
 			var id = $(this).attr('data-id');

@@ -96,7 +96,7 @@
 						if(_this.currNode.content == 'null'){
 							_this.currNode.content == '';
 						}
-						$('#content').html(_this.currNode.content);	
+						$('#content').val(_this.currNode.content);	
 					}else{
 						$.ajax({
 							url : 'resource/info/detail/' + _this.currNode.id,
@@ -108,9 +108,9 @@
 										data.data.content == '';
 									}
 									_this.currNode.content = data.data.content;
-									$('#content').html(_this.currNode.content);	
+									$('#content').val(_this.currNode.content);	
 								}else{
-									$('#content').html('');			
+									$('#content').val('');			
 								}
 							}
 						});

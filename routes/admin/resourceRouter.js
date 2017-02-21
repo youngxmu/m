@@ -78,7 +78,6 @@ router.get('/detail/:id', function (req, res, next) {
 
 router.post('/del', function (req, res, next) {
     var id = req.body.id;
-    console.log(id);
     if(id == null || id == undefined){
         res.json({
             success: false,
@@ -140,24 +139,23 @@ router.get('/list', function (req, res, next) {
     if(!keyword || keyword == 'undefined'){
         keyword = '';
     }
-    console.log(1);
     res.render('admin/resource/list',{
         type : type,
         keyword : keyword
     });
 });
 
-router.get('/list/:type', function (req, res, next) {
-    var type = req.params.type;
-    var keyword = req.query.keyword;
-    if(!keyword || keyword == 'undefined'){
-        keyword = '';
-    }
-    res.render('admin/resource/list',{
-        type : type,
-        keyword : keyword
-    });
-});
+// router.get('/list/:type', function (req, res, next) {
+//     var type = req.params.type;
+//     var keyword = req.query.keyword;
+//     if(!keyword || keyword == 'undefined'){
+//         keyword = '';
+//     }
+//     res.render('admin/resource/list',{
+//         type : type,
+//         keyword : keyword
+//     });
+// });
 
 
 
@@ -208,7 +206,26 @@ router.post('/list', function (req, res, next) {
     });
 });
 
+router.get('/list/video', function (req, res, next) {
+    res.render('admin/resource/list', {type:'video'});
+});
 
+router.get('/list/pic', function (req, res, next) {
+    res.render('admin/resource/list', {type:'pic'});
+});
+
+router.get('/list/ppt', function (req, res, next) {
+    res.render('admin/resource/list', {type:'ppt'});
+});
+
+/** 文件类列表 */
+router.get('/list/base', function (req, res, next) {
+    res.render('admin/resource/list-base');
+});
+
+router.get('/list/res', function (req, res, next) {
+    res.render('admin/resource/list-res');
+});
 
 module.exports = router;
 
