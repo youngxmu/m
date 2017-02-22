@@ -527,7 +527,6 @@
 			}
 			return html;
 		},
-
 		initUploader : function(uploadSrc, extensions) {// 初始化文件上传控件
 			plupload.addI18n({
 		        'File extension error.' : '文件类型错误',

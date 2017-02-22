@@ -1,8 +1,6 @@
 var moka = {
 	building : '<div class="building">资源建设中...</div>',
-	index : {
-
-	},
+	index : {},
 	admin : {
 		user : {},
 		paper : {},
@@ -30,8 +28,6 @@ var moka = {
 		jsjn : {},
 		hbll : {}
 	},
-	model : {},
-	album : {},
 	article :{//用户管理
 		detail : {},
 		list : {}

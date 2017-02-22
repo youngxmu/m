@@ -106,6 +106,7 @@ router.post('/detail/:id', function (req, res, next) {
             if (!err && result) {
                 var vote = result;
                 questionModel.queryQuestionsByIds(vote.qids, function(err, result){
+                    logger.error(err);
                     if(err){
                         res.json({
                             success: false,
@@ -120,7 +121,8 @@ router.post('/detail/:id', function (req, res, next) {
                     }
                 });
             } else {
-                 res.json({
+                logger.error(err);
+                res.json({
                     success: false,
                     msg: "根据id查询试卷出错"
                 });

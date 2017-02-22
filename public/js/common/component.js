@@ -193,7 +193,10 @@ var component = {};
 			    okValue : '关闭',
 			    width : 800,
 			    onshow : function(){
-			    	_this.getData();
+			    	_this.getData(function(msg){
+			    		d.close();
+			    		util.dialog.infoDialog(msg);
+			    	});
 			    },
 			    ok : function(){},
 			    button: [
@@ -215,7 +218,7 @@ var component = {};
 			});
 			d.showModal();
         },
-		getData : function(){
+		getData : function(callback){
 	 		$.ajax({
 				url : 'vote/history/' + _this.paperId,
 				type : 'post',
@@ -263,10 +266,9 @@ var component = {};
 			                    }
 			                }
 			            });
-
-							
 					}else{
-						alert(data.msg);
+						callback(data.msg);
+						// util.dialog.infoDialog(data.msg);
 					}
 				}
 			});

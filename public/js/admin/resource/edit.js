@@ -86,7 +86,6 @@
 		    	menuList.push(smenu);
 		    }
 			$target.html(_this.tpl.menuListTpl.render({list: menuList}));
-
 		},
 		commit : function() {
 			var $selects = $('.u-select-p').find('select');

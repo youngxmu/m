@@ -159,38 +159,46 @@ router.post('/commit', function (req, res) {
 router.post('/history/:id', function (req, res, next) {
     var id = req.params.id;
     voteModel.queryVoteHistoryByPid(id, function (err, historys) {
-        if (!err && historys.length > 0) {
-            var qidMap = {};
-            for(var index in historys){
-                qidMap[historys[index].qid] = historys[index].qid;
-            }
-            var qids = [];
-            for(var key in qidMap){
-                qids.push(key);
-            }
-            questionModel.queryQuestionsByIds(qids.join(','), function(err, result){
-                if(err){
-                    res.json({
-                        success: false,
-                        msg: "根据id查询试卷出错"
-                    });
-                }else{
-                    var vote = {
-                        historys : historys,
-                        questions : result
-                    }
-                    res.json({
-                        success: true,
-                        vote : vote
-                    });
-                }
-            });
-        } else {
-             res.json({
+        if(err){
+            logger.error('queryVoteHistoryByPid', err);
+            return res.json({
                 success: false,
+                code : 0,
                 msg: "根据id查询试卷出错"
             });
         }
+        if (historys.length == 0) {
+            return res.json({
+                success: false,
+                code : 1,
+                msg: "当前还没有人参与测评，无统计数据"
+            });
+        }
+
+        var qidMap = {};
+        for(var index in historys){
+            qidMap[historys[index].qid] = historys[index].qid;
+        }
+        var qids = [];
+        for(var key in qidMap){
+            qids.push(key);
+        }
+        questionModel.queryQuestionsByIds(qids.join(','), function(err, result){
+            if(err){
+                return res.json({
+                    success: false,
+                    msg: "根据id查询试卷出错"
+                });
+            }
+            var vote = {
+                historys : historys,
+                questions : result
+            }
+            res.json({
+                success: true,
+                vote : vote
+            });
+        });
     });
 });
 
